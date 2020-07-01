@@ -2,6 +2,13 @@
 @import "../../main.scss";
 @import "~bootstrap/scss/mixins/_breakpoints";
 
+form{
+  display: table-caption;
+}
+
+
+
+
 .login-container {
   position: absolute;
   top: 0;
@@ -23,8 +30,21 @@
   @include login-card();
 }
 
+.muted-icon{
+  @include mat-muted-icon();
+}
+
 .ng-invalid.ng-touched:not(form) {
   border-left: 4px solid theme-color("danger");
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
 }
 
 @include media-breakpoint-down(xs) {

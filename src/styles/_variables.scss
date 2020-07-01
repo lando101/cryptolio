@@ -2,6 +2,14 @@
 // BACKGROUNDS
 $primary-background: #181818;
 
+// COLORS
+$mat-muted-icon: #888888;
+
 
 // BORDERS
-$primary-border: #2d2d2d;
+$primary-border: #454545;
+$primary-border-dark: darken($primary-border, 15%);
+
+
+// SHADOWS
+$primary-shadow: #12121280;

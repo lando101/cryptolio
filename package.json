@@ -17,7 +17,8 @@
     "prettier": "prettier --write \"./{src,e2e}/**/*.{ts,js,html,scss}\"",
     "prettier:check": "prettier --list-different \"./{src,e2e}/**/*.{ts,js,html,scss}\"",
     "postinstall": "npm run prettier -s",
-    "generate": "ng generate"
+    "generate": "ng generate",
+    "aws-deploy": "aws s3 sync dist/starter-kit-master/ s3://cryptolio-app"
   },
   "dependencies": {
     "@angular/animations": "^9.1.9",
@@ -25,6 +26,7 @@
     "@angular/common": "^9.1.9",
     "@angular/compiler": "^9.1.9",
     "@angular/core": "^9.1.9",
+    "@angular/fire": "^6.0.2",
     "@angular/forms": "^9.1.9",
     "@angular/localize": "^9.1.0",
     "@angular/material": "^9.2.4",
@@ -37,6 +39,7 @@
     "@ngx-translate/core": "^12.0.0",
     "angular-particle": "^1.0.4",
     "bootstrap": "^4.1.1",
+    "firebase": "^7.15.5",
     "rxjs": "^6.5.5",
     "tslib": "^1.10.1",
     "zone.js": "^0.10.3"

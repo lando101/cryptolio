@@ -10,7 +10,6 @@ ng build  && npm run aws-deploy
 install aws cli :: once installed aws config -- set aws keys
 
 VIDEO TO DEPLOY TO AWS
-https://www.youtube.com/watch?v=ZkYsMBNR_eY&t=600s
 {
   "Version": "2012-10-17",
   "Statement": [

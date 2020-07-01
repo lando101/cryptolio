@@ -2,31 +2,26 @@
 
 <div class="login-container">
   <div class="login-box">
-    <h1 translate>APP_NAME</h1>
     <div>
       <h6 class="d-inline-block">v{{ version }}</h6>
       <div class="d-inline-block ml-3">
         <app-language-selector></app-language-selector>
       </div>
     </div>
-    <div class="container">
-      <div class="card login-card col-md-6 mt-3 mx-auto">
+    <div class="login-card">
+    <h1 translate>APP_NAME</h1>
+      <div class="col-md-6 mt-3 mx-auto">
         <div class="card-body">
           <h4 class="card-title text-center">
-            <i class="far fa-3x fa-user-circle text-muted"></i>
+            <!-- <i class="far fa-3x fa-user-circle text-muted"></i> -->
           </h4>
-          <mat-form-field appearance="standard">
-            <mat-label>Standard form field</mat-label>
-            <input matInput placeholder="Placeholder">
-            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <mat-hint>Hint</mat-hint>
-          </mat-form-field>
+
           <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
             <div class="alert alert-danger" [hidden]="!error || isLoading" translate>
               Username or password incorrect.
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label class="d-block">
                 <input
                   type="text"
@@ -68,12 +63,42 @@
                   <span translate>Remember me</span>
                 </label>
               </div>
-            </div>
+            </div> -->
             <!-- <button class="btn btn-primary w-100" type="submit" [disabled]="loginForm.invalid || isLoading">
               <i class="fas fa-cog fa-spin" [hidden]="!isLoading"></i>
               <span translate>Login</span>
             </button> -->
-            <button mat-raised-button type="submit" color="primary" [disabled]="loginForm.invalid || isLoading">
+            <!-- <form autocomplete="on" [formGroup]="loginForm" (ngSubmit)="login()">
+              <mat-form-field appearance="standard" formControlName="email">
+                <mat-label>Email</mat-label>
+                <input matInput [(ngModel)]="email" placeholder="Email">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+              <mat-form-field appearance="standard" formControlName="password">
+                <mat-label>Password</mat-label>
+                <input [(ngModel)]="password" [type]="hide ? 'password' : 'text'" matInput placeholder="Password">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+           </form> -->
+           <form  [formGroup]="loginForm" (ngSubmit)="login()">
+            <mat-form-field appearance="standard" >
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Email" formControlName="email" autocomplete='new-password' >
+              <!-- <mat-hint>Hint</mat-hint> -->
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+              <mat-label>Password</mat-label>
+              <input [type]="hide ? 'password' : 'text'" matInput placeholder="Password" formControlName="password" autocomplete='new-password' >
+              <button mat-icon-button matSuffix  (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon appearance="standard" class="muted-icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+          </form >
+            <button mat-raised-button type="submit" color="primary">
               <i class="fas fa-cog fa-spin" [hidden]="!isLoading"></i>
               <span translate>Sign In</span>
             </button>

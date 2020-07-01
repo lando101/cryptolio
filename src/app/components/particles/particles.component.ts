@@ -18,7 +18,7 @@ export class ParticlesComponent implements OnInit {
       position: 'fixed',
       width: '100%',
       height: '100%',
-      background: 'rgb(19, 19, 19)',
+      background: 'rgb(23, 23, 23)',
       'z-index': 0,
       top: 0,
       left: 0,

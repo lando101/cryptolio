@@ -2,3 +2,15 @@
  * Global application theme.
  * Framework overrides and customization goes here.
  */
+
+ @import '~@angular/material/theming';
+ @include mat-core();
+
+ $crypto-theme-primary: mat-palette($mat-deep-purple);
+ $crypto-theme-accent: mat-palette($mat-deep-purple, A200, A400, A700);
+ $crypto-theme-warn: mat-palette($mat-red);
+
+ $crypto-theme: mat-dark-theme($crypto-theme-primary, $crypto-theme-accent,  $crypto-theme-warn);
+
+@include angular-material-theme($crypto-theme)
+

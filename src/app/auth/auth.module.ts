@@ -10,6 +10,7 @@ import { LoginComponent } from './login.component';
 import { ParticlesModule } from 'angular-particle';
 import { ParticlesComponent } from '@app/components/particles/particles.component';
 import { SharedModule } from '@app/@shared';
+import { FormsModule } from '@angular/forms';
 // import {MatFormFieldModule} from '@angular/material/form-field';
 
 // import {MatFormFieldModule} from '@angular/';
@@ -18,6 +19,7 @@ import { SharedModule } from '@app/@shared';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     TranslateModule,
     NgbModule,
     I18nModule,
