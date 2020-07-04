@@ -33,8 +33,8 @@ deploy:
     access_key_id: AKIAYFHT6RKTFOA7GLNK             // You have use environment variable name instead of plain text
     secret_access_key: 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    // You have use environment variable name instead of plain text
     region: "us-east"            // "ap-south-1"
-    app: "<APP_NAME>"                     // "demo-application"
-    env: "<ENV_NAME>"                     // "demo-production"
+    app: "cryptolio-v1"                     // "demo-application"
+    env: "CryptolioV1-env"                     // "demo-production"
     bucket_name: "elasticbeanstalk-us-east-1-561004841638" // Once you create new application, it will automatically create a unique bucket for it.
     on:
       branch: master // For example: - master
