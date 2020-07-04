@@ -18,8 +18,9 @@ export class ParticlesComponent implements OnInit {
       position: 'fixed',
       width: '100%',
       height: '100%',
-      background: 'rgb(23, 23, 23)',
+      background: 'rgb(26, 30, 33)',
       'z-index': 0,
+      // filter: 'blur(10px)',
       top: 0,
       left: 0,
       right: 0,
@@ -28,20 +29,22 @@ export class ParticlesComponent implements OnInit {
     this.myParams = {
       particles: {
         number: {
-          value: 80,
+          value: 10,
           density: {
             enable: true,
             value_area: 800,
           },
         },
         color: {
-          value: '#d83f87',
+          // value: '#d83f87',
+          // value: ['#05386b', '#379683', '#5cdb95'],
+          value: ['#000000', '#ff2146']
         },
         shape: {
-          type: 'circle',
+          type: ['edge'],
         },
         size: {
-          value: 7,
+          value: 150,
           random: true,
           anim: {
             enable: false,
@@ -51,7 +54,7 @@ export class ParticlesComponent implements OnInit {
           },
         },
         opacity: {
-          value: 1,
+          value: 0.5,
           random: true,
           anim: {
             enable: false,
@@ -63,14 +66,14 @@ export class ParticlesComponent implements OnInit {
         line_linked: {
           enable: true,
           distance: 173.61933172340872,
-          color: '#44318d',
-          opacity: 1,
+          color: '#ffffff',
+          opacity: 0,
           width: 1,
         },
         move: {
           enable: true,
-          speed: 0.75,
-          direction: 'none',
+          speed: 0.5,
+          direction: 'top',
           random: false,
           straight: false,
           out_mode: 'out',

@@ -3,6 +3,12 @@
 
 
 
+h1{
+  font-family: 'Righteous', cursive;
+  // font-family: 'Galada', cursive;
+  color: $primary-color;
+}
+
 // BUTTONS
 .mat-raised-button {
   @include mat-raised-button();

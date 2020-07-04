@@ -17,7 +17,7 @@ const credentialsKey = 'credentials';
 })
 export class CredentialsService {
   private _credentials: Credentials | null = null;
-
+  private authenticated: boolean = false;
   constructor() {
     const savedCredentials = sessionStorage.getItem(credentialsKey) || localStorage.getItem(credentialsKey);
     if (savedCredentials) {
@@ -31,7 +31,8 @@ export class CredentialsService {
    */
   isAuthenticated(): boolean {
     // return !!this.credentials;
-    return true;
+    console.log(this.authenticated + ' : Authentication status');
+    return this.authenticated;
   }
 
   /**
@@ -49,15 +50,19 @@ export class CredentialsService {
    * @param credentials The user credentials.
    * @param remember True to remember credentials across sessions.
    */
-  setCredentials(credentials?: Credentials, remember?: boolean) {
-    this._credentials = credentials || null;
 
-    if (credentials) {
-      const storage = remember ? localStorage : sessionStorage;
-      storage.setItem(credentialsKey, JSON.stringify(credentials));
+   // NOT USING CREDENTIALS RIGHT NOW :: USING SIMPLE TRUE FALSE IF AUTHENTICATED
+  setCredentials(authenticationStatus: boolean) {
+    // this._credentials = credentials || null;
+
+    if (authenticationStatus) {
+      // const storage = remember ? localStorage : sessionStorage;
+      // storage.setItem(credentialsKey, JSON.stringify(credentials));
+      this.authenticated = authenticationStatus;
     } else {
-      sessionStorage.removeItem(credentialsKey);
-      localStorage.removeItem(credentialsKey);
+      // sessionStorage.removeItem(credentialsKey);
+      // localStorage.removeItem(credentialsKey);
+      this.authenticated = authenticationStatus;
     }
   }
 }

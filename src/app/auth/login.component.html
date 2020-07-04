@@ -10,8 +10,8 @@
     </div>
     <div class="login-card">
     <h1 translate>APP_NAME</h1>
-      <div class="col-md-6 mt-3 mx-auto">
-        <div class="card-body">
+      <div class="mb-5">
+        <div class="card-body p-0">
           <h4 class="card-title text-center">
             <!-- <i class="far fa-3x fa-user-circle text-muted"></i> -->
           </h4>
@@ -84,7 +84,7 @@
                 <mat-hint>Hint</mat-hint>
               </mat-form-field>
            </form> -->
-           <form  [formGroup]="loginForm" (ngSubmit)="login()">
+           <form class="mb-3" [formGroup]="loginForm" (ngSubmit)="login()">
             <mat-form-field appearance="standard" >
               <mat-label>Email</mat-label>
               <input matInput placeholder="Email" formControlName="email" autocomplete='new-password' >

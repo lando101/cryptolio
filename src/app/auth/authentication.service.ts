@@ -54,6 +54,8 @@ SignIn(email: any, password: any) {
       this.ngZone.run(() => {
         // this.router.navigate(['dashboard']);
         console.log("AUTORIZED TO LOGIN");
+        this.credentialsService.setCredentials(true);
+
         this.router.navigate([this.route.snapshot.queryParams.redirect || '/'], { replaceUrl: true });
         // this.login(email);
       });
@@ -61,6 +63,7 @@ SignIn(email: any, password: any) {
     }).catch((error: { message: any; }) => {
       window.alert(error.message);
       console.log("NOT AUTHORIZED TO LOGIN");
+      this.credentialsService.setCredentials(false);
     })
 }
 
@@ -112,7 +115,7 @@ SignIn(email: any, password: any) {
    */
   logout(): Observable<boolean> {
     // Customize credentials invalidation here
-    this.credentialsService.setCredentials();
+    this.credentialsService.setCredentials(false);
     this.SignOut();
     return of(true);
   }
