@@ -8,7 +8,7 @@ WORKDIR '/app'
 COPY package.json .
 
 # install node modules into container
-RUN npm-install
+RUN npm install
 
 COPY . .
 
