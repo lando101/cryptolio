@@ -9,6 +9,20 @@ DEPLOY TO AWS
 ng build  && npm run aws-deploy
 install aws cli :: once installed aws config -- set aws keys
 
+DEPLOY TO AWS ELASTIC BEANSTALK
+https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install-windows.html
+
+DOCKER
+https://www.youtube.com/watch?v=6aJxOspR-NM
+build --> docker build .
+dev:
+run on port 8080 --> docker run -p 8080:4200 a2dfdf8959e6 
+prod:
+docker run -p 80:80 63ec02e1375f
+run with live updates on port 8080 --> docker-compose up
+  - docker compose file contains the port
+
+
 VIDEO TO DEPLOY TO AWS
 {
   "Version": "2012-10-17",
