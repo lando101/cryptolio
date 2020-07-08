@@ -22,7 +22,6 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-
 // FIREBASE CONFIGURATION
 const firebaseConfig = {
   apiKey: "AIzaSyAk62hJfJnCotlDM1diCWrE0FIF_VSGGFA",

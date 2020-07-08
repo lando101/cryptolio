@@ -18,7 +18,7 @@
     "prettier:check": "prettier --list-different \"./{src,e2e}/**/*.{ts,js,html,scss}\"",
     "postinstall": "npm run prettier -s",
     "generate": "ng generate",
-    "aws-deploy": "aws s3 sync dist/starter-kit-master/ s3://cryptolio-app"
+    "aws-deploy": "aws s3 sync dist/starter-kit-master/ s3://cryptolio-containerized"
   },
   "dependencies": {
     "@angular/animations": "^9.1.9",
@@ -39,8 +39,10 @@
     "@ngx-translate/core": "^12.0.0",
     "angular-particle": "^1.0.4",
     "bootstrap": "^4.1.1",
+    "bootstrap-icons": "^1.0.0-alpha5",
     "firebase": "^7.15.5",
     "lightweight-charts": "^3.1.1",
+    "ngx-bootstrap": "^5.6.1",
     "rxjs": "^6.5.5",
     "tslib": "^1.10.1",
     "zone.js": "^0.10.3"

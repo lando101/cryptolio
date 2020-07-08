@@ -17,3 +17,20 @@
 
 // Theme customization
 @import "theme/theme";
+
+
+body{
+  background: #191919;
+}
+
+.scroll1::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scroll1::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+.scroll1::-webkit-scrollbar-thumb {
+  background: #ff2150;
+}

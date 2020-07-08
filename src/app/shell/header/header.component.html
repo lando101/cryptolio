@@ -1,42 +1,55 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="https://github.com/ngx-rocket" translate>APP_NAME</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      aria-controls="navbar-menu"
-      aria-label="Toggle navigation"
-      (click)="toggleMenu()"
-      [attr.aria-expanded]="!menuHidden"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div id="navbar-menu" class="collapse navbar-collapse float-xs-none" [ngbCollapse]="menuHidden">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link text-uppercase" routerLink="/home" routerLinkActive="active">
-          <i class="fas fa-home"></i>
-          <span translate>Home</span>
+  <nav class="navbar navbar-expand-lg d-flex">
+    <div class="col-md-4">
+      <a class="navbar-brand" href="https://github.com/ngx-rocket" translate>APP_NAME</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        aria-controls="navbar-menu"
+        aria-label="Toggle navigation"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="!menuHidden"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="col-md-4 nav-bar-metrics">
+      TEST
+    </div>
+<div class="col-md-4">
+
+  <div id="navbar-menu" class="collapse navbar-collapse float-xs-none" [ngbCollapse]="menuHidden">
+    <!-- <div class="navbar-nav">
+      <a class="nav-item nav-link text-uppercase" routerLink="/home" routerLinkActive="active">
+        <i class="fas fa-home"></i>
+        <span translate>Home</span>
+      </a>
+      <a class="nav-item nav-link text-uppercase" routerLink="/about" routerLinkActive="active">
+        <i class="fas fa-question-circle"></i>
+        <span translate>About</span>
+      </a>
+    </div> -->
+    <div class="navbar-nav ml-auto">
+      <!-- <app-language-selector inNavbar="true" menuClass="dropdown-menu dropdown-menu-right"></app-language-selector> -->
+      <div class="nav-item" ngbDropdown>
+        <a id="user-dropdown" class="nav-link" ngbDropdownToggle>
+          <!-- <i class="fas fa-user-circle"></i> -->
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-badge" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M12 1H4a1 1 0 0 0-1 1v11.755S4 12 8 12s5 1.755 5 1.755V2a1 1 0 0 0-1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
+            <path fill-rule="evenodd" d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM6 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5z"/>
+          </svg>
         </a>
-        <a class="nav-item nav-link text-uppercase" routerLink="/about" routerLinkActive="active">
-          <i class="fas fa-question-circle"></i>
-          <span translate>About</span>
-        </a>
-      </div>
-      <div class="navbar-nav ml-auto">
-        <app-language-selector inNavbar="true" menuClass="dropdown-menu dropdown-menu-right"></app-language-selector>
-        <div class="nav-item" ngbDropdown>
-          <a id="user-dropdown" class="nav-link" ngbDropdownToggle>
-            <i class="fas fa-user-circle"></i>
-          </a>
-          <div ngbDropdownMenu aria-labelledby="user-dropdown" class="dropdown-menu dropdown-menu-right">
-            <h6 class="dropdown-header">
-              <span translate>Logged in as</span> <b>{{ username }}</b>
-            </h6>
-            <div class="dropdown-divider"></div>
-            <button class="dropdown-item" (click)="logout()" translate>Logout</button>
-          </div>
+        <div ngbDropdownMenu aria-labelledby="user-dropdown" class="dropdown-menu dropdown-menu-right">
+          <h6 class="dropdown-header">
+            <span translate>Logged in as</span> <b>{{ username }}</b>
+          </h6>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item" (click)="logout()" translate>Logout</button>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
   </nav>
 </header>

@@ -9,7 +9,53 @@ h1{
   color: $primary-color;
 }
 
+section{
+  min-height: 350px;
+  min-height: 350px;
+  margin: 30px 0px;
+  padding: 5px 0px;
+  label{
+    max-width: 1140px;
+    font-family: "Righteous", cursive;
+    color: #6f6f6f;
+    font-size: 1.65rem;
+  }
+}
+
 // BUTTONS
 .mat-raised-button {
   @include mat-raised-button();
 }
+
+// INPUTS
+
+input{
+  color: $text-color !important;
+}
+
+
+
+// COMPONENTS
+.carousel{
+  height: 550px;
+  .carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid #242424;
+}
+}
+
+.carousel-indicators li {
+  background-color: #ff2150 !important;
+}
+
+// SVG & ICONS
+svg {
+  overflow: hidden;
+  vertical-align: middle;
+  color: #acacac;
+  font-size: 20px;
+}
+
+

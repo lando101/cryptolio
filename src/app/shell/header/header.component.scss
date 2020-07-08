@@ -1,7 +1,36 @@
 @import "src/theme/theme-variables";
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
 
 .navbar {
-  margin-bottom: $spacer;
+  // margin-bottom: $spacer;
+  margin-bottom: none;
+  position: fixed;
+  top: 0px;
+  z-index: 999;
+  height: 58px;
+  width: 100%;
+  background-color: #10121470;
+  backdrop-filter: saturate(50%) blur(20px) brightness(.8);
+  box-shadow: 0px 2px 8px 2px #0c0d0e63;
+  text-shadow: 1px 0px 15px #800f1a;
+  border-bottom: 1px solid #1e1e1e;
+  .navbar-brand{
+    font-family: 'Righteous', cursive;
+    // font-family: 'Galada', cursive;
+    color: $primary-color;
+    font-size: 1.85rem;
+  }
+  .nav-bar-metrics{
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid;
+    backdrop-filter: brightness(1.2);
+  }
 }
 
 .nav-link.dropdown-toggle {
