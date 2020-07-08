@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { extract } from '@app/i18n';
 import { HomeComponent } from './home.component';
 import { Shell } from '@app/shell/shell.service';
+// import { AppModule } from "../app.module";
 
 const routes: Routes = [
   Shell.childRoutes([

@@ -10,6 +10,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { CarouselComponent } from '@app/components/carousel/carousel.component';
 
 // import { ParticlesModule } from 'angular-particle';
 
@@ -22,7 +23,9 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     MatIconModule,
     MatInputModule,
     MatButtonModule,
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    // CarouselComponent,
+
   ],
   declarations: [LoaderComponent],
   exports: [
@@ -30,6 +33,9 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatButtonModule, CarouselModule],
+    MatButtonModule,
+    CarouselModule,
+    // CarouselComponent
+  ],
 })
 export class SharedModule {}

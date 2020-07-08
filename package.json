@@ -40,6 +40,7 @@
     "angular-particle": "^1.0.4",
     "bootstrap": "^4.1.1",
     "bootstrap-icons": "^1.0.0-alpha5",
+    "coinbase": "^2.0.8",
     "firebase": "^7.15.5",
     "lightweight-charts": "^3.1.1",
     "ngx-bootstrap": "^5.6.1",

@@ -16,9 +16,10 @@ section{
   padding: 5px 0px;
   label{
     max-width: 1140px;
-    font-family: "Righteous", cursive;
-    color: #6f6f6f;
-    font-size: 1.65rem;
+    // font-family: "Righteous", cursive;
+    color: #b6b6b6;
+    font-size: 1.45rem;
+    text-shadow: 1px 0px 15px #2d2e2f;
   }
 }
 
@@ -36,19 +37,7 @@ input{
 
 
 // COMPONENTS
-.carousel{
-  height: 550px;
-  .carousel-inner {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    border-bottom: 1px solid #242424;
-}
-}
 
-.carousel-indicators li {
-  background-color: #ff2150 !important;
-}
 
 // SVG & ICONS
 svg {

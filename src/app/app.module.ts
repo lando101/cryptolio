@@ -22,6 +22,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { HomeComponent } from './home/home.component';
 // FIREBASE CONFIGURATION
 const firebaseConfig = {
   apiKey: "AIzaSyAk62hJfJnCotlDM1diCWrE0FIF_VSGGFA",
@@ -55,8 +57,13 @@ const firebaseConfig = {
     AngularFireStorageModule, // storage
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],
-  declarations: [AppComponent],
-  providers: [AuthenticationService],
+  declarations: [
+    AppComponent,
+    CarouselComponent,
+    HomeComponent
+  ],
+  providers: [AuthenticationService, ],
+  // entryComponents: [HomeComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

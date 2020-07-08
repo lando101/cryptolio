@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+// import { Client } from 'node_modules/coinbase/lib/model/'
 import { AuthenticationService, CredentialsService } from '@app/auth';
+
+declare var Client: any;
 
 @Component({
   selector: 'app-header',
@@ -11,6 +13,8 @@ import { AuthenticationService, CredentialsService } from '@app/auth';
 export class HeaderComponent implements OnInit {
   menuHidden = true;
 
+  // Client = require('coinbase').Client;
+  // client = new Client({'apiKey': 61651, 'apiSecret': 51651});
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,

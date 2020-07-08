@@ -1,0 +1,29 @@
+@import "../../../styles/index.scss";
+
+h1{
+  color: #b6b6b6 !important;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  text-shadow: 1px 0px 15px #3a3c3d;
+}
+
+::ng-deep .carousel {
+  height: 510px;
+  margin: 58px 0px 85px 0px;
+  .carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid #242424;
+    background: #131313;
+    slide{
+      width: 100%;
+      order: 0;
+      padding: 20px 15%;
+    }
+  }
+}
+
+::ng-deep .carousel-indicators li {
+  background-color: #ff2150 !important;
+}
