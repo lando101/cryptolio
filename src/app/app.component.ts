@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { merge } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
+import { Platform } from '@ionic/angular';
 
 import { environment } from '@env/environment';
 import { Logger, untilDestroyed } from '@core';
@@ -25,7 +26,13 @@ export class AppComponent implements OnInit, OnDestroy {
     private i18nService: I18nService
   ) {}
 
+  platform:Platform;
+
   ngOnInit() {
+    this.platform.ready().then(() => {
+      // this.statusBar.styleDefault();
+      // this.splashScreen.hide();
+    });
     // Setup logger
     if (environment.production) {
       Logger.enableProductionMode();

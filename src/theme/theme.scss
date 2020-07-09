@@ -10,7 +10,7 @@
  $crypto-theme-accent: mat-palette($mat-grey, 100, 300, 500);
  $crypto-theme-warn: mat-palette($mat-red);
 
- $crypto-theme: mat-dark-theme($crypto-theme-primary, $crypto-theme-accent,  $crypto-theme-warn);
+ $crypto-theme: mat-light-theme($crypto-theme-primary, $crypto-theme-accent,  $crypto-theme-warn);
 
 @include angular-material-theme($crypto-theme)
 

@@ -11,7 +11,9 @@ import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CarouselComponent } from '@app/components/carousel/carousel.component';
-
+// import { IonicPageModule, IonicModule } from '@ionic/angular';
+import {MatCardModule} from '@angular/material/card';
+import {MatDialogModule} from '@angular/material/dialog';
 // import { ParticlesModule } from 'angular-particle';
 
 
@@ -23,11 +25,17 @@ import { CarouselComponent } from '@app/components/carousel/carousel.component';
     MatIconModule,
     MatInputModule,
     MatButtonModule,
+    MatCardModule,
+    MatDialogModule,
+    // IonicModule.forRoot({
+    //   rippleEffect: false,
+    //   mode: 'md'
+    // }),
     CarouselModule.forRoot(),
     // CarouselComponent,
 
   ],
-  declarations: [LoaderComponent],
+  declarations: [LoaderComponent,],
   exports: [
     LoaderComponent,
     MatFormFieldModule,
@@ -35,6 +43,9 @@ import { CarouselComponent } from '@app/components/carousel/carousel.component';
     MatInputModule,
     MatButtonModule,
     CarouselModule,
+    MatCardModule,
+    MatDialogModule
+    // IonicModule
     // CarouselComponent
   ],
 })

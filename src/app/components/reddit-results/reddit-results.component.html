@@ -1,0 +1,18 @@
+<div class="grid">
+    <div *ngFor="let article of news; let index=index" class="posts">
+    <div class="card" style="width: 18rem;">
+      <div class="card-img-container">
+        <img class="card-img-top" src="{{article.thumbnail}}" alt="Card image cap">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{article.title}}</h5>
+        <p class="card-text small">{{article.author}}</p>
+        <button mat-raised-button color="primary" (click)="openDialog(article.url)">
+          <span translate>Read more</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { TranslateModule } from '@ngx-translate/core';
@@ -16,7 +16,6 @@ import { AboutModule } from './about/about.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 // FIREBASE IMPORTS
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -24,6 +23,17 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { HomeComponent } from './home/home.component';
+
+
+// IONIC IMPORTS
+// import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { CommonModule } from '@angular/common';
+import { NewsComponent } from './components/news/news.component';
+import { RedditSearchComponent } from './components/reddit-search/reddit-search.component';
+import { RedditResultsComponent } from './components/reddit-results/reddit-results.component';
+import { NewsDialogComponent } from './components/news-dialog/news-dialog.component';
+import { SafePipe } from './pipes/sanitizer.pipe';
+
 // FIREBASE CONFIGURATION
 const firebaseConfig = {
   apiKey: "AIzaSyAk62hJfJnCotlDM1diCWrE0FIF_VSGGFA",
@@ -41,6 +51,7 @@ const firebaseConfig = {
     BrowserModule,
     ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forRoot(),
     NgbModule,
@@ -52,6 +63,10 @@ const firebaseConfig = {
     AuthModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    // NewsComponent,
+    // IonicModule,
+    // IonSearchbar,
+    CommonModule,
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
@@ -60,10 +75,16 @@ const firebaseConfig = {
   declarations: [
     AppComponent,
     CarouselComponent,
-    HomeComponent
+    HomeComponent,
+    NewsComponent,
+    RedditSearchComponent,
+    RedditResultsComponent,
+    NewsDialogComponent,
+    SafePipe
+    // IonSearchbar,
   ],
-  providers: [AuthenticationService, ],
-  // entryComponents: [HomeComponent],
+  providers: [AuthenticationService],
+  entryComponents: [NewsDialogComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

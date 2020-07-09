@@ -1,17 +1,27 @@
 
+
+// UNIVERSAL VARIABLES
+$primary-color: #ff2150;
+
 // BACKGROUNDS
-$primary-background: #181818;
+$primary-background-darker: #f0f0f0;
+$primary-background: #f7f7f7;
+$header-translucent-background: #ffffff78;
 
 // COLORS
-$primary-color: #ff2150;
 $mat-muted-icon: #888888;
-$text-color: white;
+$text-color: #747474;
+$alternate-text-color: white;
 
 
 // BORDERS
-$primary-border: #454545;
+$primary-border: #d9d9d9;
 $primary-border-dark: darken($primary-border, 15%);
+$header-border-bottom: transparent;
 
 
 // SHADOWS
 $primary-shadow: #12121280;
+$primary-text-shadow: #ffcad5;
+
+//=========================================================

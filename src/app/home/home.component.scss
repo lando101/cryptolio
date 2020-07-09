@@ -1,3 +1,5 @@
+@import "../../styles/index.scss";
+
 .logo {
   width: 100px;
 }
@@ -9,5 +11,5 @@ q {
 }
 
 .section-content-container{
-  border-bottom: 1px solid #232323;
+  border-bottom: 1px solid $primary-border;
 }

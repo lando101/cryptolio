@@ -1,0 +1,112 @@
+// #grid {
+//   width: 200px;
+//   display: grid;
+//   grid-template-areas: "a a a a";
+//   grid-gap: 10px;
+//   grid-auto-rows: 100px;
+// }
+
+.grid {
+  display: grid;
+  // grid-template-columns: 35% 35% 35%;
+  /* grid-template-rows: 15% auto 80px; */
+  grid-template-columns: 25% 25% 25% 25%;
+    column-gap: 40px;
+    row-gap: 50px;
+
+}
+
+.card{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: none;
+  border-radius: 0.25rem;
+  box-shadow: 0px 4px 10px 1px #80808021;
+  .card-title{
+    font-weight: bold;
+    font-size: .9rem;
+  }
+  .card-img-container{
+    padding: 15px;
+  }
+}
+
+
+// .posts {
+//   display: flex;
+// 	flex-wrap: wrap;
+// }
+
+// .post {
+//   flex: 1 0 24rem;
+//   background: #fff;
+// 	margin: 1rem;
+//   border-radius: 2px;
+//   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+//   transition: box-shadow 0.3s cubic-bezier(.25,.8,.25,1);
+//   min-height: 250px;
+//   font-size: 2rem;
+//   overflow: hidden;
+//   cursor: pointer;
+
+//   &:hover {
+//     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+//   }
+
+//   &__toolbar {
+//     position: relative;
+
+//     .material-icons {
+//       position: absolute;
+//       color: #fff;
+//       padding: .5rem;
+//       right: 15px;
+//       top: 12px;
+
+//       &:hover {
+//         background: rgba(0,0,0,0.4);
+//         border-radius: 50%;
+//         padding: .5rem;
+//         transition: background .4s;
+//       }
+//     }
+//   }
+
+//   &__content {
+//     padding: 1rem;
+
+//     &--title {
+//       font-size: 2rem;
+//       font-weight: 900;
+//       white-space: nowrap;
+//       overflow: hidden;
+//       text-overflow: ellipsis;
+//     }
+//     &--body {
+//       color: #999;
+//       font-size: 1rem;
+//     }
+//   }
+// }
+
+// IF CSS GRID SUPPORTED
+@supports (display: grid) {
+	.posts {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+		grid-gap: 2rem;
+	}
+
+	.post {
+		margin: 0;
+	}
+}
+
+// #grid > div {
+
+// }

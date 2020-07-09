@@ -1,5 +1,6 @@
 @import "mixins";
 @import "variables";
+@import "dark-variables";
 
 
 
@@ -17,9 +18,10 @@ section{
   label{
     max-width: 1140px;
     // font-family: "Righteous", cursive;
-    color: #b6b6b6;
+    font-weight: 500;
+    color: $text-color;
     font-size: 1.45rem;
-    text-shadow: 1px 0px 15px #2d2e2f;
+    text-shadow: none;
   }
 }
 
@@ -37,7 +39,23 @@ input{
 
 
 // COMPONENTS
+.cdk-overlay-pane {
+  display: flex;
+  max-width: 100% !important;
+  width: 80% !important;
+}
 
+.cdk-global-overlay-wrapper {
+  display: flex;
+  position: absolute;
+  z-index: 1000;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.mat-dialog-container {
+  height: 85vh !important;
+}
 
 // SVG & ICONS
 svg {

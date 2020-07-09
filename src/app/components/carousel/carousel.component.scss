@@ -1,10 +1,11 @@
 @import "../../../styles/index.scss";
 
 h1{
-  color: #b6b6b6 !important;
+  color: $primary-color !important;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
-  text-shadow: 1px 0px 15px #3a3c3d;
+  text-shadow: 1px 0px 15px $primary-text-shadow;
+  // text-shadow: 1px 0px 15px #3a3c3d;
 }
 
 ::ng-deep .carousel {
@@ -14,13 +15,16 @@ h1{
     position: relative;
     width: 100%;
     overflow: hidden;
-    border-bottom: 1px solid #242424;
-    background: #131313;
+    border-bottom: 1px solid $header-border-bottom;
+    background: $primary-background-darker;
     slide{
       width: 100%;
       order: 0;
       padding: 20px 15%;
     }
+  }
+  &:focus{
+    outline: none !important;
   }
 }
 
