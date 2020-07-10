@@ -54,6 +54,10 @@ input{
   // backdrop-filter: blur(5px);
 }
 
+.cdk-overlay-dark-backdrop {
+  background: #2727271c !important;
+}
+
 .mat-dialog-container {
   height: 85vh !important;
   border-radius: 15px;

@@ -3,6 +3,7 @@ import { finalize } from 'rxjs/operators';
 import { createChart } from 'lightweight-charts';
 
 import { QuoteService } from './quote.service';
+import { CoinmarketcapApiService } from '@app/services/coinmarketcap-api.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
   quote: string | undefined;
   isLoading = false;
 
-  constructor(private quoteService: QuoteService,) {
+  constructor(private quoteService: QuoteService, private cmcService: CoinmarketcapApiService) {
     // const chart = createChart(document.body, {
     //   width: 400,
     //   height: 300,
@@ -47,6 +48,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.isLoading = true;
+    this.cmcService.getCryptoData();
     // this.quoteService
     //   .getRandomQuote({ category: 'dev' })
     //   .pipe(

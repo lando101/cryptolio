@@ -10,7 +10,7 @@ import { RedditApiService } from '@app/services/reddit-api.service';
   styleUrls: ['./news-dialog.component.scss']
 })
 export class NewsDialogComponent implements OnInit{
-  externalSite: SafeHtml;
+  externalSite: SafeHtml = '';
   loading: boolean = true;
   constructor(
     private ras: RedditApiService,
@@ -21,7 +21,9 @@ export class NewsDialogComponent implements OnInit{
      }
      ngOnInit(): void {
       this.ras.getURL().subscribe(data => {
+        setTimeout(() => {
         this.photoURL(data);
+        }, 400);
         this.loading = true;
       })
     }
