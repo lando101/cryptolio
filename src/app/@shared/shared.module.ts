@@ -44,7 +44,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatButtonModule,
     CarouselModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    // LoaderComponent
     // IonicModule
     // CarouselComponent
   ],

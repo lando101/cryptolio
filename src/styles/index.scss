@@ -51,10 +51,12 @@ input{
   z-index: 1000;
   justify-content: center !important;
   align-items: center !important;
+  // backdrop-filter: blur(5px);
 }
 
 .mat-dialog-container {
   height: 85vh !important;
+  border-radius: 15px;
 }
 
 // SVG & ICONS

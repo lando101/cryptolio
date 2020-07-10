@@ -80,11 +80,11 @@ const firebaseConfig = {
     RedditSearchComponent,
     RedditResultsComponent,
     NewsDialogComponent,
-    SafePipe
+    SafePipe,
     // IonSearchbar,
   ],
   providers: [AuthenticationService],
-  entryComponents: [NewsDialogComponent],
+  entryComponents: [NewsDialogComponent,],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -11,6 +11,7 @@ import { RedditApiService } from '@app/services/reddit-api.service';
 })
 export class NewsDialogComponent implements OnInit{
   externalSite: SafeHtml;
+  loading: boolean = true;
   constructor(
     private ras: RedditApiService,
     public sanitizer: DomSanitizer,
@@ -21,6 +22,7 @@ export class NewsDialogComponent implements OnInit{
      ngOnInit(): void {
       this.ras.getURL().subscribe(data => {
         this.photoURL(data);
+        this.loading = true;
       })
     }
 
@@ -33,6 +35,11 @@ export class NewsDialogComponent implements OnInit{
       console.log(this.sanitizer.bypassSecurityTrustResourceUrl(url));
       this.externalSite = this.sanitizer.bypassSecurityTrustResourceUrl(url);
       return this.externalSite;
+    }
+
+    onFrameLoad(event: any){
+      console.log(event);
+      this.loading = false;
     }
 
 }
