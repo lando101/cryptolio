@@ -16,6 +16,8 @@ import { AboutModule } from './about/about.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 // FIREBASE IMPORTS
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -63,6 +65,7 @@ const firebaseConfig = {
     AboutModule,
     AuthModule,
     BrowserAnimationsModule,
+    Ng2SearchPipeModule,
     AngularFireModule.initializeApp(firebaseConfig),
     // NewsComponent,
     // IonicModule,

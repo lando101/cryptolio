@@ -5,6 +5,9 @@ h1{
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
   text-shadow: 1px 0px 15px $primary-text-shadow;
+    svg{
+      margin: 0px 8px !important;
+    }
   // text-shadow: 1px 0px 15px #3a3c3d;
 }
 

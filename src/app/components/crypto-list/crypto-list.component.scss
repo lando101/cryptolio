@@ -1,0 +1,37 @@
+img{
+  height: 30px;
+  width: 30px;
+  margin: 0px 13px 0px 5px;
+}
+
+label{
+  font-weight: 300;
+  font-size: 1.15rem;
+  margin: 0px;
+  display: flex;
+  align-items: center;
+  color: #3e3e3e;
+}
+
+.crypto-stats-label{
+  font-size: 1.15rem;
+  font-weight: 300;
+  margin: 0px 10px;
+  small{
+    display: block;
+    font-size: 50%;
+    color: #a7a7a7;
+  }
+}
+
+.mat-label-search{
+  font-weight: 300;
+  font-size: 1rem;
+  svg{
+    width: .95rem;
+    height: .95rem;
+    margin: 0px 5px;
+  }
+}
+
+

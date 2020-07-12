@@ -1,8 +1,59 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="crypto">
     <th mat-header-cell *matHeaderCellDef> No. </th>
     <td mat-cell *matCellDef="let element"> {{element.FullName}} </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+</table> -->
+<mat-form-field class="example-form-field">
+  <mat-label class="d-flex align-items-center mat-label-search">
+    <svg width="1rem" height="1rem" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+      <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+    </svg>
+    Search...
+  </mat-label>
+  <input matInput type="text" [(ngModel)]="searchValue" autocomplete="off">
+  <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="searchValue=''">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+<mat-accordion>
+  <!-- <mat-expansion-panel hideToggle *ngFor="let crypto of cryptoData | slice:0:cryptoShown | filter: searchValue; index"> -->
+  <mat-expansion-panel hideToggle *ngFor="let crypto of cryptoData | filter:searchValue; index">
+
+    <mat-expansion-panel-header collapsedHeight = "65px">
+      <div class="col-md-3 d-flex align-items-center">
+        <mat-panel-title class="d-flex align-tiems-center">
+          <img src="{{crypto.logo_url}}">
+          <label>{{crypto.name}}</label>
+        </mat-panel-title>
+      </div>
+      <div class="col-md-9 d-flex justify-content-end align-items-center">
+        <mat-panel-description class="col-md-9 d-flex justify-content-end">
+          <div class="crypto-stats-label col-md-3">
+            <small class="muted">Price</small>
+            {{crypto.price | currency}}
+          </div>
+          <div class="crypto-stats-label col-md-3">
+            <small class="muted">Change</small>
+            <span [className]="(crypto.oneDayChange > 0) ? 'text-primary' : 'text-danger'">
+              {{crypto.oneDayChange | percent:'0.3-5'}}
+            </span>
+          </div>
+          <div class="crypto-stats-label col-md-3">
+            <small class="muted">Market Cap</small>
+            {{crypto.market_cap | currency}}
+          </div>
+        </mat-panel-description>
+        <div class="col-md-3 d-flex justify-content-end align-items-center">
+          <button mat-raised-button color="primary">
+            <span translate>Pulse</span>
+          </button>
+        </div>
+      </div>
+    </mat-expansion-panel-header>
+    <p>This is the primary content of the panel.</p>
+  </mat-expansion-panel>
+</mat-accordion>
