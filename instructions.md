@@ -53,6 +53,10 @@ https://www.positronx.io/full-angular-7-firebase-authentication-system/
 INSTALLING BOOTSTRAP RESOURCE
 https://www.techiediaries.com/angular-bootstrap/
 
+CRYPTO DATA
+http://docs.nomics.com/#operation/getExchangeRates
+https://min-api.cryptocompare.com/documentation?key=News&cat=latestNewsArticlesEndpoint
+
 ****************************************
 CLI COMMANDS
 

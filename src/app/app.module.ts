@@ -33,6 +33,7 @@ import { RedditSearchComponent } from './components/reddit-search/reddit-search.
 import { RedditResultsComponent } from './components/reddit-results/reddit-results.component';
 import { NewsDialogComponent } from './components/news-dialog/news-dialog.component';
 import { SafePipe } from './pipes/sanitizer.pipe';
+import { CryptoListComponent } from './components/crypto-list/crypto-list.component';
 
 // FIREBASE CONFIGURATION
 const firebaseConfig = {
@@ -81,6 +82,7 @@ const firebaseConfig = {
     RedditResultsComponent,
     NewsDialogComponent,
     SafePipe,
+    CryptoListComponent,
     // IonSearchbar,
   ],
   providers: [AuthenticationService],

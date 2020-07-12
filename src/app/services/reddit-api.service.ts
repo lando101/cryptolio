@@ -17,7 +17,7 @@ export class RedditApiService {
     let result = this.http.get('https://www.reddit.com/r/cryptocurrencynews.json');
     this.searchResult = result;
     this.getResults();
-    return result;
+    return of(result);
     // console.log(this.http.get(`https://www.reddit.com/r/cryptocurrencynews.json`));
     // return this.http.get(`https://www.reddit.com/r/cryptocurrencynews.json`);
   }

@@ -14,7 +14,8 @@ export class HomeComponent implements OnInit {
   quote: string | undefined;
   isLoading = false;
 
-  constructor(private quoteService: QuoteService, private cmcService: CoinmarketcapApiService) {
+  constructor(private quoteService: QuoteService,
+    private cmcService: CoinmarketcapApiService,) {
     // const chart = createChart(document.body, {
     //   width: 400,
     //   height: 300,
@@ -48,7 +49,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.isLoading = true;
-    this.cmcService.getCryptoData();
+    this.cmcService.getCryptoData().subscribe(data => {
+      console.log(data);
+    });
     // this.quoteService
     //   .getRandomQuote({ category: 'dev' })
     //   .pipe(
