@@ -16,8 +16,10 @@ import { AboutModule } from './about/about.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { ChartsModule } from 'ng2-charts';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
+
 // FIREBASE IMPORTS
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -36,6 +38,7 @@ import { RedditResultsComponent } from './components/reddit-results/reddit-resul
 import { NewsDialogComponent } from './components/news-dialog/news-dialog.component';
 import { SafePipe } from './pipes/sanitizer.pipe';
 import { CryptoListComponent } from './components/crypto-list/crypto-list.component';
+import { MarketCapChartComponent } from './components/market-cap-chart/market-cap-chart.component';
 
 // FIREBASE CONFIGURATION
 const firebaseConfig = {
@@ -66,6 +69,7 @@ const firebaseConfig = {
     AuthModule,
     BrowserAnimationsModule,
     Ng2SearchPipeModule,
+    ChartsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     // NewsComponent,
     // IonicModule,
@@ -86,6 +90,7 @@ const firebaseConfig = {
     NewsDialogComponent,
     SafePipe,
     CryptoListComponent,
+    MarketCapChartComponent
     // IonSearchbar,
   ],
   providers: [AuthenticationService],

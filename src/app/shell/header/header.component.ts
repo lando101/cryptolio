@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 // import { Client } from 'node_modules/coinbase/lib/model/'
 import { AuthenticationService, CredentialsService } from '@app/auth';
+import { CoinmarketcapApiService } from '@app/services/coinmarketcap-api.service';
 
 declare var Client: any;
 
@@ -12,16 +13,22 @@ declare var Client: any;
 })
 export class HeaderComponent implements OnInit {
   menuHidden = true;
-
+  marketCap: number = 0;
   // Client = require('coinbase').Client;
   // client = new Client({'apiKey': 61651, 'apiSecret': 51651});
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
-    private credentialsService: CredentialsService
+    private credentialsService: CredentialsService,
+    private cryptoData: CoinmarketcapApiService,
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.cryptoData.getMarketCap().subscribe(data =>{
+      console.log("HEADER GOT THE GOODS");
+      this.marketCap = data;
+    });
+  }
 
   toggleMenu() {
     this.menuHidden = !this.menuHidden;
