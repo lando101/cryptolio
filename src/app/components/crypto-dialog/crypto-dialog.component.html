@@ -1,0 +1,108 @@
+<div class="crypto-container d-flex">
+  <div class="col-md-9 p-4">
+    <div class="crypto-header">
+      <span class="d-flex align-items-end">
+        <img class="mr-2" src="{{ data.logo }}" />
+        <h1 class="ml-2">{{ data.name }}</h1>
+        <span class="crypto-id">{{ data.id }}</span>
+      </span>
+      <div class="crypto-metrics-summary">
+        <div class="crypto-price">
+          {{ data.price | currency }} USD
+          <span [className]="data.prct > 0 ? 'text-success' : 'text-danger'">({{ data.prct | percent: '0.3-5' }})</span>
+        </div>
+      </div>
+    </div>
+    <div class="crypto-body">
+        <div>
+          CHARTS
+        </div>
+    </div>
+  </div>
+  <div class="col-lg-3 tabs-container p-0">
+    <mat-tab-group mat-align-tabs="center">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <i class="pr-1 fas fa-bullseye"></i>
+          Metrics
+        </ng-template>
+        <div class="p-3">
+          <div class="row pb-4">
+            <div class="col-md-4 d-flex">
+              <div class="data-card p-2">
+                <div class="value">{{data.ath | currency}}</div>
+                <small>All-time high</small>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="data-card p-2">
+                <div class="value">{{cryptoDataPrice.CHANGE24HOUR}}</div>
+                <small>24h change</small>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div *ngIf="cryptoSignalData" class="data-card p-2">
+                <div class="value">{{cryptoSignalData}}</div>
+                <small>Sentiment</small>
+              </div>
+            </div>
+          </div>
+          <div class="pb-4">
+            <label class="data-label">
+              Market Cap
+              <svg width=".7rem" height=".7rem" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
+                <circle cx="8" cy="4.5" r="1"/>
+              </svg>
+            </label>
+            <div class="data-value">{{ data.market_cap | currency }}</div>
+          </div>
+          <div class="pb-4">
+            <label class="data-label">
+              Circulating Supply
+              <svg width=".7rem" height=".7rem" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
+                <circle cx="8" cy="4.5" r="1"/>
+              </svg>
+            </label>
+            <div class="data-value">{{ data.circulating_supply | number }} {{ data.id }}</div>
+          </div>
+          <div *ngIf="data.max_supply" class="pb-4">
+            <label class="data-label">
+              Max Supply
+              <svg width=".7rem" height=".7rem" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
+                <circle cx="8" cy="4.5" r="1"/>
+              </svg>
+            </label>
+            <div class="data-value">{{ data.max_supply | number }} {{ data.id }}</div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Second">
+        <ng-template mat-tab-label>
+          <i class="pr-1 fab fa-twitter"></i>
+          Tweets
+        </ng-template>
+        <!-- <ngx-tweet></ngx-tweet> -->
+        <ngx-twitter-timeline
+        [data]="{sourceType: 'url', url: 'https://twitter.com/'+data.name}"
+        [opts]="{tweetLimit: 5}"
+    ></ngx-twitter-timeline>
+      </mat-tab>
+      <mat-tab label="Third">
+        <ng-template mat-tab-label>
+          <i class="pr-1 far fa-comments"></i>
+          Comments
+        </ng-template>
+        Content 3
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+
+  <app-loader [isLoading]="loading"></app-loader>
+</div>

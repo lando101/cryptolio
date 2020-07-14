@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
 import { environment } from '@env/environment';
 import { CoreModule } from '@core';
 import { SharedModule } from '@shared';
@@ -18,6 +18,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
+
 
 
 // FIREBASE IMPORTS
@@ -39,6 +41,7 @@ import { NewsDialogComponent } from './components/news-dialog/news-dialog.compon
 import { SafePipe } from './pipes/sanitizer.pipe';
 import { CryptoListComponent } from './components/crypto-list/crypto-list.component';
 import { MarketCapChartComponent } from './components/market-cap-chart/market-cap-chart.component';
+import { CryptoDialogComponent } from './components/crypto-dialog/crypto-dialog.component';
 
 // FIREBASE CONFIGURATION
 const firebaseConfig = {
@@ -70,6 +73,7 @@ const firebaseConfig = {
     BrowserAnimationsModule,
     Ng2SearchPipeModule,
     ChartsModule,
+    NgxTwitterTimelineModule,
     AngularFireModule.initializeApp(firebaseConfig),
     // NewsComponent,
     // IonicModule,
@@ -90,11 +94,12 @@ const firebaseConfig = {
     NewsDialogComponent,
     SafePipe,
     CryptoListComponent,
-    MarketCapChartComponent
+    MarketCapChartComponent,
+    CryptoDialogComponent,
     // IonSearchbar,
   ],
   providers: [AuthenticationService],
-  entryComponents: [NewsDialogComponent,],
+  entryComponents: [NewsDialogComponent, CryptoDialogComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

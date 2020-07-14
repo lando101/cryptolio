@@ -30,6 +30,13 @@
     border-radius: 10px;
     border: 1px solid $header-translucent-background;
     backdrop-filter: brightness(.88);
+    .metric-container{
+      padding: 0px 10px;
+      border-right: 1px solid $primary-border;
+      &:last-child{
+        border-right: none;
+      }
+    }
   }
 }
 

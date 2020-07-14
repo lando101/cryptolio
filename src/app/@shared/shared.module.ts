@@ -16,6 +16,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 // import { ParticlesModule } from 'angular-particle';
@@ -33,6 +34,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatDialogModule,
     MatTableModule,
     MatExpansionModule,
+    MatTabsModule,
     // IonicModule.forRoot({
     //   rippleEffect: false,
     //   mode: 'md'
@@ -53,6 +55,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatDialogModule,
     MatTableModule,
     MatExpansionModule,
+    MatTabsModule,
     // LoaderComponent
     // IonicModule
     // CarouselComponent

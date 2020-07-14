@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RedditApiService } from '../../services/reddit-api.service';
 import { CoinmarketcapApiService } from '@app/services/coinmarketcap-api.service';
 import { Crypto } from '../../model/crypto.model';
+import { MatDialog } from '@angular/material/dialog';
+import { CryptoDialogComponent } from '../crypto-dialog/crypto-dialog.component';
 @Component({
   selector: 'app-crypto-list',
   templateUrl: './crypto-list.component.html',
@@ -9,7 +11,7 @@ import { Crypto } from '../../model/crypto.model';
 })
 export class CryptoListComponent implements OnInit {
 
-  constructor(private cryptoDataService: CoinmarketcapApiService) { }
+  constructor(private cryptoDataService: CoinmarketcapApiService, public dialog: MatDialog,) { }
 
   cryptoData: Array<any> = [];
   displayedColumns: string[] = ['crypto'];
@@ -40,5 +42,19 @@ export class CryptoListComponent implements OnInit {
       console.log(data);
       console.log(this.cryptoData);
     })
+  }
+
+  openDialog(crypto:any): void {
+    let dialogRef = this.dialog.open(CryptoDialogComponent, {
+      // width: '250px',
+      data: { name: crypto.name, price: crypto.price, rank: crypto.rank, id: crypto.id,
+        logo: crypto.logo_url, prct: crypto.oneDayChange, market_cap: crypto.market_cap,
+        max_supply: crypto.max_supply, circulating_supply: crypto.circulating_supply,
+        ath: crypto.high }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
   }
 }

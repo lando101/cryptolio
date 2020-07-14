@@ -37,8 +37,8 @@
             {{crypto.price | currency}}
           </div>
           <div class="crypto-stats-label col-md-3">
-            <small class="muted">Change</small>
-            <span [className]="(crypto.oneDayChange > 0) ? 'text-primary' : 'text-danger'">
+            <small class="muted">24h Change</small>
+            <span [className]="(crypto.oneDayChange > 0) ? 'text-success' : 'text-danger'">
               {{crypto.oneDayChange | percent:'0.3-5'}}
             </span>
           </div>
@@ -48,7 +48,7 @@
           </div>
         </mat-panel-description>
         <div class="col-md-3 d-flex justify-content-end align-items-center">
-          <button mat-raised-button color="primary">
+          <button mat-raised-button color="primary" (click)="openDialog(crypto)">
             <span translate>Pulse</span>
           </button>
         </div>
