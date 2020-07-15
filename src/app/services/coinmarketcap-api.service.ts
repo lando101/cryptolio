@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError, BehaviorSubject, of } from 'rxjs';
+import { Observable, throwError, BehaviorSubject, of, Observer } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+// import { Socket } from 'dgram';
+
 
 
 declare var require: any;
@@ -17,8 +19,32 @@ export class CoinmarketcapApiService {
 
    }
   public dataSource = new BehaviorSubject<number>(0);
+   socket: WebSocket;
+   observer: Observer<any>;
 
+   getCharts(): Observable<any>{
+    const apiKey = "641209cc5125f295360f388673546b58ea5e5a6d26846d4b05bd03d61ef8e4f2";
+    const url: WebSocket = new WebSocket('wss://streamer.cryptocompare.com/v2?api_key=' + apiKey)
 
+    this.socket = url;
+
+    this.socket.onopen = (event:Event) => {
+      let subRequest = {
+              "action": "SubAdd",
+              "subs": ["24~CCCAGG~BTC~USD~D"]
+            };
+      console.log("Socket has been opened!");
+     this.socket.send(JSON.stringify(subRequest))
+  };
+
+    return this.createObservable();
+   }
+
+   createObservable() : Observable<number> {
+    return new Observable(observer => {
+      this.observer = observer;
+    });
+}
   // GET CRYPTO VALUES FROM CRYPTOCOMPARE
   getCryptoData(cryptoSymbol?: string): Observable<any> {
     let symbol = cryptoSymbol;
@@ -70,33 +96,42 @@ export class CoinmarketcapApiService {
   }
 
   // CRYPTOCOMPARE WEBSOCKET DAILY VALUES
-  getOHLCDaily(): Observable<any> {
-    const apiKey = "641209cc5125f295360f388673546b58ea5e5a6d26846d4b05bd03d61ef8e4f2";
+  // getOHLCDaily(): Observable<any> {
+  //   const apiKey = "641209cc5125f295360f388673546b58ea5e5a6d26846d4b05bd03d61ef8e4f2";
 
-    const ccStreamer = new WebSocket('wss://streamer.cryptocompare.com/v2?api_key=' + apiKey);
-    let dataDaily: any;
+  //   const ccStreamer = new WebSocket('wss://streamer.cryptocompare.com/v2?api_key=' + apiKey);
+  //   let dataDaily: any[];
 
-    ccStreamer.onopen = function onStreamOpen() {
-      let subRequest = {
-        "action": "SubAdd",
-        "subs": ["24~CCCAGG~BTC~USD~D"]
-      };
-      ccStreamer.send(JSON.stringify(subRequest));
-    }
+  //   ccStreamer.onopen = function onStreamOpen() {
+  //     let subRequest = {
+  //       "action": "SubAdd",
+  //       "subs": ["24~CCCAGG~BTC~USD~D"]
+  //     };
+  //     ccStreamer.send(JSON.stringify(subRequest));
+  //   }
 
-    ccStreamer.onmessage = function onStreamMessage(message: any) {
-      //@ts-ignore
-      // message = event.data;
-      dataDaily = message.data;
-      // console.log(JSON.stringify(data));
-      dataDaily = JSON.parse(dataDaily);
-      // console.log(jsonPretty);
-      // console.log(jsonPretty.TYPE)
+  //   ccStreamer.addEventListener('message', function (event) {
+  //     console.log('Message from server ', event.data);
+  // });
 
-      // console.log("Received from Cryptocompare: " + message);
-    }
-    return of(ccStreamer.onmessage);
-  }
+  //   // ccStreamer.onmessage = function onStreamMessage(message: any) {
+  //   //   //@ts-ignore
+  //   //   // message = event.data;
+  //   //   var message = event.data;
+
+  //   //   // console.log(JSON.stringify(data));
+  //   //   // console.log("Received from Cryptocompare: " + message);
+  //   //   // dataDaily = JSON.parse(dataDaily);
+
+
+  //   //   // console.log(jsonPretty);
+  //   //   // console.log(jsonPretty.TYPE)
+
+  //   //   // console.log("Received from Cryptocompare: " + message);
+  //   // }
+  //   console.log(dataDaily);
+  //   return of(dataDaily);
+  // }
 
 
 }

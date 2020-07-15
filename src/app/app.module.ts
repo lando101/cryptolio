@@ -42,6 +42,7 @@ import { SafePipe } from './pipes/sanitizer.pipe';
 import { CryptoListComponent } from './components/crypto-list/crypto-list.component';
 import { MarketCapChartComponent } from './components/market-cap-chart/market-cap-chart.component';
 import { CryptoDialogComponent } from './components/crypto-dialog/crypto-dialog.component';
+import { CryptoLineChartComponent } from './components/crypto-line-chart/crypto-line-chart.component';
 
 // FIREBASE CONFIGURATION
 const firebaseConfig = {
@@ -96,6 +97,7 @@ const firebaseConfig = {
     CryptoListComponent,
     MarketCapChartComponent,
     CryptoDialogComponent,
+    CryptoLineChartComponent,
     // IonSearchbar,
   ],
   providers: [AuthenticationService],

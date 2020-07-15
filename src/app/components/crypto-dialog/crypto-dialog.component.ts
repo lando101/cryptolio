@@ -41,16 +41,16 @@ export class CryptoDialogComponent implements OnInit, AfterViewInit {
       console.log(this.cryptoSignalData);
     });
 
-    this.cryptoData.getOHLCDaily().subscribe(data =>{
-      console.log('OHLC DATA SUBSCRIBED TO');
+    // this.cryptoData.getOHLCDaily().subscribe(data =>{
+    //   console.log('OHLC DATA SUBSCRIBED TO');
 
-        if(data.TYPE === 24){
-          this.dailyData.push({time: data.TS, value: data.CLOSE});
-        }
-      console.log(data);
-      // console.log(this.dailyData);
-      // console.log(data);
-    });
+    //     if(data.TYPE === 24){
+    //       this.dailyData.push({time: data.TS, value: data.CLOSE});
+    //     }
+    //   console.log(data);
+    //   // console.log(this.dailyData);
+    //   // console.log(data);
+    // });
   }
 
   ngAfterViewInit(): void {
