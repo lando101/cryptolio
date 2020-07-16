@@ -40,11 +40,11 @@ export class MarketCapChartComponent implements OnInit {
 
       this.cryptoCaps.push(restOfCryptos);
       this.cryptoLabels.push('Alts');
-      // console.log(this.cryptoLabels);
 
     });
   }
 
+  // CALCULATE BTC DOMINANCE
   calcBTCDom(top: any, alts: number){
     let btcDom = 0;
     let btcCap = Number(top[0]);
@@ -59,10 +59,10 @@ export class MarketCapChartComponent implements OnInit {
   }
 
   public pieChartOptions: ChartOptions = {
-    cutoutPercentage: 90,
+    cutoutPercentage: 93,
     elements: {
       arc: {
-        borderWidth: 4,
+        borderWidth: 6,
       },
     },
     responsive: true,
