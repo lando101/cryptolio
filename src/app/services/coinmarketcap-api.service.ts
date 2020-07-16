@@ -76,6 +76,16 @@ export class CoinmarketcapApiService {
     return cryptodata;
   }
 
+  // GET CHART DATA FOR CURRENCY MODAL
+  getChartData(cryptoSymbol?: string): Observable<any> {
+    let symbol = cryptoSymbol;
+    let url = 'https://min-api.cryptocompare.com/data/v2/histoday?fsym=' + symbol + '&tsym=USD&limit=365';
+    let cryptoData = this.http.get(url);
+
+    return cryptoData;
+  }
+
+
   // GET THE MARKETCAP OF A SPECIFIC COIN
   getMarketCap(): Observable<any> {
     let marketCapGlobal: any;
