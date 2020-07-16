@@ -1,0 +1,22 @@
+@import '../../../styles//index.scss';
+
+.btc-domininance-container{
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  transform: translate(-48%, -50%);
+    font-weight: bold;
+    color: $text-color;
+    font-size: .8rem;
+    .btc-dom{
+      font-weight: 100;
+      font-size: 2.2rem;
+      color: #3c3c3c;
+    }
+    .btc-dom-label{
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      font-size: 0.8rem;
+      color: #5c5c5c;
+    }
+}

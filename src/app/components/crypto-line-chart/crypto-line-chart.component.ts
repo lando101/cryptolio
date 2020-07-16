@@ -86,7 +86,7 @@ export class CryptoLineChartComponent implements OnInit, AfterViewInit  {
       },
     });
 
-    this.chart.resize(this.grid.nativeElement.offsetWidth, height, true);
+    this.chart.resize((this.grid.nativeElement.offsetWidth-450), height, true);
 
     // setTimeout(() => {
     // this.chart.resize(this.grid.nativeElement.offsetWidth, height, true);
@@ -451,7 +451,7 @@ export class CryptoLineChartComponent implements OnInit, AfterViewInit  {
       }
   });
     }, 50);
-    this.width=this.grid.nativeElement.offsetWidth;
+    this.width=this.grid.nativeElement.offsetWidth - 450;
   }
 
 
@@ -466,7 +466,7 @@ export class CryptoLineChartComponent implements OnInit, AfterViewInit  {
     //@ts-ignore
     // chart.resize(this.grid.nativeElement.offsetWidth, height, true);
 
-    this.chart.resize(this.grid.nativeElement.offsetWidth, 500);
+    this.chart.resize(this.grid.nativeElement.offsetWidth-450, 500);
 
 
     // this.width=this.grid.nativeElement.offsetWidth;

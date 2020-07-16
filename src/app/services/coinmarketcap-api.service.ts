@@ -72,9 +72,11 @@ export class CoinmarketcapApiService {
     headers.set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
     let cryptodata = this.http.get('https://api.nomics.com/v1/currencies/ticker?key=80d4c764744d253e4e1ddd3dec0c8137', { headers });
 
+    // console.log(cryptodata)
     return cryptodata;
   }
 
+  // GET THE MARKETCAP OF A SPECIFIC COIN
   getMarketCap(): Observable<any> {
     let marketCapGlobal: any;
     let marketCapCalc: number = 0;
@@ -94,6 +96,12 @@ export class CoinmarketcapApiService {
 
     return this.dataSource;
   }
+
+  // getTopTenMarketCap(): Observable<any>{
+
+
+  //   return
+  // }
 
   // CRYPTOCOMPARE WEBSOCKET DAILY VALUES
   // getOHLCDaily(): Observable<any> {

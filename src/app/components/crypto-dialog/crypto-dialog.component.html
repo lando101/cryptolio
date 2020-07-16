@@ -1,5 +1,5 @@
-<div class="crypto-container d-flex">
-  <div class="col-md-9 p-4">
+<div class="crypto-container d-flex" #scroll id="scroll">
+  <div class="w-100 p-4">
     <div class="crypto-header">
       <span class="d-flex align-items-end">
         <img class="mr-2" src="{{ data.logo }}" />
@@ -19,7 +19,7 @@
         </div>
     </div>
   </div>
-  <div class="col-lg-3 tabs-container p-0">
+  <div class="tabs-container p-0">
     <mat-tab-group mat-align-tabs="center">
       <mat-tab>
         <ng-template mat-tab-label>
@@ -88,10 +88,12 @@
           Tweets
         </ng-template>
         <!-- <ngx-tweet></ngx-tweet> -->
-        <ngx-twitter-timeline
-        [data]="{sourceType: 'url', url: 'https://twitter.com/'+data.name}"
-        [opts]="{tweetLimit: 5}"
-    ></ngx-twitter-timeline>
+        <div class="scroll1 tab-content-container" [ngStyle]="{'height': containerHeight}">
+          <ngx-twitter-timeline
+          [data]="{sourceType: 'url', url: 'https://twitter.com/'+data.name}"
+          [opts]="{tweetLimit: 5}"
+      ></ngx-twitter-timeline>
+        </div>
       </mat-tab>
       <mat-tab label="Third">
         <ng-template mat-tab-label>

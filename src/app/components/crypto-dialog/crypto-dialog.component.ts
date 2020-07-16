@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, HostListener, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CoinmarketcapApiService } from '@app/services/coinmarketcap-api.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
@@ -15,14 +15,18 @@ export class CryptoDialogComponent implements OnInit, AfterViewInit {
   cryptoDataPrice: any;
   cryptoSignalData: any;
   dataId: any;
+  containerHeight: any;
 
   dailyData: CryptoTimeData[] = [{time:'', value: 0}];
 
   constructor(
-    public dialogRef: MatDialogRef<CryptoDialogComponent>,
+    public dialogRef: MatDialogRef<CryptoDialogComponent>,private el:ElementRef,
     @Inject(MAT_DIALOG_DATA) public data: any, private cryptoData: CoinmarketcapApiService)  {
 
      }
+
+  @ViewChild('scroll')
+  scroll: ElementRef;
 
   ngOnInit(): void {
     const dataId = this.data.id;
@@ -57,6 +61,8 @@ export class CryptoDialogComponent implements OnInit, AfterViewInit {
     // @ts-ignore
     (<any>window).twttr.widgets.load();
     console.log("TRIED TO INIT TWITTER");
+    this.containerHeight = this.scroll.nativeElement.offsetHeight-48 + "px";
+    console.log(this.scroll.nativeElement.offsetHeight-48 +"px");
 }
 
   onNoClick(): void {

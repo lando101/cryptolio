@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartType, ChartOptions } from 'chart.js';
-import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip } from 'ng2-charts';
+import { ChartType, ChartOptions, ChartColor } from 'chart.js';
+import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, Color, Colors } from 'ng2-charts';
 import { CoinmarketcapApiService } from '@app/services/coinmarketcap-api.service';
+import { formatCurrency } from '@angular/common';
+import * as pluginDataLabels from 'chartjs-plugin-datalabels';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 @Component({
   selector: 'app-market-cap-chart',
@@ -9,33 +12,92 @@ import { CoinmarketcapApiService } from '@app/services/coinmarketcap-api.service
   styleUrls: ['./market-cap-chart.component.scss']
 })
 export class MarketCapChartComponent implements OnInit {
-
+  marketCap: any;
+  cryptoLabels: Label[] = [];
+  cryptoCaps: SingleDataSet = []
+  btcDominance: any;
+  btcMarketCap: any;
+  totalMaretCap: any;
 
   constructor(private cryptoData: CoinmarketcapApiService) { }
   ngOnInit(): void {
-    this.cryptoData.getMarketCap().subscribe(data =>{
-      console.log(data);
-      console.log('GOT THE GOODS');
+    this.cryptoData.getTop100Crypto().subscribe(data =>{
+      console.log("PIE CHART GOT THE GOODS");
+      this.marketCap = data;
+      let restOfCryptos: any = 0;
+
+      this.marketCap.forEach((element: any) => {
+
+        if(element.rank <= 3){
+          this.cryptoLabels.push(element.symbol);
+          this.cryptoCaps.push(element.market_cap);
+        } else if(element.rank > 3 && element.rank < 99) {
+          restOfCryptos += Number(element.market_cap);
+          // console.log(element.market_cap);
+        }
+      });
+      this.calcBTCDom(this.cryptoCaps, restOfCryptos)
+
+      this.cryptoCaps.push(restOfCryptos);
+      this.cryptoLabels.push('Alts');
+      // console.log(this.cryptoLabels);
+
     });
   }
-  public pieChartOptions: ChartOptions = {
-    responsive: true,
-  };
-  public pieChartLabels: Label[] = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
-  public pieChartData: SingleDataSet = [300, 500, 100];
-  public pieChartType: ChartType = 'pie';
-  public pieChartLegend = false;
-  public pieChartPlugins = [{
-    afterLayout: function (chart: { legend: { legendItems: any[]; }; data: { datasets: { data: { [x: string]: any; }; }[]; }; }) {
-      chart.legend.legendItems.forEach(
-        (label: { index: string | number; text: string; }) => {
-          let value = chart.data.datasets[0].data[label.index];
 
-          label.text += ' ' + value;
-          return label;
-        }
-      )
+  calcBTCDom(top: any, alts: number){
+    let btcDom = 0;
+    let btcCap = Number(top[0]);
+    let total = Number(alts);
+
+    top.forEach((element: any) => {
+        total += Number(element);
+    });
+
+    btcDom = (btcCap/total);
+    this.btcDominance = btcDom;
+  }
+
+  public pieChartOptions: ChartOptions = {
+    cutoutPercentage: 90,
+    elements: {
+      arc: {
+        borderWidth: 4,
+      },
+    },
+    responsive: true,
+    legend: {
+      position: 'bottom',
+    },
+    plugins: {
+    borderRadius: 4,
+
+      datalabels: {
+        // formatter: (value, ctx) => {
+        //   const label = ctx.chart.data.labels[ctx.dataIndex];
+        //   return label;
+        // },
+        color: 'black',
+        font: {
+          weight: 'bold',
+          size: 9,
+        },
+        // font.size: '40'
+
+      },
+
     }
-  }];
+  };
+  public pieChartLabels: Label[] = this.cryptoLabels;
+  public pieChartData: SingleDataSet = this.cryptoCaps;
+  public pieChartType: ChartType = 'doughnut';
+  public pieChartLegend = false;
+  // public pieChartPlugins = [pluginDataLabels];
+  public pieChartColors = [
+    {
+      backgroundColor: ['#FF7F49', '#93CCEA', '#9DE093', '#93DFB8'],
+      borderColor: '#f0f0f0'
+    },
+  ];
 
 }

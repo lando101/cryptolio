@@ -43,6 +43,7 @@
     "bootstrap": "^4.1.1",
     "bootstrap-icons": "^1.0.0-alpha5",
     "chart.js": "^2.9.3",
+    "chartjs-plugin-datalabels": "^0.7.0",
     "coinmarketcap-api": "^3.1.1",
     "firebase": "^7.15.5",
     "lightweight-charts": "^3.1.1",

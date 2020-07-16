@@ -39,6 +39,7 @@ export class CryptoListComponent implements OnInit {
         this.cryptoData.push(element);
         // this.cryptoData[index].id = element.CoinInfo.Id;
       });
+      console.log('THIS CAME FROM THE COIN LIST');
       console.log(data);
       console.log(this.cryptoData);
     })

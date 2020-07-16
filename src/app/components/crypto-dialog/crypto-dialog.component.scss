@@ -1,4 +1,5 @@
 @import "../../../styles/index.scss";
+@import "../../../main.scss";
 
 
 .crypto-container{
@@ -8,6 +9,10 @@
   .crypto-header{
     width: 100%;
     height: auto;
+    border-bottom: 1px solid #e8e8e8;
+    margin-left: -25px;
+    padding-left: 25px;
+    margin-bottom: 25px;
     h1{
       margin: 0px;
       font-size: 2rem;
@@ -42,8 +47,19 @@
   .tabs-container{
     border-left: 1px solid #f3f3f3;
     background: #fbfbfb;;
-
+    width: 405px;
+    position: absolute;
+    right: 0px;
+    height: 100%;
   }
+  .tab-content-container{
+    overflow-y: auto;
+  }
+
+  .mat-tab-body-content {
+    height: 100%;
+    overflow: hidden;
+}
   .data-label{
     display: inline-block;
     margin-bottom: 0.5rem;
