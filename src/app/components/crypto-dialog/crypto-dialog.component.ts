@@ -17,6 +17,7 @@ export class CryptoDialogComponent implements OnInit, AfterViewInit {
   cryptoNews: any;
   dataId: any;
   containerHeight: any;
+  bodyHeight: any;
 
   dailyData: CryptoTimeData[] = [{time:'', value: 0}];
 
@@ -28,6 +29,9 @@ export class CryptoDialogComponent implements OnInit, AfterViewInit {
 
   @ViewChild('scroll')
   scroll: ElementRef;
+
+  @ViewChild('scrollBody')
+  scrollBody: ElementRef;
 
   ngOnInit(): void {
     const dataId = this.data.id;
@@ -69,6 +73,7 @@ export class CryptoDialogComponent implements OnInit, AfterViewInit {
     console.log("TRIED TO INIT TWITTER");
     this.containerHeight = this.scroll.nativeElement.offsetHeight-48 + "px";
     console.log(this.scroll.nativeElement.offsetHeight-48 +"px");
+    this.bodyHeight = this.scrollBody.nativeElement.offsetHeight-69 + "px";
 }
 
   onNoClick(): void {

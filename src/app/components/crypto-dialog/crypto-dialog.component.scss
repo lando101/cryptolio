@@ -12,7 +12,7 @@
     border-bottom: 1px solid #e8e8e8;
     margin-left: -25px;
     padding-left: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 0px;
     h1{
       margin: 0px;
       font-size: 2rem;
@@ -41,7 +41,11 @@
   }
   .crypto-body{
     width: 100%;
-
+    .left-body{
+      overflow-y: auto;
+      overflow-x: hidden;
+      margin-right: 381px;
+    }
   }
 
   .tabs-container{
@@ -87,14 +91,16 @@
   }
 
   .coin-news-card{
-    margin-right: 450px;
+    // margin-right: 450px;
+    margin: 0px 60px;
     .coin-news-secion-header{
       font-weight: 500;
-      color: #313131;
+      color: #4a4a4a;
       font-size: 1.45rem;
     }
     .coin-news-article{
       border-bottom: 1px solid #e4e4e4;
+      margin-bottom: 2.5rem;
       .thumbnail-container{
         height: 60px;
         width: auto;
@@ -111,9 +117,21 @@
       .coin-news-header{
         font-size: 18px;
         font-weight: 500;
+        line-height: 1.4;
       }
       p{
         color: #7d7d7d;
+        text-overflow: ellipsis;
+        max-height: 44.8px;
+        overflow: hidden;
+        line-height: 1.6;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+      .author{
+        font-weight: bold;
+        color: #ff2150;
       }
     }
   }
