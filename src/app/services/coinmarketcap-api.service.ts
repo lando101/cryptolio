@@ -40,6 +40,7 @@ export class CoinmarketcapApiService {
     return this.createObservable();
    }
 
+
    createObservable() : Observable<number> {
     return new Observable(observer => {
       this.observer = observer;
@@ -83,6 +84,14 @@ export class CoinmarketcapApiService {
     let cryptoData = this.http.get(url);
 
     return cryptoData;
+  }
+
+  getCoinNews(cryptoSymbol?: string): Observable<any>{
+    let symbol = cryptoSymbol;
+    let url = 'https://min-api.cryptocompare.com/data/v2/news/?categories='+ symbol +'&excludeCategories=Sponsored';
+    let cryptoNews = this.http.get(url);
+
+    return cryptoNews;
   }
 
 

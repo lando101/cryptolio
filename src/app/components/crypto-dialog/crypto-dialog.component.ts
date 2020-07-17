@@ -14,6 +14,7 @@ export class CryptoDialogComponent implements OnInit, AfterViewInit {
   loading: boolean;
   cryptoDataPrice: any;
   cryptoSignalData: any;
+  cryptoNews: any;
   dataId: any;
   containerHeight: any;
 
@@ -37,6 +38,11 @@ export class CryptoDialogComponent implements OnInit, AfterViewInit {
       this.cryptoDataPrice = data.DISPLAY[dataId].USD;
       console.log(this.cryptoDataPrice);
     });
+
+    this.cryptoData.getCoinNews(dataId).subscribe(data =>{
+      console.log(data);
+      this.cryptoNews = data;
+    })
 
     this.cryptoData.getSignalData(dataId).subscribe(data =>{
       cryptoLowerCase = data.Data.inOutVar.sentiment;

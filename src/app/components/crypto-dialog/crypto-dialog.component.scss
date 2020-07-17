@@ -85,4 +85,36 @@
       font-size: 1.1rem;
     }
   }
+
+  .coin-news-card{
+    margin-right: 450px;
+    .coin-news-secion-header{
+      font-weight: 500;
+      color: #313131;
+      font-size: 1.45rem;
+    }
+    .coin-news-article{
+      border-bottom: 1px solid #e4e4e4;
+      .thumbnail-container{
+        height: 60px;
+        width: auto;
+        min-width: 60px;
+        border-radius: 5px;
+        overflow: hidden;
+        opacity: .8;
+        margin-right: 15px;
+        box-shadow: 0px 3px 9px 1px #808080c7;
+        img{
+          height: 60px;
+        }
+      }
+      .coin-news-header{
+        font-size: 18px;
+        font-weight: 500;
+      }
+      p{
+        color: #7d7d7d;
+      }
+    }
+  }
 }

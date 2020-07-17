@@ -47,7 +47,7 @@ export class CryptoLineChartComponent implements OnInit, AfterViewInit  {
       document.getElementById('grid').appendChild(container);
 
     var width = this.grid.nativeElement.offsetWidth;
-    var height = 500;
+    var height = 400;
 
     this.chart = createChart(container, {
       timeScale: {
