@@ -148,7 +148,7 @@ export class CryptoLineChartComponent implements OnInit, AfterViewInit  {
     //@ts-ignore
     // chart.resize(this.grid.nativeElement.offsetWidth, height, true);
 
-    this.chart.resize(this.grid.nativeElement.offsetWidth-30, 500);
+    this.chart.resize(this.grid.nativeElement.offsetWidth-30, 400);
 
 
     // this.width=this.grid.nativeElement.offsetWidth;

@@ -30,8 +30,8 @@ export class CryptoDialogComponent implements OnInit, AfterViewInit {
   @ViewChild('scroll')
   scroll: ElementRef;
 
-  @ViewChild('scrollBody')
-  scrollBody: ElementRef;
+  // @ViewChild('scrollBody')
+  // scrollBody: ElementRef;
 
   ngOnInit(): void {
     const dataId = this.data.id;
@@ -73,8 +73,17 @@ export class CryptoDialogComponent implements OnInit, AfterViewInit {
     console.log("TRIED TO INIT TWITTER");
     this.containerHeight = this.scroll.nativeElement.offsetHeight-48 + "px";
     console.log(this.scroll.nativeElement.offsetHeight-48 +"px");
-    this.bodyHeight = this.scrollBody.nativeElement.offsetHeight-69 + "px";
+    setTimeout(() => {
+    this.bodyHeight = this.scroll.nativeElement.offsetHeight-114 + "px";
+    console.log(this.bodyHeight);
+    }, 500);
+    // this.bodyHeight = this.scrollBody.nativeElement.offsetHeight-515 + "px";
 }
+
+  onResize(){
+    this.bodyHeight = this.scroll.nativeElement.offsetHeight-114 + "px";
+    this.containerHeight = this.scroll.nativeElement.offsetHeight-48 + "px";
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

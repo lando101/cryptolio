@@ -1,5 +1,5 @@
-<div class="crypto-container d-flex" #scroll id="scroll">
-  <div class="w-100 p-4">
+<div class="crypto-container d-flex" (window:resize)="onResize()">
+  <div class="w-100 p-4"  #scroll id="scroll">
     <div class="crypto-header">
       <span class="d-flex align-items-end">
         <img class="mr-2" src="{{ data.logo }}" />
@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="crypto-body">
-      <div #scrollBody id="scrollBody" class="left-body pt-4 scroll1" [ngStyle]="{'height': bodyHeight}">
+      <div class="left-body pt-4 scroll1" [ngStyle]="{'height': bodyHeight}">
         <div>
           <app-crypto-line-chart [cryptoSymbol] = data.id></app-crypto-line-chart>
         </div>
@@ -25,7 +25,7 @@
               <path _ngcontent-cyt-c3="" d="M15.5 3a.5.5 0 0 1 .5.5V14a1.5 1.5 0 0 1-1.5 1.5h-3v-1h3a.5.5 0 0 0 .5-.5V3.5a.5.5 0 0 1 .5-.5z" fill-rule="evenodd"></path>
               <path _ngcontent-cyt-c3="" d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"></path>
             </svg>
-            <span class="ml-2">Recent {{data.name}} News</span>
+            <span class="ml-2">Related {{data.name}} News</span>
           </div>
 
             <div *ngFor="let article of cryptoNews.Data | slice:0:5" class="d-flex coin-news-article">
@@ -43,6 +43,7 @@
                 </div>
               </div>
             </div>
+            <small class="w-100 d-flex justify-content-center mt-4 pb-4">Content is not created or endorsed by Cryptolio. It does not reflect the views or opinions of Cryptolio. Conent is for information purposes only.</small>
             <div>
             </div>
         </div>
