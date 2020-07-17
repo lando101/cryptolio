@@ -19,6 +19,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
 
 
+
 // import { ParticlesModule } from 'angular-particle';
 
 
@@ -35,6 +36,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatTableModule,
     MatExpansionModule,
     MatTabsModule,
+
     // IonicModule.forRoot({
     //   rippleEffect: false,
     //   mode: 'md'

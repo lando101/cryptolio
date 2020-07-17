@@ -25,14 +25,16 @@ body{
 }
 
 .scroll1::-webkit-scrollbar {
-  width: 6px;
+  width: 15px;
 }
 
 .scroll1::-webkit-scrollbar-track {
-  background: #f2f2f2;
+  background: white;
 }
 
 .scroll1::-webkit-scrollbar-thumb {
-  background: #666666;
+  background: #a0a0a0;
+  border-radius: 15px;
+  border: 5px solid #ffffff;
   // border-radius: 15px;
 }

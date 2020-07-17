@@ -19,7 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
-
+import { AngularTiltModule } from 'angular-tilt';
 
 
 // FIREBASE IMPORTS
@@ -75,6 +75,7 @@ const firebaseConfig = {
     Ng2SearchPipeModule,
     ChartsModule,
     NgxTwitterTimelineModule,
+    AngularTiltModule,
     AngularFireModule.initializeApp(firebaseConfig),
     // NewsComponent,
     // IonicModule,
