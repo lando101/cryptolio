@@ -31,7 +31,7 @@ export class CredentialsService {
    */
   isAuthenticated(): boolean {
     // return !!this.credentials;
-    console.log(this.authenticated + ' : Authentication status');
+    // console.log(this.authenticated + ' : Authentication status');
     return this.authenticated;
   }
 

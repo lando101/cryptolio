@@ -24,7 +24,7 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico",
+              "src/myFavicon.ico",
               "src/apple-touch-icon.png",
               "src/robots.txt",
               "src/manifest.json",

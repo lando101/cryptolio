@@ -36,6 +36,8 @@ export class CryptoListComponent implements OnInit {
   selectedValuePeriod: string = '24h';
   selectedRange: any = 25;
 
+  favoritedCoin: boolean = false;
+
   // selectedValuePeriodPretty: string = '24h';
   selectedCar: string;
 
@@ -70,7 +72,7 @@ export class CryptoListComponent implements OnInit {
 
   ngOnInit(): void {
     this.cryptoDataService.getTop100Crypto().subscribe(data =>{
-      console.log(data);
+      // console.log(data);
       data.forEach((element: any, index: any) => {
         // this.cryptoDataService.getSignalData(element.id).subscribe(data => {
         //   // console.log(data);
@@ -88,39 +90,47 @@ export class CryptoListComponent implements OnInit {
             element.monthChange = element["30d"].price_change_pct;
             element.ytdChange = element.ytd.price_change_pct;
             element.oneDayChange = element["1d"].price_change_pct;
-            console.log("Found undefined");
+            // console.log("Found undefined");
           }
         }
 
 
-        console.log(element.weekChange);
+        // console.log(element.weekChange);
         // if(element["1d"].price_change_pct != undefined){
         //   console.log(element["1d"].price_change_pct)
         // }
         this.cryptoData.push(element);
         // this.cryptoData[index].id = element.CoinInfo.Id;
       });
-      console.log('THIS CAME FROM THE COIN LIST');
       console.log(data);
-      console.log(this.cryptoData);
+      // console.log('THIS CAME FROM THE COIN LIST');
+      // console.log(data);
+      // console.log(this.cryptoData);
     })
   }
 
   openDialog(crypto:any): void {
-    let dialogRef = this.dialog.open(CryptoDialogComponent, {
-      // width: '250px',
-      data: { name: crypto.name, price: crypto.price, rank: crypto.rank, id: crypto.id,
-        logo: crypto.logo_url, prct: crypto.oneDayChange, market_cap: crypto.market_cap,
-        max_supply: crypto.max_supply, circulating_supply: crypto.circulating_supply,
-        ath: crypto.high }
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // this.animal = result;
-    });
+    if(!this.favoritedCoin){
+      let dialogRef = this.dialog.open(CryptoDialogComponent, {
+        // width: '250px',
+        data: { name: crypto.name, price: crypto.price, rank: crypto.rank, id: crypto.id,
+          logo: crypto.logo_url, prct: crypto.oneDayChange, market_cap: crypto.market_cap,
+          max_supply: crypto.max_supply, circulating_supply: crypto.circulating_supply,
+          ath: crypto.high }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        // console.log('The dialog was closed');
+        // this.animal = result;
+      });
+    }
+
   }
 
   favorited(event: any){
-    
+    console.log('I FAVORITED SOMETHING');
+    this.favoritedCoin = true;
+    setTimeout(() => {
+      this.favoritedCoin = false;
+    }, 500);
   }
 }

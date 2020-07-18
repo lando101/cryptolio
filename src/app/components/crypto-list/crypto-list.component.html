@@ -65,13 +65,13 @@
           <label>{{crypto.name}}</label>
         </mat-panel-title>
       </div>
-      <div class="col-md-9 d-flex justify-content-end align-items-center">
-        <mat-panel-description class="col-md-9 d-flex justify-content-end">
-          <div class="crypto-stats-label col-md-3">
+      <div class="col-md-7 d-flex justify-content-center align-items-center">
+        <mat-panel-description class="d-flex justify-content-start">
+          <div class="crypto-stats-label col-lg-3">
             <small class="muted">Price</small>
             {{crypto.price | currency}}
           </div>
-          <div class="crypto-stats-label col-md-2">
+          <div class="crypto-stats-label col-lg-3">
             <small class="muted">{{selectedValuePeriod}} Change</small>
             <span *ngIf="selectedValuePeriod==='24h'" [className]="(crypto.oneDayChange > 0) ? 'text-success' : 'text-danger'">
               {{crypto.oneDayChange | percent:'0.3-5'}}
@@ -89,34 +89,35 @@
               {{crypto.ytdChange | percent:'0.3-5'}}
             </span>
           </div>
-          <div class="crypto-stats-label col-md-3">
+          <div class="crypto-stats-label col-lg-6">
             <small class="muted">Market Cap</small>
             {{crypto.market_cap | currency}}
           </div>
-
         </mat-panel-description>
-        <div class="col-md-3 d-flex justify-content-start align-items-center">
-          <!-- <button mat-raised-button color="primary" (click)="openDialog(crypto)">
-            <span translate>Pulse</span>
-          </button> -->
-            <div class="crypto-stats-label">
-              <!-- <small class="muted">Badges</small> -->
-              <div>
-                <!-- <span matTooltip="{{crypto.symbol}} short-term sentiment is bearish" class="emoji" *ngIf="crypto.sentiment === 'bearish'">🐻</span>
-                <span matTooltip="{{crypto.symbol}} short-term sentiment is bearish" class="emoji" *ngIf="crypto.sentiment === 'bullish'">🐂</span> -->
-                <!-- <span matTooltip="{{crypto.symbol}} short-term sentiment is bearish" class="emoji" *ngIf="crypto.sentiment === 'bearish'">🐻</span> -->
-                <span matTooltip="{{crypto.symbol}} is the most valuable coin by market cap" class="emoji" *ngIf="crypto.rank === '1'">🥇</span>
-                <span matTooltip="{{crypto.symbol}} is the second most valuable coin by market cap" class="emoji" *ngIf="crypto.rank === '2'">🥈</span>
-                <span matTooltip="{{crypto.symbol}} is the second most valuable coin by market cap" class="emoji" *ngIf="crypto.rank === '3'">🥉</span>
-                <span matTooltip="{{crypto.symbol}} is up over 10% in the last 7 days" class="emoji" *ngIf="crypto.weekChange > .10">🔥</span>
-                <span matTooltip="{{crypto.symbol}} is up over 3% in the last 7 days" class="emoji" *ngIf="crypto.weekChange > .03 && crypto.weekChange < .1">🌡️</span>
-                <span matTooltip="{{crypto.symbol}} is up over 100% year-to-date" class="emoji" *ngIf="crypto.ytdChange > 1">👑</span>
-                <span matTooltip="{{crypto.symbol}} is down over 10% year-to-date" class="emoji" *ngIf="crypto.ytdChange < (-.1)">😞</span>
-                <span matTooltip="{{crypto.symbol}} is down over 10% in the last 7 days" class="emoji" *ngIf="crypto.weekChange < (-.10)">❄️</span>
-              </div>
+      </div>
+      <div class="col-md-2 d-flex justify-content-start align-items-center">
+        <!-- <button mat-raised-button color="primary" (click)="openDialog(crypto)">
+          <span translate>Pulse</span>
+        </button> -->
+          <div class="crypto-stats-label col-lg-8 d-flex align-items-center justify-content-start">
+            <!-- <small class="muted">Badges</small> -->
+            <div class="d-flex align-items-center justify-content-start">
+              <!-- <span matTooltip="{{crypto.symbol}} short-term sentiment is bearish" class="emoji" *ngIf="crypto.sentiment === 'bearish'">🐻</span>
+              <span matTooltip="{{crypto.symbol}} short-term sentiment is bearish" class="emoji" *ngIf="crypto.sentiment === 'bullish'">🐂</span> -->
+              <!-- <span matTooltip="{{crypto.symbol}} short-term sentiment is bearish" class="emoji" *ngIf="crypto.sentiment === 'bearish'">🐻</span> -->
+              <span matTooltip="{{crypto.symbol}} is the most valuable coin by market cap" class="emoji" *ngIf="crypto.rank === '1'">🥇</span>
+              <span matTooltip="{{crypto.symbol}} is the second most valuable coin by market cap" class="emoji" *ngIf="crypto.rank === '2'">🥈</span>
+              <span matTooltip="{{crypto.symbol}} is the second most valuable coin by market cap" class="emoji" *ngIf="crypto.rank === '3'">🥉</span>
+              <span matTooltip="{{crypto.symbol}} is up over 10% in the last 7 days" class="emoji" *ngIf="crypto.weekChange > .10">🔥</span>
+              <span matTooltip="{{crypto.symbol}} is up over 3% in the last 7 days" class="emoji" *ngIf="crypto.weekChange > .03 && crypto.weekChange < .1">🌡️</span>
+              <span matTooltip="{{crypto.symbol}} is up over 100% year-to-date" class="emoji" *ngIf="crypto.ytdChange > 1">👑</span>
+              <span matTooltip="{{crypto.symbol}} is down over 10% year-to-date" class="emoji" *ngIf="crypto.ytdChange < (-.1)">😞</span>
+              <span matTooltip="{{crypto.symbol}} is down over 10% in the last 7 days" class="emoji" *ngIf="crypto.weekChange < (-.10)">❄️</span>
             </div>
-        </div>
-        <app-favorite-button (favoriteChange)='favorited($event)'></app-favorite-button>
+          </div>
+          <div class="col-lg-4 d-flex align-items-center justify-content-end">
+          <app-favorite-button (favoriteChange)='favorited($event)'></app-favorite-button>
+          </div>
       </div>
     </mat-expansion-panel-header>
     <!-- <p>This is the primary content of the panel.</p> -->

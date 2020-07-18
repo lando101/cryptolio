@@ -21,6 +21,9 @@ label{
     display: block;
     font-size: 50%;
     color: #a7a7a7;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
   .emoji{
     opacity: .8;

@@ -20,13 +20,13 @@ export class RedditResultsComponent implements OnInit {
   ngOnInit(): void {
     this.ras.getResults().subscribe(data => {
       let results = data.data.children;
-      console.log("received news");
+      // console.log("received news");
 
-      console.log(results.length);
+      // console.log(results.length);
       results.forEach((element: any) => {
         this.news.push(element.data)
       });
-      console.log(this.news);
+      // console.log(this.news);
     });
 
 

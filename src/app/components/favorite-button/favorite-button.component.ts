@@ -7,6 +7,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class FavoriteButtonComponent implements OnInit {
 
+  like: boolean = false;
+
   constructor() { }
   @Output() favoriteChange = new EventEmitter();
   ngOnInit(): void {
@@ -21,7 +23,14 @@ export class FavoriteButtonComponent implements OnInit {
   // });
 
   favorite(){
-    document.getElementById('favorite').classList.add("liked");
+    // document.getElementById('favorite').classList.add("liked");
+    if(this.like === false){
+      this.like = true;
+    } else{
+      this.like = true;
+    }
     this.favoriteChange.emit(true);
+
+
   }
 }
