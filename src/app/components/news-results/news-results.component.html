@@ -1,0 +1,23 @@
+<div class="crypto-body">
+  <div class="left-body pt-4">
+    <div class="coin-news-card">
+        <div *ngFor="let article of newsResults.Data | slice:0:25" class="d-flex coin-news-article">
+          <div aTilt [tiltSettings]="tiltSettings" class="thumbnail-container">
+            <img src="{{article.imageurl}}">
+          </div>
+          <div>
+            <label class="coin-news-header">{{article.title}}</label>
+            <a href="{{article.guid}}">
+              <p>{{article.body}}</p>
+            </a>
+            <div class="mb-2 d-flex">
+              <small class="pr-3 author">{{article.source_info.name}}</small>
+              <small class="pr-3">{{article.published_on * 1000 | date}}</small>
+            </div>
+          </div>
+        </div>
+        <small class="w-100 d-flex justify-content-center mt-4 pb-4">Content is not created or endorsed by Cryptolio. It does not reflect the views or opinions of Cryptolio.
+          Conent is for informational purposes only. Cryptolio is not responsible for any news content shown.</small>
+        <div>
+        </div>
+    </div>
