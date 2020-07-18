@@ -6,24 +6,59 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table> -->
-<mat-form-field class="example-form-field">
-  <mat-label class="d-flex align-items-center mat-label-search">
-    <svg width="1rem" height="1rem" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
-      <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
-    </svg>
-    Search...
-  </mat-label>
-  <input matInput type="text" [(ngModel)]="searchValue" autocomplete="off">
-  <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="searchValue=''">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-form-field>
+<div class="d-flex align-items-end justify-content-between">
+  <div class="col-md-4">
+    <mat-form-field class="example-form-field">
+      <mat-label class="d-flex align-items-center mat-label-search">
+        <svg width="1rem" height="1rem" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+          <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+        </svg>
+        Search...
+      </mat-label>
+      <input matInput type="text" [(ngModel)]="searchValue" autocomplete="off">
+      <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="searchValue=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+
+  <div class="col-md-8 d-flex justify-content-end">
+    <mat-form-field class="col-md-3" appearance="fill">
+      <mat-label>Amount</mat-label>
+      <mat-select [(ngModel)]="selectedRange" name="food">
+        <mat-option *ngFor="let amount of amountFilter" [value]="amount.value">
+          {{amount.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="col-md-2" appearance="fill">
+      <mat-label>Time period</mat-label>
+      <mat-select [(ngModel)]="selectedValuePeriod" name="food">
+        <mat-option *ngFor="let period of periodFilter" [value]="period.value">
+          {{period.viewValue}}
+        </mat-option>
+      </mat-select>
+
+    </mat-form-field>
+    <mat-form-field class="col-md-4" appearance="fill">
+      <mat-label>Coin order</mat-label>
+      <mat-select [(ngModel)]="selectedValue" name="coin">
+        <mat-option *ngFor="let filter of filters" [value]="selectedValue">
+          {{filter.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+
+
 <mat-accordion>
   <!-- <mat-expansion-panel hideToggle *ngFor="let crypto of cryptoData | slice:0:cryptoShown | filter: searchValue; index"> -->
-  <mat-expansion-panel hideToggle *ngFor="let crypto of cryptoData | filter:searchValue; index">
+  <mat-expansion-panel hideToggle *ngFor="let crypto of cryptoData | slice:0:selectedRange | filter:searchValue; index" (click)="openDialog(crypto)">
 
     <mat-expansion-panel-header collapsedHeight = "65px">
+      <div class="d-flex align-items-center justify-content-center">{{crypto.rank}}</div>
       <div class="col-md-3 d-flex align-items-center">
         <mat-panel-title class="d-flex align-tiems-center">
           <img src="{{crypto.logo_url}}">
@@ -36,24 +71,54 @@
             <small class="muted">Price</small>
             {{crypto.price | currency}}
           </div>
-          <div class="crypto-stats-label col-md-3">
-            <small class="muted">24h Change</small>
-            <span [className]="(crypto.oneDayChange > 0) ? 'text-success' : 'text-danger'">
+          <div class="crypto-stats-label col-md-2">
+            <small class="muted">{{selectedValuePeriod}} Change</small>
+            <span *ngIf="selectedValuePeriod==='24h'" [className]="(crypto.oneDayChange > 0) ? 'text-success' : 'text-danger'">
               {{crypto.oneDayChange | percent:'0.3-5'}}
+            </span>
+            <span *ngIf="selectedValuePeriod==='7d'" [className]="(crypto.weekChange > 0) ? 'text-success' : 'text-danger'">
+              {{crypto.weekChange | percent:'0.3-5'}}
+            </span>
+            <span *ngIf="selectedValuePeriod==='30d'" [className]="(crypto.monthChange > 0) ? 'text-success' : 'text-danger'">
+              {{crypto.monthChange | percent:'0.3-5'}}
+            </span>
+            <span *ngIf="selectedValuePeriod==='1h'" [className]="(crypto.hourChange > 0) ? 'text-success' : 'text-danger'">
+              {{crypto.hourChange | percent:'0.3-5'}}
+            </span>
+            <span *ngIf="selectedValuePeriod==='YTD'" [className]="(crypto.ytdChange > 0) ? 'text-success' : 'text-danger'">
+              {{crypto.ytdChange | percent:'0.3-5'}}
             </span>
           </div>
           <div class="crypto-stats-label col-md-3">
             <small class="muted">Market Cap</small>
             {{crypto.market_cap | currency}}
           </div>
+
         </mat-panel-description>
-        <div class="col-md-3 d-flex justify-content-end align-items-center">
-          <button mat-raised-button color="primary" (click)="openDialog(crypto)">
+        <div class="col-md-3 d-flex justify-content-start align-items-center">
+          <!-- <button mat-raised-button color="primary" (click)="openDialog(crypto)">
             <span translate>Pulse</span>
-          </button>
+          </button> -->
+            <div class="crypto-stats-label">
+              <!-- <small class="muted">Badges</small> -->
+              <div>
+                <!-- <span matTooltip="{{crypto.symbol}} short-term sentiment is bearish" class="emoji" *ngIf="crypto.sentiment === 'bearish'">🐻</span>
+                <span matTooltip="{{crypto.symbol}} short-term sentiment is bearish" class="emoji" *ngIf="crypto.sentiment === 'bullish'">🐂</span> -->
+                <!-- <span matTooltip="{{crypto.symbol}} short-term sentiment is bearish" class="emoji" *ngIf="crypto.sentiment === 'bearish'">🐻</span> -->
+                <span matTooltip="{{crypto.symbol}} is the most valuable coin by market cap" class="emoji" *ngIf="crypto.rank === '1'">🥇</span>
+                <span matTooltip="{{crypto.symbol}} is the second most valuable coin by market cap" class="emoji" *ngIf="crypto.rank === '2'">🥈</span>
+                <span matTooltip="{{crypto.symbol}} is the second most valuable coin by market cap" class="emoji" *ngIf="crypto.rank === '3'">🥉</span>
+                <span matTooltip="{{crypto.symbol}} is up over 10% in the last 7 days" class="emoji" *ngIf="crypto.weekChange > .10">🔥</span>
+                <span matTooltip="{{crypto.symbol}} is up over 3% in the last 7 days" class="emoji" *ngIf="crypto.weekChange > .03 && crypto.weekChange < .1">🌡️</span>
+                <span matTooltip="{{crypto.symbol}} is up over 100% year-to-date" class="emoji" *ngIf="crypto.ytdChange > 1">👑</span>
+                <span matTooltip="{{crypto.symbol}} is down over 10% year-to-date" class="emoji" *ngIf="crypto.ytdChange < (-.1)">😞</span>
+                <span matTooltip="{{crypto.symbol}} is down over 10% in the last 7 days" class="emoji" *ngIf="crypto.weekChange < (-.10)">❄️</span>
+              </div>
+            </div>
         </div>
+        <app-favorite-button (favoriteChange)='favorited($event)'></app-favorite-button>
       </div>
     </mat-expansion-panel-header>
-    <p>This is the primary content of the panel.</p>
+    <!-- <p>This is the primary content of the panel.</p> -->
   </mat-expansion-panel>
 </mat-accordion>

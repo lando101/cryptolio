@@ -43,6 +43,8 @@ import { CryptoListComponent } from './components/crypto-list/crypto-list.compon
 import { MarketCapChartComponent } from './components/market-cap-chart/market-cap-chart.component';
 import { CryptoDialogComponent } from './components/crypto-dialog/crypto-dialog.component';
 import { CryptoLineChartComponent } from './components/crypto-line-chart/crypto-line-chart.component';
+import { FavoritesPanelComponent } from './components/favorites-panel/favorites-panel.component';
+import { FavoriteButtonComponent } from './components/favorite-button/favorite-button.component';
 
 // FIREBASE CONFIGURATION
 const firebaseConfig = {
@@ -99,6 +101,8 @@ const firebaseConfig = {
     MarketCapChartComponent,
     CryptoDialogComponent,
     CryptoLineChartComponent,
+    FavoritesPanelComponent,
+    FavoriteButtonComponent,
     // IonSearchbar,
   ],
   providers: [AuthenticationService],

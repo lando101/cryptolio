@@ -82,10 +82,9 @@ export class CryptoLineChartComponent implements OnInit, AfterViewInit  {
       lineColor: 'rgba(0, 150, 136, 1)',
       lineWidth: 2,
     });
-
     // POPULATE CHART WITH DATA
     series.setData(this.prettyChartData);
-
+    this.chart.timeScale().fitContent();
     function businessDayToString(businessDay: any) {
       return businessDay.year + '-' + businessDay.month + '-' + businessDay.day;
     }

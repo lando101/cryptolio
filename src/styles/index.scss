@@ -18,10 +18,27 @@ section{
   label{
     max-width: 1140px;
     // font-family: "Righteous", cursive;
-    font-weight: 500;
-    color: $text-color;
-    font-size: 1.45rem;
-    text-shadow: none;
+    // font-weight: 500;
+    // color: $text-color;
+    // font-size: 1.45rem;
+    // text-shadow: none;
+    max-width: 1140px;
+    font-weight: 200;
+    color: #363636;
+    font-size: 2.75rem;
+    text-shadow: 1px 0px 15px #d6d6d6;
+    margin: 0px;
+    font-family: 'Quicksand', sans-serif;
+  }
+  i{
+    font-size: 2.45rem;
+    color: #363636;
+    margin-right: 10px;
+  }
+  svg{
+    font-size: 2.45rem;
+    color: #363636;
+    margin-right: 10px;
   }
 }
 
@@ -39,11 +56,11 @@ input{
 
 
 // COMPONENTS
-.cdk-overlay-pane {
-  display: flex;
-  max-width: 100% !important;
-  width: 80% !important;
-}
+// .cdk-overlay-pane {
+//   display: flex;
+//   max-width: 100% !important;
+//   width: 80% !important;
+// }
 
 .cdk-global-overlay-wrapper {
   display: flex;
@@ -74,21 +91,68 @@ input{
   min-width: 80px !important;
 }
 
+.mat-tab-label-active{
+  color: white !important;
+  opacity: 1 !important;
+  transition: .5s;
+}
+
 .mat-ink-bar{
   height: 70% !important;
   z-index: -1 !important;
   border-radius: 8px !important;
   margin-bottom: 8px !important;
-  box-shadow: 0px 2px 3px 1px #8080801a !important;
-  background: white !important;
-  border: 1px solid #e0e0e0 !important;
+  box-shadow: 0px 3px 3px 0px #ff55788a !important;
+  border: none !important;
+  background: #ff2150 !important;
+}
+
+// .mat-drawer-container {
+//   height: 100vh !important;
+// }
+.mat-drawer-content {
+  margin: 0px 300px !important;
+
+}
+.mat-drawer-content {
+  // margin-top: 60px !important;
+}
+.mat-drawer {
+  width: 300px !important;
+  background: #fafafa;
+  border: none !important;
+}
+
+.mat-drawer-container {
+  // height: 100vh !important;
+  display: block;
+  overflow: auto;
+  margin-top: 60px;
+}
+
+.mat-tab-header {
+  border-bottom: none !important;
+}
+
+.mat-accordion .mat-expansion-panel:first-of-type {
+  border-top-right-radius: 15px !important;
+  border-top-left-radius: 15px !important;
+}
+
+.mat-accordion .mat-expansion-panel:last-of-type {
+  border-bottom-right-radius: 15px !important;
+  border-bottom-left-radius: 15px !important;
+}
+
+.mat-expansion-panel-content {
+  display: none !important;
 }
 
 // SVG & ICONS
 svg {
   overflow: hidden;
   vertical-align: middle;
-  color: #acacac;
+  // color: #acacac;
   font-size: 20px;
 }
 

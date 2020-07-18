@@ -59,7 +59,7 @@ export class CoinmarketcapApiService {
   // GET CRYPTO SIGNAL DATA FROM CRYPTOCOMPARE
   getSignalData(cryptoSymbol?: string): Observable<any> {
     let symbol = cryptoSymbol;
-    let url = 'https://min-api.cryptocompare.com/data/tradingsignals/intotheblock/latest?fsym=' + symbol;
+    let url = 'https://min-api.cryptocompare.com/data/tradingsignals/intotheblock/latest?fsym=' + symbol + '&api_key=641209cc5125f295360f388673546b58ea5e5a6d26846d4b05bd03d61ef8e4f2';
     let cryptoData = this.http.get(url);
 
     return cryptoData;
@@ -71,7 +71,7 @@ export class CoinmarketcapApiService {
     headers.set("Access-Control-Allow-Origin", "*");
     headers.set("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
     headers.set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    let cryptodata = this.http.get('https://api.nomics.com/v1/currencies/ticker?key=80d4c764744d253e4e1ddd3dec0c8137', { headers });
+    let cryptodata = this.http.get('https://api.nomics.com/v1/currencies/ticker?key=80d4c764744d253e4e1ddd3dec0c8137&interval=1h,1d,7d,30d,ytd&convert=USD', { headers });
 
     // console.log(cryptodata)
     return cryptodata;

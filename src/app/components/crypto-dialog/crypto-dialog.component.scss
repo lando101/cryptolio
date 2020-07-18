@@ -78,18 +78,29 @@
   }
 
   .data-card{
-    background: #ff2150;
-    color: white;
+    background: #f2f2f2;
+    color: #3b3b3b;
     width: 100%;
     border-radius: 10px;
-    box-shadow: 0px 3px 4px 1px #ff21503b;
+    box-shadow: 0px 3px 4px 1px #acacac3b;
     border: none;
+    border: 1px solid #e0e0e0;
     .value{
       font-weight: bold;
       font-size: 1.1rem;
     }
   }
 
+
+  .mat-ink-bar{
+    height: 70% !important;
+    z-index: -1 !important;
+    border-radius: 8px !important;
+    margin-bottom: 8px !important;
+    box-shadow: 0px 3px 3px 0px #ff55788a !important;
+    border: none !important;
+    background: white !important;
+  }
   .coin-news-card{
     // margin-right: 450px;
     margin: 0px 60px;
@@ -98,6 +109,8 @@
       color: #4a4a4a;
       font-size: 1.45rem;
     }
+
+
     .coin-news-article{
       border-bottom: 1px solid #e4e4e4;
       margin-bottom: 2.5rem;
