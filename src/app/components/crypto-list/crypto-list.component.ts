@@ -5,6 +5,7 @@ import { Crypto } from '../../model/crypto.model';
 import { MatDialog } from '@angular/material/dialog';
 import { CryptoDialogComponent } from '../crypto-dialog/crypto-dialog.component';
 
+
 interface CoinFilter {
   value: any;
   viewValue: any;
@@ -35,6 +36,7 @@ export class CryptoListComponent implements OnInit {
   selectedValue: string = 'All coins';
   selectedValuePeriod: string = '24h';
   selectedRange: any = 25;
+  selectedSort: any = 'all';
 
   favoritedCoin: boolean = false;
 
@@ -42,11 +44,10 @@ export class CryptoListComponent implements OnInit {
   selectedCar: string;
 
   filters: CoinFilter[] = [
-    {value: 'all', viewValue: 'All coins'},
+    {value: 'highest-market-cap', viewValue: 'Highest market cap'},
+    {value: 'low-market-cap', viewValue: 'Lowest market cap'},
     {value: 'hot', viewValue: 'Hot coins'},
     {value: 'cold', viewValue: 'Cold coins'},
-    {value: 'high-mark-cap', viewValue: 'Highest market cap'},
-    {value: 'low-mark-cap', viewValue: 'Lowest market cap'}
   ];
 
   periodFilter: CoinFilter[] = [
@@ -91,6 +92,8 @@ export class CryptoListComponent implements OnInit {
             element.ytdChange = element.ytd.price_change_pct;
             element.oneDayChange = element["1d"].price_change_pct;
             // console.log("Found undefined");
+            this.cryptoData.push(element);
+
           }
         }
 
@@ -99,7 +102,6 @@ export class CryptoListComponent implements OnInit {
         // if(element["1d"].price_change_pct != undefined){
         //   console.log(element["1d"].price_change_pct)
         // }
-        this.cryptoData.push(element);
         // this.cryptoData[index].id = element.CoinInfo.Id;
       });
       console.log(data);
@@ -107,6 +109,79 @@ export class CryptoListComponent implements OnInit {
       // console.log(data);
       // console.log(this.cryptoData);
     })
+  }
+
+  sortRequest(type: string){
+    console.log(type);
+    if(type === 'hot'){
+      this.sortHotCoins();
+    } else if(type === 'cold'){
+      this.sortColdCoins();
+    } else if(type === 'highest-market-cap'){
+      this.sortMarketCapHigh();
+    } else if(type === 'low-market-cap'){
+      this.sortMarketCapLow();
+    }
+  }
+
+  sortMarketCapHigh(){
+    this.cryptoData = this.cryptoData.sort((n1, n2) => {
+      if(n1.market_cap && n2.market_cap){
+        if(Number(n1.market_cap) < Number(n2.market_cap)){
+          return 1;
+        }
+        if(Number(n1.market_cap) > Number(n2.market_cap)){
+          return -1;
+        }
+        return 0;
+      }
+    });
+    console.log(this.cryptoData);
+  }
+
+  sortMarketCapLow(){
+    this.cryptoData = this.cryptoData.sort((n1, n2) => {
+      if(n1.market_cap && n2.market_cap){
+        if(Number(n1.market_cap) > Number(n2.market_cap)){
+          return 1;
+        }
+        if(Number(n1.market_cap) < Number(n2.market_cap)){
+          return -1;
+        }
+        return 0;
+      }
+    });
+    console.log(this.cryptoData);
+  }
+
+  sortHotCoins(){
+    this.cryptoData = this.cryptoData.sort((n1, n2) => {
+      if(n1.oneDayChange && n2.oneDayChange){
+        if(Number(n1.oneDayChange) < Number(n2.oneDayChange)){
+          return 1;
+        }
+        if(Number(n1.oneDayChange) > Number(n2.oneDayChange)){
+          return -1;
+        }
+        return 0;
+      }
+    });
+    console.log(this.cryptoData);
+  }
+
+  sortColdCoins(){
+    this.cryptoData = this.cryptoData.sort((n1, n2) => {
+      if(n1.oneDayChange && n2.oneDayChange){
+        if(Number(n1.oneDayChange) > Number(n2.oneDayChange)){
+          return 1;
+        }
+        if(Number(n1.oneDayChange) < Number(n2.oneDayChange)){
+          return -1;
+        }
+        return 0;
+      }
+    });
+    console.log(this.cryptoData);
   }
 
   openDialog(crypto:any): void {

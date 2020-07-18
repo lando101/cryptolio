@@ -43,8 +43,8 @@
     </mat-form-field>
     <mat-form-field class="col-md-4" appearance="fill">
       <mat-label>Coin order</mat-label>
-      <mat-select [(ngModel)]="selectedValue" name="coin">
-        <mat-option *ngFor="let filter of filters" [value]="selectedValue">
+      <mat-select [(ngModel)]="selectedSort" name="coin">
+        <mat-option *ngFor="let filter of filters" [value]="selectedSort" (click)="sortRequest(filter.value)">
           {{filter.viewValue}}
         </mat-option>
       </mat-select>
@@ -74,19 +74,27 @@
           <div class="crypto-stats-label col-lg-3">
             <small class="muted">{{selectedValuePeriod}} Change</small>
             <span *ngIf="selectedValuePeriod==='24h'" [className]="(crypto.oneDayChange > 0) ? 'text-success' : 'text-danger'">
-              {{crypto.oneDayChange | percent:'0.3-5'}}
+              <span *ngIf="crypto.oneDayChange; else noData">{{crypto.oneDayChange | percent:'0.3-5'}}</span>
             </span>
             <span *ngIf="selectedValuePeriod==='7d'" [className]="(crypto.weekChange > 0) ? 'text-success' : 'text-danger'">
-              {{crypto.weekChange | percent:'0.3-5'}}
+              <span *ngIf="crypto.weekChange; else noData">
+                {{crypto.weekChange | percent:'0.3-5'}}
+              </span>
             </span>
             <span *ngIf="selectedValuePeriod==='30d'" [className]="(crypto.monthChange > 0) ? 'text-success' : 'text-danger'">
-              {{crypto.monthChange | percent:'0.3-5'}}
+              <span *ngIf="crypto.monthChange; else noData">
+                {{crypto.monthChange | percent:'0.3-5'}}
+              </span>
             </span>
             <span *ngIf="selectedValuePeriod==='1h'" [className]="(crypto.hourChange > 0) ? 'text-success' : 'text-danger'">
-              {{crypto.hourChange | percent:'0.3-5'}}
+              <span *ngIf="crypto.hourChange;else noData">
+                {{crypto.hourChange | percent:'0.3-5'}}
+              </span>
             </span>
             <span *ngIf="selectedValuePeriod==='YTD'" [className]="(crypto.ytdChange > 0) ? 'text-success' : 'text-danger'">
+              <span *ngIf="crypto.ytdChange;else noData">
               {{crypto.ytdChange | percent:'0.3-5'}}
+              </span>
             </span>
           </div>
           <div class="crypto-stats-label col-lg-6">
@@ -123,3 +131,8 @@
     <!-- <p>This is the primary content of the panel.</p> -->
   </mat-expansion-panel>
 </mat-accordion>
+
+
+<ng-template #noData>
+  <i mattool  matTooltip="No available data was received from Nomics" class="no-data-icon fas fa-exclamation-triangle"></i>
+</ng-template>
