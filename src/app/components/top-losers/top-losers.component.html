@@ -1,0 +1,34 @@
+
+<section>
+  <div class="">
+    <h2>Top Losers</h2>
+    <small>Based on a 24h period</small>
+    <!-- <a>See more</a> -->
+  </div>
+  <div class="container">
+    <div class="row d-flex">
+      <div aTilt [tiltSettings]="tiltSettings" *ngFor="let coin of cryptoData | slice:0:8" class="card m-3" style="width: 18rem;">
+        <div class="card-body">
+          <div class="d-flex justify-content-start align-items-center">
+            <img src="{{coin.logo_url}}">
+            <h3 class="card-title crypt-card-header" matTooltip="{{coin.name}}">{{coin.name}}</h3>
+          </div>
+          <h5 class="card-subtitle mb-2 text-muted">{{coin.symbol}}</h5>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+          <div>
+            <small class="muted">Price</small>
+            <!-- <div class="d-flex justify-content-start align-items-center"> -->
+              <div class="crypto-price-label mb-2">{{coin.price | currency}}</div>
+              <div [className]="(coin.oneDayChange > 0) ? 'text-success' : 'text-danger'">
+                {{coin.oneDayChange| percent:'0.3-5'}}
+              </div>
+            <!-- </div> -->
+          </div>
+          <!-- <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

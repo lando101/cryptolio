@@ -46,6 +46,9 @@ import { CryptoLineChartComponent } from './components/crypto-line-chart/crypto-
 import { FavoritesPanelComponent } from './components/favorites-panel/favorites-panel.component';
 import { FavoriteButtonComponent } from './components/favorite-button/favorite-button.component';
 import { NewsResultsComponent } from './components/news-results/news-results.component';
+import { TopCoinsComponent } from './components/top-coins/top-coins.component';
+import { TopGainersComponent } from './components/top-gainers/top-gainers.component';
+import { TopLosersComponent } from './components/top-losers/top-losers.component';
 
 // FIREBASE CONFIGURATION
 const firebaseConfig = {
@@ -105,6 +108,9 @@ const firebaseConfig = {
     FavoritesPanelComponent,
     FavoriteButtonComponent,
     NewsResultsComponent,
+    TopCoinsComponent,
+    TopGainersComponent,
+    TopLosersComponent,
     // IonSearchbar,
   ],
   providers: [AuthenticationService],
