@@ -20,6 +20,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 // import { ParticlesModule } from 'angular-particle';
@@ -41,6 +43,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatSidenavModule,
     MatSelectModule,
     MatTooltipModule,
+    MatChipsModule,
+    MatAutocompleteModule,
     // IonicModule.forRoot({
     //   rippleEffect: false,
     //   mode: 'md'
@@ -64,7 +68,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatTabsModule,
     MatSidenavModule,
     MatSelectModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatChipsModule,
+    MatAutocompleteModule
     // LoaderComponent
     // IonicModule
     // CarouselComponent

@@ -1,5 +1,30 @@
 <div class="crypto-body">
   <div class="left-body pt-4">
+    <mat-form-field class="example-chip-list">
+      <mat-chip-list #chipList aria-label="Category selection">
+        <mat-chip
+          *ngFor="let fruit of category"
+          [selectable]="selectable"
+          [removable]="removable"
+          (removed)="remove(fruit)">
+          {{fruit}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input
+          placeholder="Category filters"
+          #fruitInput
+          [formControl]="fruitCtrl"
+          [matAutocomplete]="auto"
+          [matChipInputFor]="chipList"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          (matChipInputTokenEnd)="add($event)">
+      </mat-chip-list>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <mat-option *ngFor="let fruit of filteredCategories | async" [value]="fruit">
+          {{fruit}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
     <div class="coin-news-card">
         <div *ngFor="let article of newsResults.Data | slice:0:25" class="d-flex coin-news-article">
           <div aTilt [tiltSettings]="tiltSettings" class="thumbnail-container">

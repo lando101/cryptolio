@@ -17,4 +17,13 @@ export class NewsApiService {
 
     return cryptoNews;
   }
+
+  getCoinCategories(): Observable<any>{
+    let url = 'https://min-api.cryptocompare.com/data/news/categories';
+    let cryptoNewsCategories = this.http.get(url);
+
+    return cryptoNewsCategories;
+  }
+
+
 }
