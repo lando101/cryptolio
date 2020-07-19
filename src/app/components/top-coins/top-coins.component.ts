@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CoinmarketcapApiService } from '@app/services/coinmarketcap-api.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CryptoDialogComponent } from '../crypto-dialog/crypto-dialog.component';
+
 @Component({
   selector: 'app-top-coins',
   templateUrl: './top-coins.component.html',
@@ -7,9 +10,11 @@ import { CoinmarketcapApiService } from '@app/services/coinmarketcap-api.service
 })
 export class TopCoinsComponent implements OnInit {
 
-  constructor(private cryptoDataService: CoinmarketcapApiService) { }
+  constructor(private cryptoDataService: CoinmarketcapApiService, public dialog: MatDialog) { }
   cryptoData: Array<any> = [];
   tiltSettings: any;
+  favoritedCoin: boolean = false;
+
   ngOnInit(): void {
     this.tiltSettings =
     {
@@ -80,4 +85,22 @@ export class TopCoinsComponent implements OnInit {
     console.log('beforeChange');
   }
 
+
+  openDialog(crypto:any): void {
+    if(!this.favoritedCoin){
+      console.log('TRIED TO OPEN DIALOG');
+      let dialogRef = this.dialog.open(CryptoDialogComponent, {
+        // width: '250px',
+        data: { name: crypto.name, price: crypto.price, rank: crypto.rank, id: crypto.id,
+          logo: crypto.logo_url, prct: crypto.oneDayChange, market_cap: crypto.market_cap,
+          max_supply: crypto.max_supply, circulating_supply: crypto.circulating_supply,
+          ath: crypto.high }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        // console.log('The dialog was closed');
+        // this.animal = result;
+      });
+    }
+
+  }
 }
