@@ -25,7 +25,7 @@
             <small class="muted">Price</small>
             <!-- <div class="d-flex justify-content-start align-items-center"> -->
               <div class="crypto-price-label mb-2">{{coin.price | currency}}</div>
-              <div [className]="(coin.oneDayChange > 0) ? 'text-success' : 'text-danger'">
+              <div [className]="(coin.oneDayChange > 0) ? 'text-success' : 'text-danger-cryptr'">
                 {{coin.oneDayChange| percent:'0.3-5'}}
               </div>
             <!-- </div> -->
@@ -40,9 +40,8 @@
 <button (click)="removeSlide()">Remove</button>
 <button (click)="slickModal.slickGoTo(2)">slickGoto 2</button>
 <button (click)="slickModal.unslick()">unslick</button> -->
-    <div class="row d-flex">
-
-    </div>
   </div>
+  <!-- <small class="pr-3 small-note-aboslute">Crypto Market Cap & Pricing Data Provided By Nomics</small> -->
+
 </section>
 

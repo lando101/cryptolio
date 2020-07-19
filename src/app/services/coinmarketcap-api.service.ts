@@ -116,12 +116,23 @@ export class CoinmarketcapApiService {
     return this.dataSource;
   }
 
+  // USING ACTIVE CURRENCIES COUNTER
   getGlobalStats() : Observable<any>{
     let url = 'https://api.coingecko.com/api/v3/global';
     let globalData = this.http.get(url);
 
     return globalData;
   }
+
+  // ANNOUNCEMENTS
+  getAnnouncments() : Observable<any>{
+    let url = 'https://api.coingecko.com/api/v3/events';
+    let announcements = this.http.get(url);
+
+    return announcements;
+  }
+
+
 
   // getTopTenMarketCap(): Observable<any>{
 

@@ -1,14 +1,64 @@
 <section class="home-crypto-section">
   <span class="hero-header">Market is {{upOrDown}}
-    <span [className]="(globalMrkCapChange >= 0) ? 'text-success' : 'text-danger'">{{globalMrkCapChange | percent: '0.3'}}</span>
+    <span class="ml-1">
+      <span [className]="(globalMrkCapChange >= 0) ? 'text-success' : 'text-danger-crypt'">
+        <i *ngIf="upOrDown === 'down'; else up" class="fas fa-caret-down text-danger-crypt caret"></i>{{globalMrkCapChange | percent: '0.3'}}
+      </span>
+    </span>
   </span>
   <div class="row">
     <div class="col-lg-8">
-      Data
+      <div class="container d-flex">
+        <div class="pr-4 pt-3">
+        <label class="data-label">
+         Global Market Cap
+          <svg matTooltip="Sum of all market caps per coin" width=".7rem" height=".7rem" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
+            <circle cx="8" cy="4.5" r="1"/>
+          </svg>
+        </label>
+        <div class="data-value">{{ marketCap | currency }}</div>
+      </div>
+      <div class="pr-4  pt-3">
+        <label class="data-label">
+         24H Volume
+          <svg matTooltip="Total of coins under active developement and support" width=".7rem" height=".7rem" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
+            <circle cx="8" cy="4.5" r="1"/>
+          </svg>
+        </label>
+        <div class="data-value">{{ globalData.data.active_cryptocurrencies | number }}</div>
+      </div>
+      <div class="pr-4  pt-3">
+        <label class="data-label">
+         Active Cryptocurrencies
+          <svg matTooltip="Total of coins under active developement and support" width=".7rem" height=".7rem" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
+            <circle cx="8" cy="4.5" r="1"/>
+          </svg>
+        </label>
+        <div class="data-value">{{ globalData.data.active_cryptocurrencies | number }}</div>
+      </div>
+      </div>
+      <div style="position: relative; height: 200px; width: 400px; left: -85px; top: 25px;">
+      <app-market-cap-chart></app-market-cap-chart>
+      </div>
+
     </div>
     <div class="col-lg-4">
-      <app-market-cap-chart></app-market-cap-chart>
+      <app-announcements></app-announcements>
     </div>
   </div>
+  <small class="pr-3 small-note-aboslute">
+    <a href="https://nomics.com" target="_blank">Crypto Market Cap & Pricing Data Provided By Nomics</a>
+    <!-- <i class="fas fa-heart"></i> -->
+  </small>
 </section>
+
+<ng-template #up>
+  <i class="fas fa-caret-up text-success caret"></i>
+</ng-template>
 

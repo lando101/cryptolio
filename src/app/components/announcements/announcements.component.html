@@ -1,0 +1,35 @@
+<!-- <div *ngFor="let announcement of announcements | slice:0:1">
+
+  <div class="card">
+    <div class="d-flex p-3">
+      <img src="{{announcement.project.image.thumb}}">
+
+      <div class="card-body p-0">
+        <h5 class="card-title">{{announcement.project.name}}</h5>
+        <p class="card-text">{{announcement.description}}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+  </div>
+</div> -->
+
+<div aTilt [tiltSettings]="tiltSettings" *ngFor="let event of announcements" class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{event.screenshot}}" alt="Card image cap">
+  <div class="card-body">
+    <div>
+      <!-- <small>Event name</small> -->
+      <h3 class="event-title-label">{{event.title}}</h3>
+    </div>
+    <div>
+      <label class="organizer-label">{{event.organizer}}</label>
+    </div>
+    <div class="dates">
+      <span>{{event.start_date | date}}</span>
+       -
+      <span>{{event.end_date | date}}</span>
+    </div>
+
+    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+  </div>
+</div>

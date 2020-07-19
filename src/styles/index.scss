@@ -66,15 +66,20 @@ input{
   color: $text-color !important;
 }
 
+// LABELS
+.small-note-aboslute{
+  position: absolute;
+  bottom: 10px;
+  right: 0px;
+  color: #737373;
+  font-size: .65rem;
+}
 
 
-// COMPONENTS
-// .cdk-overlay-pane {
-//   display: flex;
-//   max-width: 100% !important;
-//   width: 80% !important;
-// }
-
+// MATERIAL OVERRIDES
+.mat-expansion-panel {
+  box-shadow: 0px 2px 4px 1px #8080802e !important;
+}
 .cdk-global-overlay-wrapper {
   display: flex;
   position: absolute;
@@ -169,4 +174,7 @@ svg {
   font-size: 20px;
 }
 
-
+// BOOTSTRAP OVERRIDES
+.text-danger-crypt{
+  color: #ff2150 !important
+}

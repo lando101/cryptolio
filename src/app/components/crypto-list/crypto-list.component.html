@@ -73,20 +73,20 @@
           </div>
           <div class="crypto-stats-label col-lg-3">
             <small class="muted">{{selectedValuePeriod}} Change</small>
-            <span *ngIf="selectedValuePeriod==='24h'" [className]="(crypto.oneDayChange > 0) ? 'text-success' : 'text-danger'">
+            <span *ngIf="selectedValuePeriod==='24h'" [className]="(crypto.oneDayChange > 0) ? 'text-success' : 'text-danger-crypt'">
               <span *ngIf="crypto.oneDayChange; else noData">{{crypto.oneDayChange | percent:'0.3-5'}}</span>
             </span>
-            <span *ngIf="selectedValuePeriod==='7d'" [className]="(crypto.weekChange > 0) ? 'text-success' : 'text-danger'">
+            <span *ngIf="selectedValuePeriod==='7d'" [className]="(crypto.weekChange > 0) ? 'text-success' : 'text-danger-crypt'">
               <span *ngIf="crypto.weekChange; else noData">
                 {{crypto.weekChange | percent:'0.3-5'}}
               </span>
             </span>
-            <span *ngIf="selectedValuePeriod==='30d'" [className]="(crypto.monthChange > 0) ? 'text-success' : 'text-danger'">
+            <span *ngIf="selectedValuePeriod==='30d'" [className]="(crypto.monthChange > 0) ? 'text-success' : 'text-danger-crypt'">
               <span *ngIf="crypto.monthChange; else noData">
                 {{crypto.monthChange | percent:'0.3-5'}}
               </span>
             </span>
-            <span *ngIf="selectedValuePeriod==='1h'" [className]="(crypto.hourChange > 0) ? 'text-success' : 'text-danger'">
+            <span *ngIf="selectedValuePeriod==='1h'" [className]="(crypto.hourChange > 0) ? 'text-success' : 'text-danger-crypt'">
               <span *ngIf="crypto.hourChange;else noData">
                 {{crypto.hourChange | percent:'0.3-5'}}
               </span>

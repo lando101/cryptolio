@@ -13,6 +13,8 @@ export class MarketSummaryComponent implements OnInit {
   globalData: any;
   globalMrkCapChange: any;
   upOrDown: string;
+  marketCap: number = 0;
+
   ngOnInit(): void {
     this.cryptoData.getGlobalStats().subscribe(data => {
       this.globalData = data;
@@ -24,6 +26,11 @@ export class MarketSummaryComponent implements OnInit {
       }
       console.log(data);
       console.log('GOT GLOBAL DATA');
+    });
+
+    this.cryptoData.getMarketCap().subscribe(data =>{
+      // console.log("HEADER GOT THE GOODS");
+      this.marketCap = data;
     });
   }
 
