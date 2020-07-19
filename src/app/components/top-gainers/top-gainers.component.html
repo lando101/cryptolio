@@ -1,16 +1,23 @@
 
-<section>
+<section class="home-crypto-section">
   <div class="d-flex justify-content-between">
     <h2>Top Gainers</h2>
     <!-- <a>See more</a> -->
   </div>
   <div class="container">
-    <div class="row d-flex">
-      <div aTilt [tiltSettings]="tiltSettings" *ngFor="let coin of cryptoData | slice:0:8" class="card m-3" style="width: 18rem;">
+    <ngx-slick-carousel class="carousel"
+    #slickModal="slick-carousel"
+    [config]="slideConfig"
+    (init)="slickInit($event)"
+    (breakpoint)="breakpoint($event)"
+    (afterChange)="afterChange($event)"
+    (beforeChange)="beforeChange($event)">
+<div ngxSlickItem *ngFor="let coin of cryptoData | slice:0:16" class="slide">
+    <div aTilt [tiltSettings]="tiltSettings"  class="card m-3" style="width: 18rem;">
         <div class="card-body">
           <div class="d-flex justify-content-start align-items-center">
             <img src="{{coin.logo_url}}">
-            <h3 class="card-title crypt-card-header" matTooltip="{{coin.name}}">{{coin.name}}</h3>
+            <h3 class="card-title crypt-card-header">{{coin.name}}</h3>
           </div>
           <h5 class="card-subtitle mb-2 text-muted">{{coin.symbol}}</h5>
           <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
@@ -27,6 +34,14 @@
           <a href="#" class="card-link">Another link</a> -->
         </div>
       </div>
+</div>
+</ngx-slick-carousel>
+<!-- <button (click)="addSlide()">Add</button>
+<button (click)="removeSlide()">Remove</button>
+<button (click)="slickModal.slickGoTo(2)">slickGoto 2</button>
+<button (click)="slickModal.unslick()">unslick</button> -->
+    <div class="row d-flex">
+
     </div>
   </div>
 </section>

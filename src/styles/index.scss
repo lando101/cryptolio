@@ -10,6 +10,18 @@ h1{
   color: $primary-color;
 }
 
+.home-crypto-section{
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.slick-next:before {
+  color: #acacac !important;
+}
+
+.slick-prev:before {
+  color: #acacac !important;
+}
+
 section{
   min-height: 350px;
   min-height: 350px;

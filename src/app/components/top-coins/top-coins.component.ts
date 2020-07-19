@@ -28,41 +28,56 @@ export class TopCoinsComponent implements OnInit {
       "max-glare": .1,      // the maximum "glare" opacity (1 = 100%, 0.5 = 50%)
     }
     this.cryptoDataService.getTop100Crypto().subscribe(data =>{
-      // console.log(data);
       data.forEach((element: any, index: any) => {
-        // this.cryptoDataService.getSignalData(element.id).subscribe(data => {
-        //   // console.log(data);
-        //   if(data.Response === 'Success'){
-        //     element.sentiment = '';
-        //     element.sentiment = data.Data.inOutVar.sentiment;
-        //   }
-        //   // console.log(element.sentiment);
-        //   console.log(data);
-        // });
         if(index <= 7){
           if(element.id !== 'ETNX' && element.id !== 'CDAI' && element.id !=='VEN' && element.id !== 'CUSDC'){
-
-            // console.log("Found undefined");
             element.oneDayChange = element["1d"].price_change_pct;
             this.cryptoData.push(element);
-
           }
         }
-
-
-        // console.log(element.weekChange);
-        // if(element["1d"].price_change_pct != undefined){
-        //   console.log(element["1d"].price_change_pct)
-        // }
-        // this.cryptoData[index].id = element.CoinInfo.Id;
       });
       console.log(data);
       console.log(this.cryptoData);
       console.log("TOP COINS GOt THE GOODS");
-      // console.log('THIS CAME FROM THE COIN LIST');
-      // console.log(data);
-      // console.log(this.cryptoData);
     })
+  }
+
+  slides = [
+    {img: "http://placehold.it/350x150/000000"},
+    {img: "http://placehold.it/350x150/111111"},
+    {img: "http://placehold.it/350x150/333333"},
+    {img: "http://placehold.it/350x150/666666"}
+  ];
+  slideConfig = {
+    "slidesToShow": 4,
+    "slidesToScroll": 4,
+    "dots": true,
+    "infinite": false,
+
+  };
+
+  addSlide() {
+    this.slides.push({img: "http://placehold.it/350x150/777777"})
+  }
+
+  removeSlide() {
+    this.slides.length = this.slides.length - 1;
+  }
+
+  slickInit(e: any) {
+    console.log('slick initialized');
+  }
+
+  breakpoint(e: any) {
+    console.log('breakpoint');
+  }
+
+  afterChange(e: any) {
+    console.log('afterChange');
+  }
+
+  beforeChange(e: any) {
+    console.log('beforeChange');
   }
 
 }
