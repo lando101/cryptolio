@@ -116,6 +116,13 @@ export class CoinmarketcapApiService {
     return this.dataSource;
   }
 
+  getGlobalStats() : Observable<any>{
+    let url = 'https://api.coingecko.com/api/v3/global';
+    let globalData = this.http.get(url);
+
+    return globalData;
+  }
+
   // getTopTenMarketCap(): Observable<any>{
 
 

@@ -50,6 +50,7 @@ import { NewsResultsComponent } from './components/news-results/news-results.com
 import { TopCoinsComponent } from './components/top-coins/top-coins.component';
 import { TopGainersComponent } from './components/top-gainers/top-gainers.component';
 import { TopLosersComponent } from './components/top-losers/top-losers.component';
+import { MarketSummaryComponent } from './components/market-summary/market-summary.component';
 
 // FIREBASE CONFIGURATION
 const firebaseConfig = {
@@ -113,6 +114,7 @@ const firebaseConfig = {
     TopCoinsComponent,
     TopGainersComponent,
     TopLosersComponent,
+    MarketSummaryComponent,
     // IonSearchbar,
   ],
   providers: [AuthenticationService],

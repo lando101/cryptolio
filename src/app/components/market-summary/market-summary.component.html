@@ -1,0 +1,14 @@
+<section class="home-crypto-section">
+  <span class="hero-header">Market is {{upOrDown}}
+    <span [className]="(globalMrkCapChange >= 0) ? 'text-success' : 'text-danger'">{{globalMrkCapChange | percent: '0.3'}}</span>
+  </span>
+  <div class="row">
+    <div class="col-lg-8">
+      Data
+    </div>
+    <div class="col-lg-4">
+      <app-market-cap-chart></app-market-cap-chart>
+    </div>
+  </div>
+</section>
+

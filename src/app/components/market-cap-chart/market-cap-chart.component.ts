@@ -59,10 +59,10 @@ export class MarketCapChartComponent implements OnInit {
   }
 
   public pieChartOptions: ChartOptions = {
-    cutoutPercentage: 93,
+    cutoutPercentage: 90,
     elements: {
       arc: {
-        borderWidth: 6,
+        borderWidth: 5,
       },
     },
     responsive: true,
@@ -96,7 +96,7 @@ export class MarketCapChartComponent implements OnInit {
   public pieChartColors = [
     {
       backgroundColor: ['#FF7F49', '#93CCEA', '#9DE093', '#93DFB8'],
-      borderColor: '#f0f0f0'
+      borderColor: '#fafafa'
     },
   ];
 
