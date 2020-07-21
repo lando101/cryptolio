@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { AuthenticationService } from '@app/auth';
 
 @Component({
   selector: 'app-favorite-button',
@@ -9,8 +10,9 @@ export class FavoriteButtonComponent implements OnInit {
 
   like: boolean = false;
 
-  constructor() { }
+  constructor(public favoriteService: AuthenticationService) { }
   @Output() favoriteChange = new EventEmitter();
+  @Input() cypto: any;
   ngOnInit(): void {
   }
 
@@ -24,13 +26,14 @@ export class FavoriteButtonComponent implements OnInit {
 
   favorite(){
     // document.getElementById('favorite').classList.add("liked");
+    this.favoriteService.SetFavorites(this.cypto);
+    // console.log(this.cypto);
+
     if(this.like === false){
       this.like = true;
     } else{
       this.like = true;
     }
     this.favoriteChange.emit(true);
-
-
   }
 }

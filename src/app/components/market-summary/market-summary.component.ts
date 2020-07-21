@@ -17,15 +17,20 @@ export class MarketSummaryComponent implements OnInit {
 
   ngOnInit(): void {
     this.cryptoData.getGlobalStats().subscribe(data => {
-      this.globalData = data;
-      this.globalMrkCapChange = (Number(data.data.market_cap_change_percentage_24h_usd)/100);
-      if(this.globalMrkCapChange < 0){
-        this.upOrDown = "down";
-      } else if(this.globalMrkCapChange >= 0){
-        this.upOrDown = "up"
+      this.globalData = data.data;
+      try {
+        this.globalMrkCapChange = (Number(data.data.market_cap_change_percentage_24h_usd)/100);
+        if(this.globalMrkCapChange < 0){
+          this.upOrDown = "down";
+        } else if(this.globalMrkCapChange >= 0){
+          this.upOrDown = "up"
+        }
+        console.log(data);
+        console.log('GOT GLOBAL DATA');
+      } catch (error) {
+        console.log('Error in market summar');
       }
-      console.log(data);
-      console.log('GOT GLOBAL DATA');
+
     });
 
     this.cryptoData.getMarketCap().subscribe(data =>{

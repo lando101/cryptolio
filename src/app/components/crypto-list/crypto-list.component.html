@@ -124,7 +124,7 @@
             </div>
           </div>
           <div class="col-lg-4 d-flex align-items-center justify-content-end">
-          <app-favorite-button (favoriteChange)='favorited($event)'></app-favorite-button>
+          <app-favorite-button [cypto]=crypto (favoriteChange)='favorited($event)'></app-favorite-button>
           </div>
       </div>
     </mat-expansion-panel-header>
@@ -134,5 +134,5 @@
 
 
 <ng-template #noData>
-  <i mattool  matTooltip="No available data was received from Nomics" class="no-data-icon fas fa-exclamation-triangle"></i>
+  <i mattool matTooltip="No available data was received from Nomics" class="no-data-icon fas fa-exclamation-triangle"></i>
 </ng-template>

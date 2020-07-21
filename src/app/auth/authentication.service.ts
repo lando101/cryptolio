@@ -5,7 +5,7 @@ import { Credentials, CredentialsService } from './credentials.service';
 import { User } from '@app/model/user.model';
 
 import { AngularFireAuth } from "@angular/fire/auth";
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Router, ActivatedRoute } from "@angular/router";
 import { auth } from 'firebase/app';
 export interface LoginContext {
@@ -60,6 +60,8 @@ SignIn(email: any, password: any) {
         // this.login(email);
       });
       this.SetUserData(result.user);
+      // this.GetFavorites();
+      // this.SetFavorites('XRP');
     }).catch((error: { message: any; }) => {
       window.alert(error.message);
       console.log("NOT AUTHORIZED TO LOGIN");
@@ -77,11 +79,44 @@ SignIn(email: any, password: any) {
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      emailVerified: user.emailVerified
+      emailVerified: user.emailVerified,
+      // favorites: user.favorites = ["XRP"]
     }
     return userRef.set(userData, {
       merge: true
     })
+  }
+
+  SetFavorites(crypto?: any){
+    // const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const userRef: AngularFirestoreCollection<any> = this.afs.collection(`users/${this.userData.uid}/favorites`)
+    const favorite: any = {
+      // uid: this.userData.uid,
+      // email: this.userData.email,
+      // displayName: this.userData.displayName,
+      // photoURL: this.userData.photoURL,
+      // emailVerified: this.userData.emailVerified,
+      // favorites: ['btc']
+      name: crypto.symbol,
+      thumbnail: crypto.logo_url,
+      price: crypto.price,
+      timestamp: crypto.price_timestamp
+    }
+    userRef.add(favorite)
+  }
+
+  GetFavorites(): Observable<any>{
+    const userRef: AngularFirestoreCollection<any> = this.afs.collection(`users/${this.userData.uid}/favorites/`);
+    // const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.userData.uid}`);
+
+    // console.log(userRef.get())
+    const favorites =  userRef.get();
+    // console.log(favorites);
+    // console.log('USER');
+
+    // favorites.docs
+    return favorites;
+    // userRef.get();
   }
 
    // Sign out

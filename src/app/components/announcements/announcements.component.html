@@ -14,7 +14,7 @@
   </div>
 </div> -->
 
-<div aTilt [tiltSettings]="tiltSettings" *ngFor="let event of announcements" class="card" style="width: 18rem;">
+<div aTilt [tiltSettings]="tiltSettings" *ngFor="let event of announcements | slice:0:1" class="card" style="width: 18rem;">
   <img class="card-img-top" src="{{event.screenshot}}" alt="Card image cap">
   <div class="card-body">
     <div>
