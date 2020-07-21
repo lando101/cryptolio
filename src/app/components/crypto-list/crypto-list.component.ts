@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CryptoDialogComponent } from '../crypto-dialog/crypto-dialog.component';
 import { AuthenticationService } from '@app/auth';
 import { analytics } from 'firebase';
+import { async } from 'rxjs/internal/scheduler/async';
 
 
 interface CoinFilter {
@@ -67,38 +68,20 @@ export class CryptoListComponent implements OnInit {
     {value: 100, viewValue: '100 coins'},
   ];
 
-  // cars: Car[] = [
-  //   {value: 'volvo', viewValue: 'Volvo'},
-  //   {value: 'saab', viewValue: 'Saab'},
-  //   {value: 'mercedes', viewValue: 'Mercedes'}
-  // ];
-
 
   ngOnInit(): void {
-   let favsReceived: any = '';
-   this.favorite.GetFavorites().subscribe(data=>{
-      // console.log();
-      data.forEach((doc: any) => {
-        // console.log(doc, '=>', doc.data());
-        this.favorites.push(doc.data());
-      });
-      console.log(this.favorites);
-      console.log('favs');
-    });
-    // console.log(favsReceived);
-    // console.log("FAVS")
+  //  this.favorite.GetFavorites().subscribe(data=>{
+  //     // console.log();
+  //     data.forEach((doc: any) => {
+  //       // console.log(doc, '=>', doc.data());
+  //       this.favorites.push(doc.data());
+  //     });
+  //     console.log(this.favorites);
+  //     console.log('favs');
+  //   });
+
     this.cryptoDataService.getTop100Crypto().subscribe(data =>{
-      // console.log(data);
       data.forEach((element: any, index: any) => {
-        // this.cryptoDataService.getSignalData(element.id).subscribe(data => {
-        //   // console.log(data);
-        //   if(data.Response === 'Success'){
-        //     element.sentiment = '';
-        //     element.sentiment = data.Data.inOutVar.sentiment;
-        //   }
-        //   // console.log(element.sentiment);
-        //   console.log(data);
-        // });
         if(index <= 100){
           if(element.id !== 'ETNX' && element.id !== 'CDAI' && element.id !=='VEN' && element.id !== 'CUSDC'){
             element.hourChange = element["1h"].price_change_pct;
@@ -106,36 +89,13 @@ export class CryptoListComponent implements OnInit {
             element.monthChange = element["30d"].price_change_pct;
             element.ytdChange = element.ytd.price_change_pct;
             element.oneDayChange = element["1d"].price_change_pct;
-            // console.log("Found undefined");
 
             this.cryptoData.push(element);
-
           }
         }
-
-        this.cryptoData
-
-        // console.log(element.weekChange);
-        // if(element["1d"].price_change_pct != undefined){
-        //   console.log(element["1d"].price_change_pct)
-        // }
-        // this.cryptoData[index].id = element.CoinInfo.Id;
       });
-      console.log(data);
-      // console.log('THIS CAME FROM THE COIN LIST');
-      // console.log(data);
-      // console.log(this.cryptoData);
     });
-
-    // this.cryptoData.forEach((element: any, index: any)=>{
-    //   // let found = this.cryptoData.find(crypto => crypto.symbol === this.favorites[index].id);
-    //   // this.favorites[index].id
-    //   // console.log( this.favorites[index].id);
-    //   console.log('FOUND');
-    // });
   }
-
-
 
   sortRequest(type: string){
     console.log(type);
@@ -233,5 +193,10 @@ export class CryptoListComponent implements OnInit {
     setTimeout(() => {
       this.favoritedCoin = false;
     }, 500);
+  }
+
+  ngOnDestroy(){
+    // prevent memory leak when component destroyed
+    // this.subscription.unsubscribe();
   }
 }

@@ -5,5 +5,19 @@
     </svg>
     Favorite Coins
   </h2>
+  <div class="container">
+    <div class="fav-card" *ngFor="let favorite of favorites">
+      <div class="d-flex">
+        <img src="{{favorite.thumbnail}}">
+        <div class="ml-2">
+          <label class="coin-name">{{favorite.name}}</label>
+          <div class="d-flex align-items-end">
+            <small matTooltip="Favorited on {{favorite.timestamp | date}}" class="fav-stat">{{favorite.timestamp | date}}</small>
+            <small matTooltip="Price was {{favorite.price | currency}} when favorited" class="fav-stat">{{favorite.price | currency}}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
