@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CoinmarketcapApiService } from '@app/services/coinmarketcap-api.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { CryptoTimeData } from '@app/model/crypto-time-data.model';
+import { AuthenticationService } from '@app/auth/authentication.service';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class CryptoDialogComponent implements OnInit, AfterViewInit {
 
   constructor(
     public dialogRef: MatDialogRef<CryptoDialogComponent>,private el:ElementRef,
-    @Inject(MAT_DIALOG_DATA) public data: any, private cryptoData: CoinmarketcapApiService)  {
+    @Inject(MAT_DIALOG_DATA) public data: any, private cryptoData: CoinmarketcapApiService,
+    private coinData: AuthenticationService)  {
 
      }
 
@@ -67,6 +69,8 @@ export class CryptoDialogComponent implements OnInit, AfterViewInit {
     //   // console.log(this.dailyData);
     //   // console.log(data);
     // });
+
+
 
     this.tiltSettings =
       {

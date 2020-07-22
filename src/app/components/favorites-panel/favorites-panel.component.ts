@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '@app/auth/authentication.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-favorites-panel',
@@ -8,7 +9,9 @@ import { AuthenticationService } from '@app/auth/authentication.service';
 })
 export class FavoritesPanelComponent implements OnInit {
 
-  constructor(public favorite: AuthenticationService) { }
+  constructor(public favorite: AuthenticationService) {
+    // form
+  }
   favorites: any[] = [];
 
   ngOnInit(): void {

@@ -87,37 +87,6 @@ SignIn(email: any, password: any) {
     })
   }
 
-  SetFavorites(crypto?: any){
-    // const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-    const userRef: AngularFirestoreCollection<any> = this.afs.collection(`users/${this.userData.uid}/favorites`)
-    const favorite: any = {
-      // uid: this.userData.uid,
-      // email: this.userData.email,
-      // displayName: this.userData.displayName,
-      // photoURL: this.userData.photoURL,
-      // emailVerified: this.userData.emailVerified,
-      // favorites: ['btc']
-      name: crypto.symbol,
-      thumbnail: crypto.logo_url,
-      price: crypto.price,
-      timestamp: crypto.price_timestamp
-    }
-    userRef.add(favorite)
-  }
-
-  GetFavorites(): Observable<any>{
-    const userRef: AngularFirestoreCollection<any> = this.afs.collection(`users/${this.userData.uid}/favorites/`);
-    // const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.userData.uid}`);
-
-    // console.log(userRef.get())
-    const favorites =  userRef.get();
-    // console.log(favorites);
-    // console.log('USER');
-
-    // favorites.docs
-    return favorites;
-    // userRef.get();
-  }
 
    // Sign out
    SignOut() {
@@ -126,6 +95,8 @@ SignIn(email: any, password: any) {
       // this.router.navigate(['sign-in']);
     })
   }
+
+
 
 
 
@@ -153,5 +124,54 @@ SignIn(email: any, password: any) {
     this.credentialsService.setCredentials(false);
     this.SignOut();
     return of(true);
+  }
+
+
+
+  SetFavorites(crypto?: any){
+    // const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const userRef: AngularFirestoreCollection<any> = this.afs.collection(`users/${this.userData.uid}/favorites`)
+    const favorite: any = {
+      // uid: this.userData.uid,
+      // email: this.userData.email,
+      // displayName: this.userData.displayName,
+      // photoURL: this.userData.photoURL,
+      // emailVerified: this.userData.emailVerified,
+      // favorites: ['btc']
+      name: crypto.symbol,
+      thumbnail: crypto.logo_url,
+      price: crypto.price,
+      timestamp: crypto.price_timestamp
+    }
+    userRef.add(favorite)
+  }
+
+  GetFavorites(): Observable<any>{
+    const userRef: AngularFirestoreCollection<any> = this.afs.collection(`users/${this.userData.uid}/favorites/`);
+    // const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.userData.uid}`);
+
+    // console.log(userRef.get())
+    const favorites =  userRef.get();
+
+    return favorites;
+    // userRef.get();
+  }
+
+  GetComments(): Observable<any>{
+    const coinRef: AngularFirestoreCollection<any> = this.afs.collection(`coins/btc/coin_comments`);
+    const coin = coinRef.snapshotChanges();
+
+    console.log(coin);
+    console.log('comment service')
+    // const coin = coinRef.get();
+
+    // doc.onSnapshot(docSnapshot => {
+    //   console.log(`Received doc snapshot: ${docSnapshot}`);
+    //   // ...
+    // }, err => {
+    //   console.log(`Encountered error: ${err}`);
+    // });
+
+    return coin;
   }
 }

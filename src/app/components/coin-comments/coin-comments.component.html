@@ -1,0 +1,28 @@
+<div class="p-4">
+  <form class="example-form">
+    <mat-form-field  class="example-full-width w-100">
+      <mat-label>Leave a comment</mat-label>
+      <textarea [formControl]="commentFormControl" #textArea [(ngModel)]="comment" matInput placeholder="Ex. To the moon!"></textarea>
+      <mat-error>
+        Comment cannot be left blank
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button type="submit" color="primary" (click)="setComments(textArea.value)">
+      <span translate>Post</span>
+      <i class="pl-1 far fa-paper-plane"></i>
+    </button>
+    {{comment}}
+  </form>
+  <div>
+    Comments
+    <div *ngIf="coinDataArray">
+      <div *ngFor="let comment of coinDataArray">
+        <div>{{comment.comment}}</div>
+        <div>{{comment.likes}}</div>
+        <div>{{comment.dislikes}}</div>
+        <div>{{comment.time.seconds * 1000 | date: 'medium' }}</div>
+
+      </div>
+    </div>
+  </div>
+</div>
