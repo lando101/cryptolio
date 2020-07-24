@@ -1,5 +1,5 @@
 import { Injectable, NgZone  } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 
 import { Credentials, CredentialsService } from './credentials.service';
 import { User } from '@app/model/user.model';
@@ -23,7 +23,7 @@ export interface LoginContext {
 })
 export class AuthenticationService {
   userData: any; // Save logged in user data
-
+  favsBehav: any;
   // constructor(private credentialsService: CredentialsService) {}
   constructor(
     public afs: AngularFirestore,   // Inject Firestore service
@@ -44,7 +44,8 @@ export class AuthenticationService {
         localStorage.setItem('user', null);
         JSON.parse(localStorage.getItem('user'));
       }
-    })
+    });
+    this.favsBehav = new BehaviorSubject<any>([]);
   }
 
 // Sign in with email/password
@@ -144,6 +145,63 @@ SignIn(email: any, password: any) {
       timestamp: crypto.price_timestamp
     }
     userRef.add(favorite)
+  }
+
+  PrepDeleteFavorites(cryptonName?: any){
+    // const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    let favId: any;
+    const favRef: AngularFirestoreCollection<any> = this.afs.collection(`users/${this.userData.uid}/favorites`);
+    // const favorite: any = {
+    //   // uid: this.userData.uid,
+    //   // email: this.userData.email,
+    //   // displayName: this.userData.displayName,
+    //   // photoURL: this.userData.photoURL,
+    //   // emailVerified: this.userData.emailVerified,
+    //   // favorites: ['btc']
+    //   name: crypto.symbol,
+    //   thumbnail: crypto.logo_url,
+    //   price: crypto.price,
+    //   timestamp: crypto.price_timestamp
+    // }
+
+    const favToDelete = favRef.ref.where("name", "==", cryptonName).get();
+    favToDelete.then(data=>{
+      data.forEach(element => {
+         favId = element.id;
+         this.DeleteFavorite(favId);
+        //  console.log(element.id);
+        //  favDoc.delete();
+      });
+    });
+
+    // userRef.add(favorite)
+  }
+
+  DeleteFavorite(id: any){
+    const favDoc: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.userData.uid}/favorites/${id}`);
+    favDoc.delete();
+    this.GetFavorites();
+  }
+
+  // LIVE STREAM OF FAVORITES
+  GetRealTimeFavorites(){
+    const favsRef: AngularFirestoreCollection<any> = this.afs.collection(`users/${this.userData.uid}/favorites/`);
+    let favs = favsRef.valueChanges();
+    let updatedFavs: any;
+
+    favs.subscribe(data=>{
+      // data.forEach(element => {
+      updatedFavs = data;
+      this.favsBehav.next(data);
+      // });
+      console.log(data);
+    });
+
+    // return updatedFavs;
+  }
+
+  returnRealTimeFavs():Observable<any>{
+    return this.favsBehav.asObservable();
   }
 
   GetFavorites(): Observable<any>{

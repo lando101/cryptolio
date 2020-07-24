@@ -31,6 +31,9 @@ export class CryptoLineChartComponent implements OnInit, AfterViewInit  {
   chartData: any = '';
   prettyChartData: CryptoTimeData[] = [];
   ngAfterViewInit() {
+    if(!this.cryptoSymbol){
+      this.cryptoSymbol = 'btc';
+    }
     this.chartDataService.getChartData(this.cryptoSymbol).subscribe(data => {
       this.chartData = data;
       let now = moment();

@@ -122,7 +122,7 @@ const firebaseConfig = {
     // IonSearchbar,
   ],
   providers: [AuthenticationService],
-  entryComponents: [NewsDialogComponent, CryptoDialogComponent],
+  entryComponents: [NewsDialogComponent, CryptoDialogComponent ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

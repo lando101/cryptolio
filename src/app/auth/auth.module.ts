@@ -11,6 +11,7 @@ import { ParticlesModule } from 'angular-particle';
 import { ParticlesComponent } from '@app/components/particles/particles.component';
 import { SharedModule } from '@app/@shared';
 import { FormsModule } from '@angular/forms';
+// import { CryptoLineChartComponent } from '@app/components/crypto-line-chart/crypto-line-chart.component';
 // import {MatFormFieldModule} from '@angular/material/form-field';
 
 // import {MatFormFieldModule} from '@angular/';
@@ -25,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     I18nModule,
     AuthRoutingModule,
     ParticlesModule,
-    SharedModule
+    SharedModule,
+    // CryptoLineChartComponent
     // MatFormFieldModule
   ],
   declarations: [LoginComponent, ParticlesComponent],

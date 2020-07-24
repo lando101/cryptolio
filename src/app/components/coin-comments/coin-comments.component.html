@@ -13,15 +13,29 @@
     </button>
     {{comment}}
   </form>
-  <div>
-    Comments
+  <div class="p-2">
+    <div class="w-100 d-flex justify-content-end">
+      <label class="comment-count-label">{{coinDataArray.length}} Comments</label>
+    </div>
     <div *ngIf="coinDataArray">
-      <div *ngFor="let comment of coinDataArray">
-        <div>{{comment.comment}}</div>
-        <div>{{comment.likes}}</div>
-        <div>{{comment.dislikes}}</div>
-        <div>{{comment.time.seconds * 1000 | date: 'medium' }}</div>
-
+      <div class="comment-card-container" *ngFor="let comment of coinDataArray">
+        <div class="comment-card">
+          <div>{{comment.comment}}</div>
+          <div>{{comment.likes}}</div>
+          <div>{{comment.dislikes}}</div>
+          <small>{{comment.time.seconds * 1000 | date: 'medium' }}</small>
+          <small>{{comment.age}}</small>
+        </div>
+        <div class="d-flex align-items-center justify-content-start">
+          <button matTooltip="Like" mat-button class="m-1 p-0 mr-2" (click)="getComment(true, comment.id)">
+            <i class="fas fa-thumbs-up"></i>
+            <span class="comment-count">{{comment.like}}</span>
+          </button>
+          <button matTooltip="Dislike" mat-button class="m-1 p-0" (click)="getComment(false, comment.id)">
+            <i class="fas fa-thumbs-down"></i>
+            <span class="comment-count">{{comment.dislike}}</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
