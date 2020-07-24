@@ -53,6 +53,24 @@ export class LoginComponent implements OnInit, OnDestroy {
     ])
  });
 
+ joinForm: FormGroup = new FormGroup({
+  email: new FormControl('', [
+    // Validators.required
+  ]),
+  password: new FormControl('', [
+    // Validators.required
+  ]),
+  passwordCheck: new FormControl('', [
+    // Validators.required
+  ]),
+  name: new FormControl('', [
+    // Validators.required
+  ]),
+  userName: new FormControl('', [
+    // Validators.required
+  ]),
+});
+
   ngOnDestroy() {}
 
   // login() {

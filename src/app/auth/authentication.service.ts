@@ -8,6 +8,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Router, ActivatedRoute } from "@angular/router";
 import { auth } from 'firebase/app';
+
 export interface LoginContext {
   username: string;
   password: string;
@@ -61,13 +62,33 @@ SignIn(email: any, password: any) {
         // this.login(email);
       });
       this.SetUserData(result.user);
-      // this.GetFavorites();
+      this.GetFavorites();
       // this.SetFavorites('XRP');
     }).catch((error: { message: any; }) => {
       window.alert(error.message);
       console.log("NOT AUTHORIZED TO LOGIN");
       this.credentialsService.setCredentials(false);
     })
+}
+
+ // Sign in with Google
+ GoogleAuth() {
+  return this.AuthLogin(new auth.GoogleAuthProvider());
+}
+
+// Auth logic to run auth providers
+AuthLogin(provider: any) {
+  return this.afAuth.signInWithPopup(provider)
+  .then((result) => {
+      console.log('You have been successfully logged in!');
+      console.log("AUTORIZED TO LOGIN");
+      this.credentialsService.setCredentials(true);
+      this.SetUserData(result.user);
+      this.GetFavorites();
+      this.router.navigate([this.route.snapshot.queryParams.redirect || '/'], { replaceUrl: true });
+  }).catch((error) => {
+      console.log(error)
+  })
 }
 
 /* Setting up user data when sign in with username/password,
@@ -148,33 +169,17 @@ SignIn(email: any, password: any) {
   }
 
   PrepDeleteFavorites(cryptonName?: any){
-    // const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     let favId: any;
     const favRef: AngularFirestoreCollection<any> = this.afs.collection(`users/${this.userData.uid}/favorites`);
-    // const favorite: any = {
-    //   // uid: this.userData.uid,
-    //   // email: this.userData.email,
-    //   // displayName: this.userData.displayName,
-    //   // photoURL: this.userData.photoURL,
-    //   // emailVerified: this.userData.emailVerified,
-    //   // favorites: ['btc']
-    //   name: crypto.symbol,
-    //   thumbnail: crypto.logo_url,
-    //   price: crypto.price,
-    //   timestamp: crypto.price_timestamp
-    // }
+
 
     const favToDelete = favRef.ref.where("name", "==", cryptonName).get();
     favToDelete.then(data=>{
       data.forEach(element => {
          favId = element.id;
          this.DeleteFavorite(favId);
-        //  console.log(element.id);
-        //  favDoc.delete();
       });
     });
-
-    // userRef.add(favorite)
   }
 
   DeleteFavorite(id: any){
@@ -196,8 +201,6 @@ SignIn(email: any, password: any) {
       // });
       console.log(data);
     });
-
-    // return updatedFavs;
   }
 
   returnRealTimeFavs():Observable<any>{
@@ -206,13 +209,10 @@ SignIn(email: any, password: any) {
 
   GetFavorites(): Observable<any>{
     const userRef: AngularFirestoreCollection<any> = this.afs.collection(`users/${this.userData.uid}/favorites/`);
-    // const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.userData.uid}`);
 
-    // console.log(userRef.get())
     const favorites =  userRef.get();
 
     return favorites;
-    // userRef.get();
   }
 
   GetComments(): Observable<any>{
@@ -220,15 +220,7 @@ SignIn(email: any, password: any) {
     const coin = coinRef.snapshotChanges();
 
     console.log(coin);
-    console.log('comment service')
-    // const coin = coinRef.get();
-
-    // doc.onSnapshot(docSnapshot => {
-    //   console.log(`Received doc snapshot: ${docSnapshot}`);
-    //   // ...
-    // }, err => {
-    //   console.log(`Encountered error: ${err}`);
-    // });
+    console.log('comment service');
 
     return coin;
   }

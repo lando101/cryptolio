@@ -6,8 +6,37 @@ form{
   display: table-caption;
 }
 
+.form-container{
+  width: 467px !important;
+  height: 320px;
+  /* margin: 20px; */
+  padding: 50px;
+}
 
+.form-outer-container{
+  height: 450px;
+}
 
+.form-outer-container-signup{
+  height: 300px;
+  text-align: left;
+}
+
+// MATERIAL INPUTS 100% WIDTH
+.mat-form-field {
+  width: 100% !important;
+}
+.llc-label{
+  position: absolute;
+  bottom: 15px;
+  width: 350px;
+  left: 75px;
+}
+
+::deep.mat-tab-body-content {
+  // height: 100%;
+  overflow: hidden !important;
+}
 
 .login-container {
   position: absolute;
