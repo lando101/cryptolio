@@ -12,6 +12,10 @@ install aws cli :: once installed aws config -- set aws keys
 DEPLOY TO AWS ELASTIC BEANSTALK
 https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install-windows.html
 
+GET AROUND CORS ISSUE
+https://cors-anywhere.herokuapp.com/
+Place this url infront of api call URL
+
 DOCKER
 https://www.youtube.com/watch?v=6aJxOspR-NM
 build --> docker build .

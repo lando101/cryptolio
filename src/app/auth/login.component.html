@@ -10,7 +10,10 @@
       </div>
     </div> -->
     <div class="login-card">
-    <h1>Cryptolio.</h1>
+      <div class="d-flex align-items-center justify-content-center">
+        <h1>Cryptolio.</h1>
+        <span class="badge badge-light ml-2 badge-light-custom">Beta</span>
+      </div>
       <div class="mb-5">
         <div class="card-body p-0">
           <h4 class="card-title text-center">
@@ -18,11 +21,11 @@
           </h4>
           <mat-tab-group mat-align-tabs="center">
             <mat-tab label="Sign In">
-              <form (ngSubmit)="login()" [formGroup]="loginForm" class="w-100 form-outer-container" novalidate>
+              <form [formGroup]="loginForm" class="w-100 form-outer-container" novalidate>
                 <div class="alert alert-danger" [hidden]="!error || isLoading" translate>
                   Username or password incorrect.
                 </div>
-               <form class="form-container" [formGroup]="loginForm" (ngSubmit)="login()">
+               <form class="form-container" [formGroup]="loginForm">
                  <div>
                   <mat-form-field appearance="outline" >
                     <mat-label>Email</mat-label>
@@ -42,7 +45,7 @@
 
               </form >
               <div>
-                <button mat-raised-button type="submit" color="primary">
+                <button mat-raised-button type="submit" color="primary" (click)="login()">
                   <i class="fas fa-cog fa-spin" [hidden]="!isLoading"></i>
                   <span translate>Sign In</span>
                 </button>

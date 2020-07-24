@@ -69,9 +69,10 @@ export class CoinmarketcapApiService {
   getTop100Crypto(): Observable<any> {
     const headers = new HttpHeaders()
     headers.set("Access-Control-Allow-Origin", "*");
-    headers.set("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+    headers.set("Access-Control-Allow-Methods", "GET");
     headers.set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    let cryptodata = this.http.get('https://api.nomics.com/v1/currencies/ticker?key=80d4c764744d253e4e1ddd3dec0c8137&interval=1h,1d,7d,30d,ytd&convert=USD', { headers });
+    //https://cors-anywhere.herokuapp.com/ ALLOWS US TO GET PAST CORS ISSUE
+    let cryptodata = this.http.get('https://cors-anywhere.herokuapp.com/https://api.nomics.com/v1/currencies/ticker?key=80d4c764744d253e4e1ddd3dec0c8137&interval=1h,1d,7d,30d,ytd&convert=USD', { headers });
 
     // console.log(cryptodata)
     return cryptodata;

@@ -18,7 +18,7 @@
     "prettier:check": "prettier --list-different \"./{src,e2e}/**/*.{ts,js,html,scss}\"",
     "postinstall": "npm run prettier -s",
     "generate": "ng generate",
-    "aws-deploy": "aws s3 sync dist/starter-kit-master/ s3://cryptolio-containerized"
+    "aws-deploy": "aws s3 sync dist/starter-kit-master/ s3://cryptolio-app"
   },
   "dependencies": {
     "@angular/animations": "^9.1.9",
