@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 // import { Client } from 'node_modules/coinbase/lib/model/'
 import { AuthenticationService, CredentialsService } from '@app/auth';
 import { CoinmarketcapApiService } from '@app/services/coinmarketcap-api.service';
+import { User } from '@app/model/user.model';
 
 declare var Client: any;
 
@@ -14,6 +15,7 @@ declare var Client: any;
 export class HeaderComponent implements OnInit {
   menuHidden = true;
   marketCap: number = 0;
+  userInfo: User;
   // Client = require('coinbase').Client;
   // client = new Client({'apiKey': 61651, 'apiSecret': 51651});
   constructor(
@@ -27,6 +29,14 @@ export class HeaderComponent implements OnInit {
     this.cryptoData.getMarketCap().subscribe(data =>{
       // console.log("HEADER GOT THE GOODS");
       this.marketCap = data;
+    });
+
+    this.authenticationService.GetUserData().subscribe(data=>{
+      if(data){
+        this.userInfo = data;
+        console.log(data);
+        console.log("USER DATA");
+      }
     });
   }
 

@@ -25,6 +25,7 @@ export interface LoginContext {
 export class AuthenticationService {
   userData: any; // Save logged in user data
   favsBehav: any;
+  userInfo: User;
   // constructor(private credentialsService: CredentialsService) {}
   constructor(
     public afs: AngularFirestore,   // Inject Firestore service
@@ -104,9 +105,14 @@ AuthLogin(provider: any) {
       emailVerified: user.emailVerified,
       // favorites: user.favorites = ["XRP"]
     }
+    this.userInfo = user;
     return userRef.set(userData, {
       merge: true
     })
+  }
+
+  GetUserData():Observable<any>{
+    return of(this.userInfo);
   }
 
 
