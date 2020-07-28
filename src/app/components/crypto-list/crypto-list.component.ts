@@ -84,11 +84,11 @@ export class CryptoListComponent implements OnInit {
       data.forEach((element: any, index: any) => {
         if(index <= 100){
           if(element.id !== 'ETNX' && element.id !== 'CDAI' && element.id !=='VEN' && element.id !== 'CUSDC'){
-            element.hourChange = element["1h"].price_change_pct;
-            element.weekChange = element["7d"].price_change_pct;
-            element.monthChange = element["30d"].price_change_pct;
-            element.ytdChange = element.ytd.price_change_pct;
-            element.oneDayChange = element["1d"].price_change_pct;
+            element.hourChange = element["1h"]?.price_change_pct;
+            element.weekChange = element["7d"]?.price_change_pct;
+            element.monthChange = element["30d"]?.price_change_pct;
+            element.ytdChange = element.ytd?.price_change_pct;
+            element.oneDayChange = element["1d"]?.price_change_pct;
 
             this.cryptoData.push(element);
           }

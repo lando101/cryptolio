@@ -50,7 +50,7 @@ export class TopLosersComponent implements OnInit {
           if(element.id !== 'ETNX' && element.id !== 'CDAI' && element.id !=='VEN' && element.id !== 'CUSDC'){
 
             // console.log("Found undefined");
-            element.oneDayChange = element["1d"].price_change_pct;
+            element.oneDayChange = element["1d"]?.price_change_pct;
             this.cryptoData.push(element);
 
           }

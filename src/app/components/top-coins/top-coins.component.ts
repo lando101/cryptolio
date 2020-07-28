@@ -36,7 +36,7 @@ export class TopCoinsComponent implements OnInit {
       data.forEach((element: any, index: any) => {
         if(index <= 7){
           if(element.id !== 'ETNX' && element.id !== 'CDAI' && element.id !=='VEN' && element.id !== 'CUSDC'){
-            element.oneDayChange = element["1d"].price_change_pct;
+            element.oneDayChange = element["1d"]?.price_change_pct;
             this.cryptoData.push(element);
           }
         }
