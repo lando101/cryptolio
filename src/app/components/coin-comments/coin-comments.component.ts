@@ -20,6 +20,8 @@ export class CoinCommentsComponent implements OnInit {
   comment: string = '';
   formGroup: FormGroup;
   @Input() coinName= '';
+  @Input() commentHeight= '';
+
 
   ngOnInit(): void {
     console.log(this.coinName);

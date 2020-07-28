@@ -13,7 +13,7 @@
     </button>
     {{comment}}
   </form>
-  <div class="p-2">
+  <div class="p-2" class="scroll1 overflow-auto comments-container mt-3" [ngStyle]="{'height': commentHeight}">
     <div class="w-100 d-flex justify-content-end">
       <label class="comment-count-label">{{coinDataArray.length}} Comments</label>
     </div>

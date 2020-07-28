@@ -3,6 +3,7 @@
 
 <div class="login-container">
   <div class="login-box">
+  <app-loader [isLoading]=isLoading></app-loader>
     <!-- <div>
       <h6 class="d-inline-block">v{{ version }}</h6>
       <div class="d-inline-block ml-3">
@@ -42,19 +43,28 @@
                       </button>
                   </mat-form-field>
                  </div>
-
               </form >
-              <div>
-                <button mat-raised-button type="submit" color="primary" (click)="login()">
-                  <i class="fas fa-cog fa-spin" [hidden]="!isLoading"></i>
-                  <span translate>Sign In</span>
-                </button>
-                <div class="w-100 d-flex justify-content-center">
-                  <button mat-button class="d-flex align-items-center justify-content-center m-2 p-1" (click)="authenticationService.GoogleAuth()">
-                    <i class="mb-1 fab fa-google"></i>
-                    Sign in with Google
+              <div class="w-100 d-flex justify-content-center">
+                <div class="w-50">
+                  <button mat-raised-button class="w-100 m-2" type="submit" color="primary" (click)="login()">
+                    <!-- <i class="fas fa-cog fa-spin" [hidden]="!isLoading"></i> -->
+                    <span translate class="d-flex align-items-center justify-content-center">
+                      <svg width=".9em" height=".9em" viewBox="0 0 16 16" class="bi bi-envelope-fill mr-2" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+                      </svg>
+                      Sign in with Email
+                    </span>
                   </button>
+                  <!-- <div class="w-100 d-flex justify-content-center"> -->
+                    <button mat-raised-button class="w-100 m-2" (click)="authenticationService.GoogleAuth()">
+                      <span class="d-flex align-items-center justify-content-center">
+                        <i class="mr-2 fab fa-google"></i>
+                        Sign in with Google
+                      </span>
+                    </button>
                 </div>
+
+                <!-- </div> -->
               </div>
               </form>
             </mat-tab>

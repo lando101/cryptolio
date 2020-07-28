@@ -18,6 +18,7 @@ export class CryptoDialogComponent implements OnInit, AfterViewInit {
   cryptoNews: any;
   dataId: any;
   containerHeight: any;
+  commentHeight: any;
   bodyHeight: any;
 
   dailyData: CryptoTimeData[] = [{time:'', value: 0}];
@@ -104,6 +105,7 @@ export class CryptoDialogComponent implements OnInit, AfterViewInit {
     (<any>window).twttr.widgets.load();
     console.log("TRIED TO INIT TWITTER");
     this.containerHeight = this.scroll.nativeElement.offsetHeight-48 + "px";
+    this.commentHeight = this.scroll.nativeElement.offsetHeight-200 + "px";
     console.log(this.scroll.nativeElement.offsetHeight-48 +"px");
     setTimeout(() => {
     this.bodyHeight = this.scroll.nativeElement.offsetHeight-114 + "px";
