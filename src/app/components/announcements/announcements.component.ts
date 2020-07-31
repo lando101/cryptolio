@@ -17,8 +17,8 @@ export class AnnouncementsComponent implements OnInit {
   ngOnInit(): void {
     this.cryptoData.getAnnouncments().subscribe(data => {
       this.announcements = data.data;
-      console.log(this.announcements);
-      console.log('Announcemnts');
+      // console.log(this.announcements);
+      // console.log('Announcemnts');
     });
 
     this.tiltSettings =

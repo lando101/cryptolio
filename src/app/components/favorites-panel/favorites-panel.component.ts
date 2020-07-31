@@ -40,8 +40,8 @@ export class FavoritesPanelComponent implements OnInit {
         // console.log(doc, '=>', doc.data());
         this.favorites.push(doc.data());
       });
-      console.log(this.favorites);
-      console.log('favs');
+      // console.log(this.favorites);
+      // console.log('favs');
     });
 
     // START SERVICE TO GET REAL TIME UPDATES
@@ -49,8 +49,8 @@ export class FavoritesPanelComponent implements OnInit {
 
     // RECEIVE THE REALTIME UPDATES
     this.favorite.returnRealTimeFavs().subscribe(data=>{
-      console.log("WE GOT SOME DATA");
-      console.log(data);
+      // console.log("WE GOT SOME DATA");
+      // console.log(data);
       // if(data.length > this.favorites.length){
       //   // this.favorites.push(data[0]);
       //   data.sort((a:any, b:any) => b.timestamp - a.timestamp)

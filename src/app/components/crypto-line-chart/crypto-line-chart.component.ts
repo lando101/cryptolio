@@ -36,6 +36,8 @@ export class CryptoLineChartComponent implements OnInit, AfterViewInit  {
     }
     this.chartDataService.getChartData(this.cryptoSymbol).subscribe(data => {
       this.chartData = data;
+      // console.log(data);
+      // console.log('CHART DATA');
       let now = moment();
 
       data.Data.Data.forEach((element: any) => {

@@ -2,14 +2,14 @@
   <div class="w-100 p-4"  #scroll id="scroll">
     <div class="crypto-header">
       <span class="d-flex align-items-end">
-        <img class="mr-2" src="{{ data.logo }}" />
-        <h1 class="ml-2">{{ data.name }}</h1>
-        <span class="crypto-id">{{ data.id }}</span>
+        <img class="mr-2" src="{{ data?.logo }}" />
+        <h1 class="ml-2">{{ data?.name }}</h1>
+        <span class="crypto-id">{{ data?.id }}</span>
       </span>
       <div class="crypto-metrics-summary">
         <div class="crypto-price">
           {{ data.price | currency }} USD
-          <span [className]="data.prct > 0 ? 'text-success' : 'text-danger-crypt'">({{ data.prct | percent: '0.3-5' }})</span>
+          <span [className]="data?.prct > 0 ? 'text-success' : 'text-danger-crypt'">({{ data?.prct | percent: '0.3-5' }})</span>
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@
             <span class="ml-2">Related {{data.name}} News</span>
           </div>
 
-            <div *ngFor="let article of cryptoNews.Data | slice:0:5" class="d-flex coin-news-article">
+            <div *ngFor="let article of cryptoNews?.Data | slice:0:5" class="d-flex coin-news-article">
               <div aTilt [tiltSettings]="tiltSettings" class="thumbnail-container">
                 <img src="{{article.imageurl}}">
               </div>
@@ -62,13 +62,13 @@
           <div class="row pb-4">
             <div class="col-md-4 d-flex">
               <div class="data-card p-2">
-                <div class="value">{{data.ath | currency}}</div>
+                <div class="value">{{data?.ath | currency}}</div>
                 <small>All-time high</small>
               </div>
             </div>
             <div class="col-md-4">
               <div class="data-card p-2">
-                <div class="value">{{cryptoDataPrice.CHANGE24HOUR}}</div>
+                <div class="value">{{cryptoDataPrice?.CHANGE24HOUR}}</div>
                 <small>24h change</small>
               </div>
             </div>
@@ -82,7 +82,7 @@
           <div class="pb-4">
             <label class="data-label">
               Market Cap
-              <svg matTooltip="Circulating supply of {{data.id}} multiplied by {{data.price | currency}}" width=".7rem" height=".7rem" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <svg matTooltip="Circulating supply of {{data?.id}} multiplied by {{data?.price | currency}}" width=".7rem" height=".7rem" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                 <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
                 <circle cx="8" cy="4.5" r="1"/>
@@ -93,24 +93,24 @@
           <div class="pb-4">
             <label class="data-label">
               Circulating Supply
-              <svg matTooltip="Total amount of {{data.id}} available on the market" width=".7rem" height=".7rem" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <svg matTooltip="Total amount of {{data?.id}} available on the market" width=".7rem" height=".7rem" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                 <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
                 <circle cx="8" cy="4.5" r="1"/>
               </svg>
             </label>
-            <div class="data-value">{{ data.circulating_supply | number }} {{ data.id }}</div>
+            <div class="data-value">{{ data?.circulating_supply | number }} {{ data.id }}</div>
           </div>
           <div *ngIf="data.max_supply" class="pb-4">
             <label class="data-label">
               Max Supply
-              <svg matTooltip="Total amount of {{data.id}} potentially in existence" width=".7rem" height=".7rem" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <svg matTooltip="Total amount of {{data?.id}} potentially in existence" width=".7rem" height=".7rem" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                 <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
                 <circle cx="8" cy="4.5" r="1"/>
               </svg>
             </label>
-            <div class="data-value">{{ data.max_supply | number }} {{ data.id }}</div>
+            <div class="data-value">{{ data?.max_supply | number }} {{ data.id }}</div>
           </div>
         </div>
       </mat-tab>
@@ -122,7 +122,7 @@
         <!-- <ngx-tweet></ngx-tweet> -->
         <div class="scroll1 tab-content-container" [ngStyle]="{'height': containerHeight}">
           <ngx-twitter-timeline
-          [data]="{sourceType: 'url', url: 'https://twitter.com/'+data.name}"
+          [data]="{sourceType: 'url', url: 'https://twitter.com/'+data?.name}"
           [opts]="{tweetLimit: 5}"
       ></ngx-twitter-timeline>
         </div>

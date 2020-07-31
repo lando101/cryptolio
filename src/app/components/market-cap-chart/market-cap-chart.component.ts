@@ -22,7 +22,7 @@ export class MarketCapChartComponent implements OnInit {
   constructor(private cryptoData: CoinmarketcapApiService) { }
   ngOnInit(): void {
     this.cryptoData.getTop100Crypto().subscribe(data =>{
-      console.log("PIE CHART GOT THE GOODS");
+      // console.log("PIE CHART GOT THE GOODS");
       this.marketCap = data;
       let restOfCryptos: any = 0;
 

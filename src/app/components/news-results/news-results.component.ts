@@ -40,11 +40,11 @@ export class NewsResultsComponent implements OnInit {
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
   ngOnInit(): void {
-    console.log('FILTERED LIST');
-    console.log(this.filteredCategories);
+    // console.log('FILTERED LIST');
+    // console.log(this.filteredCategories);
     this.newsService.getCoinNews().subscribe(data => {
       this.newsResults = data;
-      console.log(this.newsResults);
+      // console.log(this.newsResults);
     });
 
     this.newsService.getCoinCategories().subscribe(data => {
@@ -53,8 +53,8 @@ export class NewsResultsComponent implements OnInit {
           this.newsCategories.push(element.categoryName)
         });
         // this.newsCategories.push(data.categoryName);
-        console.log(data);
-        console.log(this.newsCategories);
+        // console.log(data);
+        // console.log(this.newsCategories);
     });
 
     this.tiltSettings =

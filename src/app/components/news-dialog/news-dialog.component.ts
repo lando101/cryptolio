@@ -34,13 +34,13 @@ export class NewsDialogComponent implements OnInit{
     }
 
     photoURL(url: string) {
-      console.log(this.sanitizer.bypassSecurityTrustResourceUrl(url));
+      // console.log(this.sanitizer.bypassSecurityTrustResourceUrl(url));
       this.externalSite = this.sanitizer.bypassSecurityTrustResourceUrl(url);
       return this.externalSite;
     }
 
     onFrameLoad(event: any){
-      console.log(event);
+      // console.log(event);
       this.loading = false;
     }
 

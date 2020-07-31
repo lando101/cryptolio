@@ -56,7 +56,7 @@ SignIn(email: any, password: any) {
     .then((result: { user: User; }) => {
       this.ngZone.run(() => {
         // this.router.navigate(['dashboard']);
-        console.log("AUTORIZED TO LOGIN");
+        // console.log("AUTORIZED TO LOGIN");
         this.credentialsService.setCredentials(true);
 
         this.router.navigate([this.route.snapshot.queryParams.redirect || '/'], { replaceUrl: true });
@@ -67,7 +67,7 @@ SignIn(email: any, password: any) {
       // this.SetFavorites('XRP');
     }).catch((error: { message: any; }) => {
       window.alert(error.message);
-      console.log("NOT AUTHORIZED TO LOGIN");
+      // console.log("NOT AUTHORIZED TO LOGIN");
       this.credentialsService.setCredentials(false);
     })
 }

@@ -45,11 +45,11 @@ export class CryptoDialogComponent implements OnInit, AfterViewInit {
       // console.log(data);
 
       this.cryptoDataPrice = data.DISPLAY[dataId].USD;
-      console.log(this.cryptoDataPrice);
+      // console.log(this.cryptoDataPrice);
     });
 
     this.cryptoData.getCoinNews(dataId).subscribe(data =>{
-      console.log(data);
+      // console.log(data);
       this.cryptoNews = data;
     })
 
@@ -102,14 +102,14 @@ export class CryptoDialogComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     // @ts-ignore
-    (<any>window).twttr.widgets.load();
-    console.log("TRIED TO INIT TWITTER");
+    (<any>window).twttr.widgets?.load();
+    // console.log("TRIED TO INIT TWITTER");
     this.containerHeight = this.scroll.nativeElement.offsetHeight-48 + "px";
     this.commentHeight = this.scroll.nativeElement.offsetHeight-200 + "px";
-    console.log(this.scroll.nativeElement.offsetHeight-48 +"px");
+    // console.log(this.scroll.nativeElement.offsetHeight-48 +"px");
     setTimeout(() => {
     this.bodyHeight = this.scroll.nativeElement.offsetHeight-114 + "px";
-    console.log(this.bodyHeight);
+    // console.log(this.bodyHeight);
     }, 700);
     // this.bodyHeight = this.scrollBody.nativeElement.offsetHeight-515 + "px";
 }

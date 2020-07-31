@@ -25,10 +25,10 @@ export class MarketSummaryComponent implements OnInit {
         } else if(this.globalMrkCapChange >= 0){
           this.upOrDown = "up"
         }
-        console.log(data);
-        console.log('GOT GLOBAL DATA');
+        // console.log(data);
+        // console.log('GOT GLOBAL DATA');
       } catch (error) {
-        console.log('Error in market summar');
+        // console.log('Error in market summar');
       }
 
     });

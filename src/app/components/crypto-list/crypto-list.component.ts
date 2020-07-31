@@ -98,7 +98,7 @@ export class CryptoListComponent implements OnInit {
   }
 
   sortRequest(type: string){
-    console.log(type);
+    // console.log(type);
     if(type === 'hot'){
       this.sortHotCoins();
     } else if(type === 'cold'){
@@ -122,7 +122,7 @@ export class CryptoListComponent implements OnInit {
         return 0;
       }
     });
-    console.log(this.cryptoData);
+    // console.log(this.cryptoData);
   }
 
   sortMarketCapLow(){
@@ -137,7 +137,7 @@ export class CryptoListComponent implements OnInit {
         return 0;
       }
     });
-    console.log(this.cryptoData);
+    // console.log(this.cryptoData);
   }
 
   sortHotCoins(){
@@ -152,7 +152,7 @@ export class CryptoListComponent implements OnInit {
         return 0;
       }
     });
-    console.log(this.cryptoData);
+    // console.log(this.cryptoData);
   }
 
   sortColdCoins(){
@@ -167,7 +167,7 @@ export class CryptoListComponent implements OnInit {
         return 0;
       }
     });
-    console.log(this.cryptoData);
+    // console.log(this.cryptoData);
   }
 
   openDialog(crypto:any): void {
@@ -188,7 +188,7 @@ export class CryptoListComponent implements OnInit {
   }
 
   favorited(event: any){
-    console.log('I FAVORITED SOMETHING');
+    // console.log('I FAVORITED SOMETHING');
     this.favoritedCoin = true;
     setTimeout(() => {
       this.favoritedCoin = false;

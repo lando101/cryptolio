@@ -12,7 +12,7 @@ export class RedditApiService {
   constructor(private http: HttpClient) { }
 
   searchReddit(query: string): Observable<any> {
-    console.log('tried to search');
+    // console.log('tried to search');
     // let result = this.http.get(`https://www.reddit.com/search.json?q=${query}`);
     let result = this.http.get('https://www.reddit.com/r/cryptocurrencynews.json');
     this.searchResult = result;

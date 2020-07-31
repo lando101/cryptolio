@@ -38,7 +38,7 @@ export class RedditResultsComponent implements OnInit {
       // width: '250px',
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      // console.log('The dialog was closed');
       // this.animal = result;
     });
   }

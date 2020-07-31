@@ -84,19 +84,19 @@ export class TopGainersComponent implements OnInit {
   // }
 
   slickInit(e: any) {
-    console.log('slick initialized');
+    // console.log('slick initialized');
   }
 
   breakpoint(e: any) {
-    console.log('breakpoint');
+    // console.log('breakpoint');
   }
 
   afterChange(e: any) {
-    console.log('afterChange');
+    // console.log('afterChange');
   }
 
   beforeChange(e: any) {
-    console.log('beforeChange');
+    // console.log('beforeChange');
   }
 
   sortHotCoins(){
@@ -115,7 +115,7 @@ export class TopGainersComponent implements OnInit {
 
   openDialog(crypto:any): void {
     if(!this.favoritedCoin){
-      console.log('TRIED TO OPEN DIALOG');
+      // console.log('TRIED TO OPEN DIALOG');
       let dialogRef = this.dialog.open(CryptoDialogComponent, {
         // width: '250px',
         data: { name: crypto.name, price: crypto.price, rank: crypto.rank, id: crypto.id,

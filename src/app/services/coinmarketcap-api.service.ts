@@ -33,7 +33,7 @@ export class CoinmarketcapApiService {
               "action": "SubAdd",
               "subs": ["24~CCCAGG~BTC~USD~D"]
             };
-      console.log("Socket has been opened!");
+      // console.log("Socket has been opened!");
      this.socket.send(JSON.stringify(subRequest))
   };
 
@@ -104,7 +104,7 @@ export class CoinmarketcapApiService {
     // return this.dataSource.asObservable();
     this.getTop100Crypto().subscribe(data => {
       // this.crypto.next(data);
-      console.log(data);
+      // console.log(data);
       data.forEach((element: any) => {
         if (element.rank <= 100) {
           marketCapCalc += Number(element.market_cap);
