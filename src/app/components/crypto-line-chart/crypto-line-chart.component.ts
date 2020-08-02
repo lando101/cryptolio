@@ -25,6 +25,8 @@ export class CryptoLineChartComponent implements OnInit, AfterViewInit {
   htmlToAdd: string;
   oldContainer: any;
 
+  isLoading: boolean = false;
+
   uncheckableRadioModel = '365';
   ngOnInit(): void {
     // this.width = this.grid.nativeElement.offsetWidth;
@@ -37,6 +39,7 @@ export class CryptoLineChartComponent implements OnInit, AfterViewInit {
   chartData: any = '';
   prettyChartData: CryptoTimeData[] = [];
   ngAfterViewInit() {
+    this.isLoading = true;
     if (!this.cryptoSymbol) {
       this.cryptoSymbol = 'btc';
     }
@@ -49,7 +52,12 @@ export class CryptoLineChartComponent implements OnInit, AfterViewInit {
       data.Data.Data.forEach((element: any) => {
         this.prettyChartData.push({ time: moment.unix(element.time).format('YYYY-MM-DD'), value: element.close });
       });
+      this.isLoading = false;
     });
+
+    if(this.isLoading){
+      this.noData();
+    }
     // this.cryptoChartDataSubscription.unsubscribe();
     this.buildChart();
 
@@ -58,6 +66,7 @@ export class CryptoLineChartComponent implements OnInit, AfterViewInit {
   }
 
   getNewChartData(range?: number, interval?: string){
+    this.isLoading = true;
     this.uncheckableRadioModel = range.toString();
     this.cryptoChartDataSubscription.unsubscribe();
     if (!this.cryptoSymbol) {
@@ -72,9 +81,12 @@ export class CryptoLineChartComponent implements OnInit, AfterViewInit {
       data.Data.Data.forEach((element: any) => {
         this.prettyChartData.push({ time: moment.unix(element.time).format('YYYY-MM-DD'), value: element.close });
       });
-      console.log(this.prettyChartData);
-      console.log('NEW CHART DATA');
+
+      this.isLoading = false;
     });
+    if(this.isLoading){
+      this.noData();
+    }
     this.buildChart(true);
     // document.getElementById('grid').remove;
     // this.htmlToAdd = '<div #grid (window:resize)="resizeEvent(grid)" id="grid"></div>';
@@ -199,5 +211,12 @@ export class CryptoLineChartComponent implements OnInit, AfterViewInit {
 
 
     // this.width=this.grid.nativeElement.offsetWidth;
+  }
+
+  // WHEN NO DATA IS COMING IN REMOVE LOADER AND NOTIFY USER
+  noData(){
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 5000);
   }
 }

@@ -31,6 +31,20 @@ table{
   min-height: 400px;
 }
 
+.no-data-container{
+  height: 400px;
+  text-align: center;
+  .no-data-label{
+    font-size: 1.3rem;
+    font-weight: 100;
+  }
+  small{
+    font-weight: bold;
+    color: #5d5d5d;
+  }
+}
+
+
 
 .chart-header-container{
   .chart-header-label{

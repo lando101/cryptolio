@@ -25,8 +25,22 @@
   </div>
 </div>
 
+<app-loader [isLoading]=isLoading></app-loader>
+<div #grid (window:resize)="resizeEvent(grid)" id="grid" *ngIf="prettyChartData.length >= 1; else noData"></div>
 
-<div #grid (window:resize)="resizeEvent(grid)" id="grid"></div>
+<ng-template #noData>
+  <div class="w-100 d-flex justify-content-center align-items-center no-data-container" *ngIf="!isLoading">
+    <div class="">
+      <div class="no-data-label">
+        Chart data is unavailable.
+      </div>
+      <small>This is typical for lower cap coins.</small>
+    </div>
+  </div>
+</ng-template>
 
-<div class="one" [innerHtml]="htmlToAdd"></div>
+
+
+
+<!-- <div class="one" [innerHtml]="htmlToAdd"></div> -->
 
