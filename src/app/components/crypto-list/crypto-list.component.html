@@ -113,14 +113,14 @@
               <!-- <span matTooltip="{{crypto.symbol}} short-term sentiment is bearish" class="emoji" *ngIf="crypto.sentiment === 'bearish'">🐻</span>
               <span matTooltip="{{crypto.symbol}} short-term sentiment is bearish" class="emoji" *ngIf="crypto.sentiment === 'bullish'">🐂</span> -->
               <!-- <span matTooltip="{{crypto.symbol}} short-term sentiment is bearish" class="emoji" *ngIf="crypto.sentiment === 'bearish'">🐻</span> -->
-              <span matTooltip="{{crypto.symbol}} is the most valuable coin by market cap" class="emoji" *ngIf="crypto.rank === '1'">🥇</span>
-              <span matTooltip="{{crypto.symbol}} is the second most valuable coin by market cap" class="emoji" *ngIf="crypto.rank === '2'">🥈</span>
-              <span matTooltip="{{crypto.symbol}} is the second most valuable coin by market cap" class="emoji" *ngIf="crypto.rank === '3'">🥉</span>
-              <span matTooltip="{{crypto.symbol}} is up over 10% in the last 7 days" class="emoji" *ngIf="crypto.weekChange > .10">🔥</span>
-              <span matTooltip="{{crypto.symbol}} is up over 3% in the last 7 days" class="emoji" *ngIf="crypto.weekChange > .03 && crypto.weekChange < .1">🌡️</span>
-              <span matTooltip="{{crypto.symbol}} is up over 100% year-to-date" class="emoji" *ngIf="crypto.ytdChange > 1">👑</span>
-              <span matTooltip="{{crypto.symbol}} is down over 10% year-to-date" class="emoji" *ngIf="crypto.ytdChange < (-.1)">😞</span>
-              <span matTooltip="{{crypto.symbol}} is down over 10% in the last 7 days" class="emoji" *ngIf="crypto.weekChange < (-.10)">❄️</span>
+              <span matTooltip="{{crypto.symbol}} is the most valuable coin by market cap" class="emoji" *ngIf="crypto.rank === '1'"><i class="fas fa-medal first"></i></span>
+              <span matTooltip="{{crypto.symbol}} is the second most valuable coin by market cap" class="emoji" *ngIf="crypto.rank === '2'"><i class="fas fa-medal second"></i></span>
+              <span matTooltip="{{crypto.symbol}} is the second most valuable coin by market cap" class="emoji" *ngIf="crypto.rank === '3'"><i class="fas fa-medal third"></i></span>
+              <span matTooltip="{{crypto.symbol}} is up over 10% in the last 7 days" class="emoji" *ngIf="crypto.weekChange > .10"><i class="fas fa-fire fire"></i></span>
+              <span matTooltip="{{crypto.symbol}} is up over 3% in the last 7 days" class="emoji" *ngIf="crypto.weekChange > .03 && crypto.weekChange < .1"><i class="fas fa-temperature-high warming"></i></span>
+              <span matTooltip="{{crypto.symbol}} is up over 100% year-to-date" class="emoji" *ngIf="crypto.ytdChange > 1"><i class="fas fa-crown crown"></i></span>
+              <span matTooltip="{{crypto.symbol}} is down over 10% year-to-date" class="emoji" *ngIf="crypto.ytdChange < (-.1)"><i class="far fa-sad-tear cold"></i></span>
+              <span matTooltip="{{crypto.symbol}} is down over 10% in the last 7 days" class="emoji" *ngIf="crypto.weekChange < (-.10)"><i class="far fa-snowflake cooling"></i></span>
             </div>
           </div>
           <div class="col-lg-4 d-flex align-items-center justify-content-end">
