@@ -1,6 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-lg d-flex">
-    <div class="col-md-4">
+  <div id="navbar-menu" class="collapse navbar-collapse float-xs-none" [ngbCollapse]="menuHidden">
+    <div class="col-md-3">
       <a class="navbar-brand d-flex align-items-center" href="https://github.com/ngx-rocket" translate>
         Cryptolio. <span class="badge badge-light ml-2 badge-light-custom">Beta</span>
       </a>
@@ -15,13 +16,16 @@
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
-    <div class="col-md-4 nav-bar-metrics">
-     <span class="metric-container"><small><span class="text-muted">Market Cap: </span><span class="text-primary font-weight-bold">{{marketCap | currency}}</span></small></span>
-     <span class="metric-container"><small><span class="text-muted">24h Vol: </span><span class="text-primary font-weight-bold">{{marketCap | currency}}</span></small></span>
-    </div>
-<div class="col-md-4">
+    <div class="col-md-6 nav-bar-metrics">
+     <!-- <span class="metric-container"><small><span class="text-muted">Market Cap: </span><span class="text-primary font-weight-bold">{{marketCap | currency}}</span></small></span>
+     <span class="metric-container"><small><span class="text-muted">24h Vol: </span><span class="text-primary font-weight-bold">{{marketCap | currency}}</span></small></span> -->
+      <app-marquee-widget class="w-100"></app-marquee-widget>
 
-  <div id="navbar-menu" class="collapse navbar-collapse float-xs-none" [ngbCollapse]="menuHidden">
+    </div>
+<div class="col-md-3">
+
+
+
     <!-- <div class="navbar-nav">
       <a class="nav-item nav-link text-uppercase" routerLink="/home" routerLinkActive="active">
         <i class="fas fa-home"></i>
@@ -32,7 +36,7 @@
         <span translate>About</span>
       </a>
     </div> -->
-    <div class="navbar-nav ml-auto">
+    <div class="navbar-nav ml-auto d-flex justify-content-end align-items-center">
       <!-- <app-language-selector inNavbar="true" menuClass="dropdown-menu dropdown-menu-right"></app-language-selector> -->
       <div class="nav-item" ngbDropdown>
         <a id="user-dropdown" class="nav-link d-flex align-items-center" ngbDropdownToggle>

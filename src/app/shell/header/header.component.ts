@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+
     this.cryptoData.getMarketCap().subscribe(data =>{
       // console.log("HEADER GOT THE GOODS");
       this.marketCap = data;
