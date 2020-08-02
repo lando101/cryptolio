@@ -1,2 +1,26 @@
+<!-- <div class="btn-group btn-group-toggle" data-toggle="buttons">
+  <label class="btn btn-secondary active">
+    <input type="radio" name="options" id="option1" autocomplete="off" checked > 365 Days
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" name="options" id="option2" autocomplete="off"> 30 Days
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" name="options" id="option3" autocomplete="off" > 7 Days
+  </label>
+</div> -->
+<div class="filter-container mb-3">
+  <div class="btn-group" btnRadioGroup [(ngModel)]="uncheckableRadioModel">
+    <label class="btn btn-info d-flex align-items-center" btnRadio="Left"
+            tabindex="0" role="button" (click)='getNewChartData(365, "histoday")'>365 Days</label>
+    <label class="btn btn-info d-flex align-items-center" btnRadio="Middle"
+            tabindex="0" role="button" (click)='getNewChartData(30, "histoday")'>30 Days</label>
+    <label class="btn btn-info d-flex align-items-center" btnRadio="Right"
+            tabindex="0" role="button" (click)='getNewChartData(7, "histoday")'>7 Days</label>
+  </div>
+</div>
+
 <div #grid (window:resize)="resizeEvent(grid)" id="grid"></div>
+
+<div class="one" [innerHtml]="htmlToAdd"></div>
 

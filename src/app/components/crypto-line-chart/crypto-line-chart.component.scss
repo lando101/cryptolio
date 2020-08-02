@@ -30,3 +30,18 @@ table{
   height: 400px;
   min-height: 400px;
 }
+
+.filter-container{
+  width: 250px !important;
+  .btn-group{
+    label{
+      height: 25px;
+      font-size: .8rem;
+      background: #f2f2f2;
+      color: black;
+      font-weight: 500;
+      border: 1px solid gainsboro;
+    }
+  }
+
+}

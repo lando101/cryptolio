@@ -79,9 +79,15 @@ export class CoinmarketcapApiService {
   }
 
   // GET CHART DATA FOR CURRENCY MODAL
-  getChartData(cryptoSymbol?: string): Observable<any> {
+  getChartData(cryptoSymbol?: string, range?: number, interval?: string): Observable<any> {
     let symbol = cryptoSymbol;
-    let url = 'https://min-api.cryptocompare.com/data/v2/histoday?fsym=' + symbol + '&tsym=USD&limit=365';
+    let url: string;
+    if(!range){
+      url = 'https://min-api.cryptocompare.com/data/v2/histoday?fsym=' + symbol + '&tsym=USD&limit=365';
+      console.log('NO RANGE');
+    } else{
+      url = 'https://min-api.cryptocompare.com/data/v2/'+ interval +'?fsym=' + symbol + '&tsym=USD&limit=' + range;
+    }
     let cryptoData = this.http.get(url);
 
     return cryptoData;

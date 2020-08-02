@@ -22,8 +22,10 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
+
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 
 // import { ParticlesModule } from 'angular-particle';
@@ -48,6 +50,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     MatChipsModule,
     MatAutocompleteModule,
     SlickCarouselModule,
+    MatButtonToggleModule,
     // IonicModule.forRoot({
     //   rippleEffect: false,
     //   mode: 'md'
@@ -74,7 +77,9 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     MatTooltipModule,
     MatChipsModule,
     MatAutocompleteModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    MatButtonToggleModule
+
     // LoaderComponent
     // IonicModule
     // CarouselComponent
