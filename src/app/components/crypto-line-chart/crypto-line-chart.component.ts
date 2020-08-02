@@ -25,7 +25,7 @@ export class CryptoLineChartComponent implements OnInit, AfterViewInit {
   htmlToAdd: string;
   oldContainer: any;
 
-  uncheckableRadioModel = 'Left';
+  uncheckableRadioModel = '365';
   ngOnInit(): void {
     // this.width = this.grid.nativeElement.offsetWidth;
     // this.cryptoDailyData = this.getOCHLdaily();
@@ -58,6 +58,7 @@ export class CryptoLineChartComponent implements OnInit, AfterViewInit {
   }
 
   getNewChartData(range?: number, interval?: string){
+    this.uncheckableRadioModel = range.toString();
     this.cryptoChartDataSubscription.unsubscribe();
     if (!this.cryptoSymbol) {
       this.cryptoSymbol = 'btc';
