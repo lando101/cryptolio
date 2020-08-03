@@ -18,6 +18,7 @@ export class CryptoLineChartComponent implements OnInit, AfterViewInit {
   @ViewChild('grid')
   grid: ElementRef;
   width: number;
+  percentChange: number;
   cryptoChartDataSubscription: Subscription;
   @Input() cryptoSymbol: string;
   // height: 500;
@@ -53,6 +54,8 @@ export class CryptoLineChartComponent implements OnInit, AfterViewInit {
         this.prettyChartData.push({ time: moment.unix(element.time).format('YYYY-MM-DD'), value: element.close });
       });
       this.isLoading = false;
+      this.changePercentage();
+
     });
 
     if(this.isLoading){
@@ -81,18 +84,24 @@ export class CryptoLineChartComponent implements OnInit, AfterViewInit {
       data.Data.Data.forEach((element: any) => {
         this.prettyChartData.push({ time: moment.unix(element.time).format('YYYY-MM-DD'), value: element.close });
       });
-
+      this.changePercentage();
       this.isLoading = false;
     });
+
+    // IF LOADING IS PROLONGED TURN OFF LOADER
     if(this.isLoading){
       this.noData();
     }
     this.buildChart(true);
-    // document.getElementById('grid').remove;
-    // this.htmlToAdd = '<div #grid (window:resize)="resizeEvent(grid)" id="grid"></div>';
 
   }
 
+  changePercentage(){
+    this.percentChange = (this.prettyChartData[this.prettyChartData.length - 1].value - this.prettyChartData[0].value)/this.prettyChartData[0].value;
+
+  }
+
+  // CREATES CHART AND PUSHES DATA INTO IT
   buildChart(newData?: boolean){
     setTimeout(() => {
       let oldContainer;
@@ -196,6 +205,7 @@ export class CryptoLineChartComponent implements OnInit, AfterViewInit {
     this.width = this.grid.nativeElement.offsetWidth - 30;
   }
 
+  // RESIZE CHART IF WIDTH OF SCREEN CHANGES
   resizeEvent(event: any) {
     // chart.applyOptions({ width: $('#chartDiv').width(), height: $('#chartDiv').height() })
     // console.log(event);

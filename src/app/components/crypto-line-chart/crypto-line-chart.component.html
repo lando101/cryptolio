@@ -11,15 +11,16 @@
 </div> -->
 <div class="d-flex justify-content-between align-items-start chart-header-container">
   <div class="chart-header-label">
-    Last {{uncheckableRadioModel}} days
+    {{uncheckableRadioModel}} Days <span [className]="percentChange > 0 ? 'text-success' : 'text-danger-crypt'">({{percentChange | percent: '0.3'}})</span>
+    <small *ngIf="prettyChartData.length > 0">Started {{prettyChartData[0].value | currency}} | Today {{prettyChartData[prettyChartData.length-1].value | currency}}</small>
   </div>
   <div class="filter-container mb-3">
     <div class="btn-group" btnRadioGroup [(ngModel)]="uncheckableRadioModel">
-      <label class="btn btn-info d-flex align-items-center" btnRadio="365"
+      <label class="btn btn-info d-flex align-items-center justify-content-center" btnRadio="365"
               tabindex="0" role="button" (click)='getNewChartData(365, "histoday")'>365 Days</label>
-      <label class="btn btn-info d-flex align-items-center" btnRadio="30"
+      <label class="btn btn-info d-flex align-items-center justify-content-center" btnRadio="30"
               tabindex="0" role="button" (click)='getNewChartData(30, "histoday")'>30 Days</label>
-      <label class="btn btn-info d-flex align-items-center" btnRadio="7"
+      <label class="btn btn-info d-flex align-items-center justify-content-center" btnRadio="7"
               tabindex="0" role="button" (click)='getNewChartData(7, "histoday")'>7 Days</label>
     </div>
   </div>

@@ -41,6 +41,7 @@ table{
   small{
     font-weight: bold;
     color: #5d5d5d;
+
   }
 }
 
@@ -48,9 +49,20 @@ table{
 
 .chart-header-container{
   .chart-header-label{
-    font-weight: 400;
-    font-size: 1.2rem;
+    font-weight: 100;
+    font-size: 1.3rem;
     color: #696969;
+    span{
+      font-size: .95rem;
+    }
+    small{
+      font-weight: bold;
+      color: #5d5d5d;
+      display: block;
+      font-size: .7rem;
+      font-weight: bold;
+      margin-top: 5px;
+    }
   }
   .filter-container{
     width: 315px !important;
