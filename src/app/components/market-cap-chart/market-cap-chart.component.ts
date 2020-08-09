@@ -19,13 +19,33 @@ export class MarketCapChartComponent implements OnInit {
   btcDominance: any;
   btcMarketCap: any;
   totalMaretCap: any;
-
+  pieChartOptions: ChartOptions;
   themeType = '';
+
+  //PIE CHART VARIABLES
+  public pieChartLabels: Label[];
+  public pieChartData: SingleDataSet;
+  public pieChartType: ChartType;
+  public pieChartLegend: boolean;
+  // public pieChartPlugins = [pluginDataLabels];
+  public pieChartColors: any = []
+
+  darkThemeColor = '#181818';
+  lightThemeColor = '#fafafa';
+  color = '';
   constructor(private cryptoData: CoinmarketcapApiService, private themeService: ThemeService) { }
   ngOnInit(): void {
     this.themeService.themeTypeBS.subscribe((data: string)=>{
       console.log(data + 'THEME!!!!');
       this.themeType = data;
+      if (data === 'light'){
+        this.color = this. lightThemeColor
+      } else{
+        this.color = this.darkThemeColor;
+      }
+      this.createPieChart(this.color);
+
+      console.log(this.color);
     });
 
     this.cryptoData.getTop100Crypto().subscribe(data =>{
@@ -65,46 +85,50 @@ export class MarketCapChartComponent implements OnInit {
     this.btcDominance = btcDom;
   }
 
-  public pieChartOptions: ChartOptions = {
-    cutoutPercentage: 90,
-    elements: {
-      arc: {
-        borderWidth: 5,
-      },
-    },
-    responsive: true,
-    legend: {
-      position: 'bottom',
-    },
-    plugins: {
-    borderRadius: 4,
-
-      datalabels: {
-        // formatter: (value, ctx) => {
-        //   const label = ctx.chart.data.labels[ctx.dataIndex];
-        //   return label;
-        // },
-        color: 'black',
-        font: {
-          weight: 'bold',
-          size: 9,
+  createPieChart(color: string){
+    this.pieChartOptions = {
+      cutoutPercentage: 90,
+      elements: {
+        arc: {
+          borderWidth: 5,
         },
-        // font.size: '40'
-
       },
+      responsive: true,
+      legend: {
+        position: 'bottom',
+      },
+      plugins: {
+      borderRadius: 4,
 
+        datalabels: {
+          // formatter: (value, ctx) => {
+          //   const label = ctx.chart.data.labels[ctx.dataIndex];
+          //   return label;
+          // },
+          color: 'black',
+          font: {
+            weight: 'bold',
+            size: 9,
+          },
+          // font.size: '40'
+
+        },
+      }
     }
-  };
-  public pieChartLabels: Label[] = this.cryptoLabels;
-  public pieChartData: SingleDataSet = this.cryptoCaps;
-  public pieChartType: ChartType = 'doughnut';
-  public pieChartLegend = false;
-  // public pieChartPlugins = [pluginDataLabels];
-  public pieChartColors = [
-    {
-      backgroundColor: ['#FF7F49', '#93CCEA', '#9DE093', '#93DFB8'],
-      borderColor: '#fafafa'
-    },
-  ];
+    this.pieChartLabels = this.cryptoLabels;
+    this.pieChartData = this.cryptoCaps
+    this.pieChartType = 'doughnut';
+    this.pieChartLegend = false;
+    this.pieChartColors = [
+      {
+        backgroundColor: ['#FF7F49', '#93CCEA', '#9DE093', '#93DFB8'],
+        borderColor: color
+      },
+    ];
+  }
+  // pieChartOptions: ChartOptions = {
+
+  // };
+
 
 }

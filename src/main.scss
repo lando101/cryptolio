@@ -40,3 +40,14 @@ body{
   border: 5px solid #ffffff;
   // border-radius: 15px;
 }
+
+.dark.scroll1::-webkit-scrollbar-track {
+  background: #151515;
+}
+
+.dark.scroll1::-webkit-scrollbar-thumb {
+  background: #a0a0a0;
+  border-radius: 15px;
+  border: 5px solid #151515;
+  // border-radius: 15px;
+}

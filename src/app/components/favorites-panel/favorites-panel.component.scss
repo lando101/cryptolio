@@ -1,40 +1,71 @@
-.fav-card{
-  position: relative;
-  border-radius: 15px;
-  margin: 10px 0px;
-  border: none;
-  box-shadow: 0px 2px 4px 1px #8080802e;
-  cursor: pointer;
-  padding: 10px;
-  background: white;
-  overflow: hidden;
-  img{
-    width: 20px;
-    height: 20px;
-  }
-  .coin-name{
-    font-weight: bold;
-    margin-bottom: 5px;
-    display: block;
-  }
-  .fav-stat{
-    padding: 0px 5px;
-    background: #eeeeee;
-    border-radius: 5px;
-    /* border: 1px solid #e8e8e8; */
-    font-weight: 500;
-    font-size: .60rem;
-    margin: 0px 5px 0px 0px;
-  }
-  button{
-    position: absolute;
-    top: 0px;
-    right: 0px;
-  }
-}
+@import "../../../styles/index.scss";
 
-.favorites-container{
+
+@mixin favs-container-mixin($light-theme: true){
+  $background: $white-background;
+  $font-color: $primary-font-color;
+  $secondary-bg-color: darken($white-background, 8%);
+  $text-shadow: $secondary-text-shadow;
+  $border: $primary-border-light;
+  $shadow: $primary-shadow-light;
+
+  @if $light-theme != true{
+    $background: $dark-secondary-background;
+    $font-color: lighten($dark-primary-font-color, 5%);
+    $secondary-bg-color: darken($dark-secondary-background, 4%);
+    $text-shadow: $dark-primary-shadow;
+    $border: $dark-primary-border;
+    $shadow: $dark-primary-shadow-light;
+  }
+  color: $font-color;
   position: fixed;
   width: 310px;
   top: 65px;
+
+  .fav-card{
+    position: relative;
+    border-radius: 15px;
+    margin: 10px 0px;
+    border: none;
+    box-shadow: 0px 2px 4px 1px $shadow;
+    cursor: pointer;
+    padding: 10px;
+    background: $background;
+    overflow: hidden;
+    color: $font-color;
+    img{
+      width: 20px;
+      height: 20px;
+    }
+    .coin-name{
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+    }
+    .fav-stat{
+      padding: 0px 5px;
+      background: $secondary-bg-color;
+      border-radius: 5px;
+      /* border: 1px solid #e8e8e8; */
+      font-weight: 500;
+      font-size: .60rem;
+      margin: 0px 5px 0px 0px;
+    }
+    button{
+      position: absolute;
+      top: 0px;
+      right: 0px;
+    }
+  }
+}
+
+
+
+.favorites-container{
+  @include favs-container-mixin($light-theme: true)
+}
+
+
+.dark.favorites-container {
+  @include favs-container-mixin($light-theme: false)
 }
