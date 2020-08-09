@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CoinmarketcapApiService } from '@app/services/coinmarketcap-api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CryptoDialogComponent } from '../crypto-dialog/crypto-dialog.component';
+import { ThemeService } from '@app/services/theme.service';
 
 @Component({
   selector: 'app-top-coins',
@@ -10,12 +11,19 @@ import { CryptoDialogComponent } from '../crypto-dialog/crypto-dialog.component'
 })
 export class TopCoinsComponent implements OnInit {
 
-  constructor(private cryptoDataService: CoinmarketcapApiService, public dialog: MatDialog) { }
+  constructor(private cryptoDataService: CoinmarketcapApiService, public dialog: MatDialog, private themeService: ThemeService) { }
   cryptoData: Array<any> = [];
   tiltSettings: any;
   favoritedCoin: boolean = false;
+  themeType = '';
 
   ngOnInit(): void {
+
+    this.themeService.themeTypeBS.subscribe((data: string)=>{
+      console.log(data + 'THEME!!!!');
+      this.themeType = data;
+    });
+
     this.tiltSettings =
     {
       reverse: true,  // reverse the tilt direction

@@ -1,20 +1,63 @@
 @import "../../styles/index.scss";
 
-.logo {
-  width: 100px;
+@mixin body-container-mixin($light-theme: true){
+
+  $bg-color: $body-background;
+  $font-color: $primary-font-color;
+  $text-shadow: $secondary-text-shadow;
+
+  @if $light-theme != true{
+    $bg-color: $dark-body-background;
+    $font-color: $dark-primary-font-color;
+    $text-shadow: $dark-primary-shadow;
+  }
+
+  background-color: $bg-color;
+
+  .inner-body-container{
+    background-color: transparent;
+    .fav-panel-bg{
+      background-color: transparent;
+    }
+  }
+
+  .tab-label{
+
+  }
+
+  .page-header{
+    color: $font-color;
+    text-shadow: 1px 0px 15px $text-shadow;
+  }
+  .svg{
+    color: $font-color !important;
+  }
+
+  .logo {
+    width: 100px;
+  }
+
+  q {
+    font-style: italic;
+    font-size: 1.2rem;
+    quotes: "« " " »";
+  }
+
+  .section-content-container{
+    // border-bottom: 1px solid $primary-border;
+  }
+
+  .container-format{
+    margin-top: 10px;
+    width: 100%;
+  }
 }
 
-q {
-  font-style: italic;
-  font-size: 1.2rem;
-  quotes: "« " " »";
+
+.body-container{
+  @include body-container-mixin($light-theme: true);
 }
 
-.section-content-container{
-  // border-bottom: 1px solid $primary-border;
-}
-
-.container-format{
-  margin-top: 10px;
-  width: 100%;
+.dark.body-container{
+  @include body-container-mixin($light-theme: false);
 }

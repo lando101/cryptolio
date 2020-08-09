@@ -3,6 +3,7 @@ import { AuthenticationService } from '@app/auth/authentication.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CryptoDialogComponent } from '../crypto-dialog/crypto-dialog.component';
 import { FormGroup } from '@angular/forms';
+import { ThemeService } from '@app/services/theme.service';
 
 @Component({
   selector: 'app-favorites-panel',
@@ -11,12 +12,19 @@ import { FormGroup } from '@angular/forms';
 })
 export class FavoritesPanelComponent implements OnInit {
 
-  constructor(public favorite: AuthenticationService, public dialog: MatDialog) {
+  themeType = '';
+  constructor(public favorite: AuthenticationService, public dialog: MatDialog, private themeService: ThemeService) {
     // form
   }
   favorites: any[] = [];
   tiltSettingsFav: any;
   ngOnInit(): void {
+
+    this.themeService.themeTypeBS.subscribe((data: string)=>{
+      console.log(data + 'THEME!!!!');
+      this.themeType = data;
+    });
+
     this.tiltSettingsFav =
     {
       reverse: true,  // reverse the tilt direction

@@ -145,7 +145,8 @@ input{
   // height: 100vh !important;
   display: block;
   overflow: auto;
-  margin-top: 60px;
+  // margin-top: 60px;
+  padding-top: 60px;
 }
 
 .mat-tab-header {
@@ -183,6 +184,10 @@ svg {
 // BOOTSTRAP OVERRIDES
 .text-danger-crypt{
   color: #ff2150 !important
+}
+
+.text-success {
+  color: #0fd574 !important;
 }
 
 .badge-light-custom{

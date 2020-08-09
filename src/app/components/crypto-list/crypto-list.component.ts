@@ -7,6 +7,7 @@ import { CryptoDialogComponent } from '../crypto-dialog/crypto-dialog.component'
 import { AuthenticationService } from '@app/auth';
 import { analytics } from 'firebase';
 import { async } from 'rxjs/internal/scheduler/async';
+import { ThemeService } from '@app/services/theme.service';
 
 
 interface CoinFilter {
@@ -26,8 +27,8 @@ interface Car {
 
 
 export class CryptoListComponent implements OnInit {
-
-  constructor(private cryptoDataService: CoinmarketcapApiService, public dialog: MatDialog, public favorite: AuthenticationService) { }
+  themeType = '';
+  constructor(private cryptoDataService: CoinmarketcapApiService, public dialog: MatDialog, public favorite: AuthenticationService, private themeService: ThemeService) { }
 
   cryptoData: Array<any> = [];
   displayedColumns: string[] = ['crypto'];
@@ -70,15 +71,10 @@ export class CryptoListComponent implements OnInit {
 
 
   ngOnInit(): void {
-  //  this.favorite.GetFavorites().subscribe(data=>{
-  //     // console.log();
-  //     data.forEach((doc: any) => {
-  //       // console.log(doc, '=>', doc.data());
-  //       this.favorites.push(doc.data());
-  //     });
-  //     console.log(this.favorites);
-  //     console.log('favs');
-  //   });
+    this.themeService.themeTypeBS.subscribe((data: string)=>{
+      console.log(data + 'THEME!!!!');
+      this.themeType = data;
+    });
 
     this.cryptoDataService.getTop100Crypto().subscribe(data =>{
       data.forEach((element: any, index: any) => {

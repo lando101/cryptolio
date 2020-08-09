@@ -4,6 +4,7 @@ import { createChart } from 'lightweight-charts';
 
 import { QuoteService } from './quote.service';
 import { CoinmarketcapApiService } from '@app/services/coinmarketcap-api.service';
+import { ThemeService } from '@app/services/theme.service';
 
 @Component({
   selector: 'app-home',
@@ -13,9 +14,9 @@ import { CoinmarketcapApiService } from '@app/services/coinmarketcap-api.service
 export class HomeComponent implements OnInit {
   quote: string | undefined;
   isLoading = false;
-
+  themeType='';
   constructor(private quoteService: QuoteService,
-    private cmcService: CoinmarketcapApiService,) {
+    private cmcService: CoinmarketcapApiService, private themeService: ThemeService) {
     // const chart = createChart(document.body, {
     //   width: 400,
     //   height: 300,
@@ -46,6 +47,7 @@ export class HomeComponent implements OnInit {
 //     { time: '2019-04-20', value: 74.43 },
 // ]);
   }
+
 
   slides = [
     {img: "http://placehold.it/350x150/000000"},
@@ -85,7 +87,10 @@ export class HomeComponent implements OnInit {
       console.log(data);
     });
 
-
+    this.themeService.themeTypeBS.subscribe((data: string)=>{
+      console.log(data + 'THEME!!!!');
+      this.themeType = data;
+    });
     // this.quoteService
     //   .getRandomQuote({ category: 'dev' })
     //   .pipe(

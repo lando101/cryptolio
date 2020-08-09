@@ -1,13 +1,16 @@
-<mat-sidenav-container class="example-container">
+<div class="{{themeType}} body-container">
+<mat-sidenav-container class="inner-body-container">
   <!-- <mat-sidenav opened mode="side"></mat-sidenav> -->
-  <mat-sidenav opened mode="side" position="end"><app-favorites-panel></app-favorites-panel></mat-sidenav>
+  <mat-sidenav opened mode="side" position="end" class="fav-panel-bg"><app-favorites-panel></app-favorites-panel></mat-sidenav>
   <div class="d-flex">
     <div class="container-format">
       <mat-tab-group mat-align-tabs="center" [disableRipple]="true">
         <mat-tab>
           <ng-template mat-tab-label>
             <!-- <i class="pr-2 fas fa-home"></i> -->
-            <svg
+
+            <span class="tab-label">
+              <svg
               width=".85em"
               height=".85em"
               viewBox="0 0 16 16"
@@ -24,7 +27,8 @@
                 d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"
               />
             </svg>
-            Home
+              Home
+            </span>
           </ng-template>
           <section>
             <div class="container">
@@ -46,7 +50,7 @@
                     d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"
                   />
                 </svg>
-                <label class="ml-2">Home</label>
+                <label class="ml-2 page-header">Home</label>
               </div>
               <app-market-summary></app-market-summary>
               <app-top-coins></app-top-coins>
@@ -57,8 +61,11 @@
         </mat-tab>
         <mat-tab>
           <ng-template mat-tab-label>
-            <i class="pr-2 fas fa-coins"></i>
-            Coins
+            <span class="tab-label">
+              <i class="pr-2 fas fa-coins"></i>
+              Coins
+            </span>
+
           </ng-template>
           <section>
             <div class="container">
@@ -69,7 +76,7 @@
                   <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z"/>
                 </svg> -->
                 <i class="fas fa-coins"></i>
-                <label class="ml-2">Coins</label>
+                <label class="ml-2 page-header">Coins</label>
               </div>
               <section class="section-content-container">
                 <app-crypto-list></app-crypto-list>
@@ -80,7 +87,9 @@
         <mat-tab>
           <ng-template mat-tab-label>
             <!-- <i class="pr-2 far fa-newspaper"></i> -->
-            <svg
+
+            <span class="tab-label">
+              <svg
               width=".85em"
               height=".85em"
               viewBox="0 0 16 16"
@@ -100,7 +109,9 @@
                 d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"
               />
             </svg>
-            News
+              News
+            </span>
+
           </ng-template>
           <section>
             <div class="container">
@@ -126,7 +137,7 @@
                   />
                 </svg>
                 <!-- <i class="far fa-newspaper"></i> -->
-                <label class="ml-2">News</label>
+                <label class="ml-2 page-header">News</label>
               </div>
 
               <!-- <ion-searchbar></ion-searchbar> -->
@@ -143,6 +154,8 @@
     </div> -->
   </div>
 </mat-sidenav-container>
+</div>
+
 
 <!-- <footer class="footer mt-auto py-3">
   <div class="container">

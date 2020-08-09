@@ -55,9 +55,8 @@
 
 <mat-accordion>
   <!-- <mat-expansion-panel hideToggle *ngFor="let crypto of cryptoData | slice:0:cryptoShown | filter: searchValue; index"> -->
-  <mat-expansion-panel hideToggle *ngFor="let crypto of cryptoData | slice:0:selectedRange | filter:searchValue; index" (click)="openDialog(crypto)">
-
-    <mat-expansion-panel-header collapsedHeight = "65px">
+  <mat-expansion-panel class="{{themeType}} mat-expansion-panel" hideToggle *ngFor="let crypto of cryptoData | slice:0:selectedRange | filter:searchValue; index" (click)="openDialog(crypto)">
+    <mat-expansion-panel-header collapsedHeight = "65px" class="crypto-row-container">
       <div class="d-flex align-items-center justify-content-center font-weight-bold">{{crypto.rank}}</div>
       <div class="col-md-3 d-flex align-items-center">
         <mat-panel-title class="d-flex align-tiems-center">

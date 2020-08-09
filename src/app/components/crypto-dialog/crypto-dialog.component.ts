@@ -4,6 +4,7 @@ import { CoinmarketcapApiService } from '@app/services/coinmarketcap-api.service
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { CryptoTimeData } from '@app/model/crypto-time-data.model';
 import { AuthenticationService } from '@app/auth/authentication.service';
+import { ThemeService } from '@app/services/theme.service';
 
 
 @Component({
@@ -20,13 +21,13 @@ export class CryptoDialogComponent implements OnInit, AfterViewInit {
   containerHeight: any;
   commentHeight: any;
   bodyHeight: any;
-
+  themeType = '';
   dailyData: CryptoTimeData[] = [{time:'', value: 0}];
 
   constructor(
     public dialogRef: MatDialogRef<CryptoDialogComponent>,private el:ElementRef,
     @Inject(MAT_DIALOG_DATA) public data: any, private cryptoData: CoinmarketcapApiService,
-    private coinData: AuthenticationService)  {
+    private coinData: AuthenticationService, private themeService: ThemeService)  {
 
      }
 
@@ -39,6 +40,11 @@ export class CryptoDialogComponent implements OnInit, AfterViewInit {
   tiltSettings: any;
 
   ngOnInit(): void {
+    this.themeService.themeTypeBS.subscribe((data: string)=>{
+      console.log(data + 'THEME!!!!');
+      this.themeType = data;
+    });
+
     const dataId = this.data.id;
     let cryptoLowerCase: string;
     this.cryptoData.getCryptoData(dataId).subscribe(data =>{

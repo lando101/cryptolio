@@ -7,6 +7,7 @@ import { analytics } from 'firebase';
 import * as moment from 'moment';
 import { CombineLatestSubscriber } from 'rxjs/internal/observable/combineLatest';
 import { Subscription } from 'rxjs';
+import { ThemeService } from '@app/services/theme.service';
 
 @Component({
   selector: 'app-coin-comments',
@@ -15,10 +16,11 @@ import { Subscription } from 'rxjs';
 })
 export class CoinCommentsComponent implements OnInit {
 
-  constructor( private coinData: AuthenticationService, public afs: AngularFirestore, private formBuilder: FormBuilder) { }
+  constructor( private coinData: AuthenticationService, public afs: AngularFirestore, private formBuilder: FormBuilder, private themeService: ThemeService) { }
   coinDataArray: any[] = [];
   comment: string = '';
   formGroup: FormGroup;
+  themeType = '';
   @Input() coinName= '';
   @Input() commentHeight= '';
 
@@ -26,6 +28,11 @@ export class CoinCommentsComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.coinName);
     console.log('COIN NAME');
+
+    this.themeService.themeTypeBS.subscribe((data: string)=>{
+      console.log(data + 'THEME!!!!');
+      this.themeType = data;
+    });
     // const doc = db.collection('cities').doc('SF');
 
     // const observer = doc.onSnapshot(docSnapshot => {

@@ -1,17 +1,35 @@
-// DARK VARIABLES
+
+
+// UNIVERSAL VARIABLES
+$primary-color: #ff2150;
+
 // BACKGROUNDS
-$dark-primary-background-darker: #131313;
-$dark-primary-background: #191919;
+$dark-primary-background-darker: #f0f0f0;
+$dark-primary-background: #f7f7f7;
+$dark-secondary-background: #242424;
+$dark-body-background: #181818;
+$dark-header-translucent-background: #33333378;
 
 // COLORS
 $dark-mat-muted-icon: #888888;
-$dark-text-color: white;
+$dark-text-color: #747474;
+$dark-primary-font-color: #c4c4c4;
+$dark-alternate-text-color: white;
+$dark-desc-text-color: #848484;
+
 
 
 // BORDERS
-$dark-primary-border: #242424;
+$dark-primary-border: #353535;
 $dark-primary-border-dark: darken($primary-border, 15%);
+$dark-border-darkest: #b6b6b64a;
 
 
 // SHADOWS
 $dark-primary-shadow: #12121280;
+$dark-primary-shadow-light: #0303032e;
+$dark-primary-text-shadow: #9c122e;
+
+
+
+//=========================================================

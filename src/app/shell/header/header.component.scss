@@ -4,44 +4,59 @@
 @import "../../../styles/index.scss";
 
 
-.navbar {
-  // margin-bottom: $spacer;
-  margin-bottom: none;
-  position: fixed;
-  top: 0px;
-  z-index: 999;
-  height: 58px;
-  width: 100%;
-  background-color: $header-translucent-background;
-  backdrop-filter: saturate(90%) blur(15px);
-  // box-shadow: 0px 2px 8px 2px #0c0d0e63;
-  text-shadow: 1px 0px 15px $primary-text-shadow;
-  border-bottom: 1px solid $header-border-bottom;
-  .navbar-brand{
-    font-family: 'Righteous', cursive;
-    // font-family: 'Galada', cursive;
-    color: $primary-color;
-    font-size: 1.85rem;
-  }
-  .nav-bar-metrics{
-    height: 57px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* border-radius: 10px; */
-    border-right: 1px solid #e0e0e078;
-    border-left: 1px solid #e0e0e078;
-    -webkit-backdrop-filter: brightness(0.88);
-    backdrop-filter: brightness(0.95);
-    .metric-container{
-      padding: 0px 10px;
-      border-right: 1px solid $primary-border;
-      &:last-child{
-        border-right: none;
+@mixin navbar-mixin($light-theme: true){
+  $bg-color: $header-translucent-background;
+  $text-shadow: $primary-text-shadow;
+  $border: $border-darkest;
+  $secondary-border: $secondary-border-dark;
+
+    // margin-bottom: $spacer;
+    @if $light-theme != true{
+      $bg-color: $dark-header-translucent-background;
+      $text-shadow: $dark-primary-text-shadow;
+      $border: $dark-primary-border;
+      $secondary-border: lighten($dark-primary-border, 5%);
+
+    }
+
+    margin-bottom: none;
+    position: fixed;
+    top: 0px;
+    z-index: 999;
+    height: 58px;
+    width: 100%;
+    background-color: $bg-color;
+    backdrop-filter: saturate(90%) blur(15px);
+    // box-shadow: 0px 2px 8px 2px #0c0d0e63;
+    text-shadow: 1px 0px 15px $text-shadow;
+    border-bottom: 1px solid $border;
+    .navbar-brand{
+      font-family: 'Righteous', cursive;
+      // font-family: 'Galada', cursive;
+      color: $primary-color;
+      font-size: 1.85rem;
+    }
+    .nav-bar-metrics{
+      height: 57px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* border-radius: 10px; */
+      border-right: 1px solid $secondary-border;
+      border-left: 1px solid $secondary-border;
+      -webkit-backdrop-filter: brightness(0.88);
+      backdrop-filter: brightness(0.95);
+      .metric-container{
+        padding: 0px 10px;
+        border-right: 1px solid $primary-border;
+        &:last-child{
+          border-right: none;
+        }
       }
     }
-  }
 }
+
+
 
 .nav-link.dropdown-toggle {
   cursor: pointer;
@@ -56,4 +71,13 @@
     width: 25px;
     height: 25px;
   }
+}
+
+
+.navbar{
+  @include navbar-mixin($light-theme: true);
+}
+
+.dark.navbar{
+  @include navbar-mixin($light-theme: false);
 }

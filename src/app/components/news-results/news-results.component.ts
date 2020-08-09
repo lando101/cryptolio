@@ -6,6 +6,7 @@ import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { ThemeService } from '@app/services/theme.service';
 
 @Component({
   selector: 'app-news-results',
@@ -15,7 +16,8 @@ import { map, startWith } from 'rxjs/operators';
 export class NewsResultsComponent implements OnInit {
   [x: string]: any;
 
-  constructor(private newsService: NewsApiService) {
+  themeType = '';
+  constructor(private newsService: NewsApiService, private themeService: ThemeService) {
     setTimeout(() => {
       this.filteredCategories = this.fruitCtrl.valueChanges.pipe(
         startWith(null),
@@ -42,6 +44,9 @@ export class NewsResultsComponent implements OnInit {
   ngOnInit(): void {
     // console.log('FILTERED LIST');
     // console.log(this.filteredCategories);
+
+
+
     this.newsService.getCoinNews().subscribe(data => {
       this.newsResults = data;
       // console.log(this.newsResults);
@@ -56,7 +61,10 @@ export class NewsResultsComponent implements OnInit {
         // console.log(data);
         // console.log(this.newsCategories);
     });
-
+    this.themeService.themeTypeBS.subscribe((data: string)=>{
+      console.log(data + 'THEME!!!!');
+      this.themeType = data;
+    });
     this.tiltSettings =
     {
       reverse: true,  // reverse the tilt direction

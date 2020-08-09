@@ -5,6 +5,7 @@ import { CoinmarketcapApiService } from '@app/services/coinmarketcap-api.service
 import { formatCurrency } from '@angular/common';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { ThemeService } from '@app/services/theme.service';
 
 @Component({
   selector: 'app-market-cap-chart',
@@ -19,8 +20,14 @@ export class MarketCapChartComponent implements OnInit {
   btcMarketCap: any;
   totalMaretCap: any;
 
-  constructor(private cryptoData: CoinmarketcapApiService) { }
+  themeType = '';
+  constructor(private cryptoData: CoinmarketcapApiService, private themeService: ThemeService) { }
   ngOnInit(): void {
+    this.themeService.themeTypeBS.subscribe((data: string)=>{
+      console.log(data + 'THEME!!!!');
+      this.themeType = data;
+    });
+
     this.cryptoData.getTop100Crypto().subscribe(data =>{
       // console.log("PIE CHART GOT THE GOODS");
       this.marketCap = data;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CoinmarketcapApiService } from '@app/services/coinmarketcap-api.service';
+import { ThemeService } from '@app/services/theme.service';
 
 
 @Component({
@@ -8,14 +9,20 @@ import { CoinmarketcapApiService } from '@app/services/coinmarketcap-api.service
   styleUrls: ['./market-summary.component.scss']
 })
 export class MarketSummaryComponent implements OnInit {
-
-  constructor(private cryptoData: CoinmarketcapApiService) { }
+  themeType = '';
+  constructor(private cryptoData: CoinmarketcapApiService, private themeService: ThemeService) { }
   globalData: any;
   globalMrkCapChange: any;
   upOrDown: string;
   marketCap: number = 0;
 
   ngOnInit(): void {
+
+    this.themeService.themeTypeBS.subscribe((data: string)=>{
+      console.log(data + 'THEME!!!!');
+      this.themeType = data;
+    });
+
     this.cryptoData.getGlobalStats().subscribe(data => {
       this.globalData = data.data;
       try {

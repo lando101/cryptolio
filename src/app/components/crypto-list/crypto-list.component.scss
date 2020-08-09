@@ -1,51 +1,96 @@
-img{
-  height: 30px;
-  width: 30px;
-  margin: 0px 13px 0px 5px;
+@import "../../../styles/index.scss";
+
+@mixin crypto-row-mixin($light-theme: true){
+  $background: $white-background;
+  $font-color: $primary-font-color;
+  $secondary-font-color: lighten($primary-font-color, 10%);
+  $text-shadow: $secondary-text-shadow;
+  $border: $primary-border-light;
+  $shadow: $primary-shadow-light;
+
+  @if $light-theme != true{
+    $background: $dark-secondary-background;
+    $font-color: lighten($dark-primary-font-color, 5%);
+    $secondary-font-color: darken($dark-primary-font-color, 10%);
+    $text-shadow: $dark-primary-shadow;
+    $border: $dark-primary-border;
+    $shadow: $dark-primary-shadow-light;
+  }
+
+  ::ng-deep .mat-content {
+    height: 65px !important;
+    padding: 0px 30px;
+  }
+  background: $background !important;
+  box-shadow: 0px 2px 4px 1px $shadow !important;
+
+  .crypto-row-container{
+    img{
+      height: 30px;
+      width: 30px;
+      margin: 0px 13px 0px 5px;
+    }
+
+    label{
+      font-weight: 300;
+      font-size: 1.15rem;
+      margin: 0px;
+      display: flex;
+      align-items: center;
+      color: $font-color !important;
+    }
+
+    .crypto-stats-label{
+      font-size: 1.15rem;
+      font-weight: 300;
+      margin: 0px 10px;
+      color: $font-color !important;
+      small{
+        display: block;
+        font-size: 50%;
+        color: $secondary-font-color;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .emoji{
+        opacity: .8;
+      }
+      i{
+        font-size: .95rem;
+      }
+    }
+
+    .mat-label-search{
+      font-weight: 300;
+      font-size: 1rem;
+      svg{
+        width: .95rem;
+        height: .95rem;
+        margin: 0px 5px;
+      }
+    }
+
+    .no-data-icon{
+      font-size: .85rem;
+      color: $font-color;
+    }
+  }
 }
 
-label{
-  font-weight: 300;
-  font-size: 1.15rem;
-  margin: 0px;
-  display: flex;
-  align-items: center;
-  color: #3e3e3e;
+
+
+
+.mat-expansion-panel{
+  @include crypto-row-mixin($light-theme: true)
 }
 
-.crypto-stats-label{
-  font-size: 1.15rem;
-  font-weight: 300;
-  margin: 0px 10px;
-  small{
-    display: block;
-    font-size: 50%;
-    color: #a7a7a7;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-  .emoji{
-    opacity: .8;
-  }
-  i{
-    font-size: .95rem;
-  }
+.dark.mat-expansion-panel{
+  @include crypto-row-mixin($light-theme: false)
 }
 
-.mat-label-search{
-  font-weight: 300;
-  font-size: 1rem;
-  svg{
-    width: .95rem;
-    height: .95rem;
-    margin: 0px 5px;
-  }
-}
 
-.no-data-icon{
-  font-size: .85rem;
-  color: #4c4c4c;
-}
+
+
 
 
